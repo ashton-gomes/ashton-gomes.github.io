@@ -1,11 +1,13 @@
 title: Ashton Gomes
-email: ashton.gomes@outlook.com
-description: Mechanical Engineering Senior 
+email: your.email@stonybrook.edu
+description: Mechanical Engineering Senior
+tagline: "Vehicle Dynamics Lead at Stony Brook Motorsports. Specializing in mechanical design, thermal analysis, and robotic kinematics."
+resume_url: "/assets/resume.pdf" # Make sure to put your PDF in an 'assets' folder
 baseurl: "" 
 url: "" 
 
 # Build settings
 markdown: kramdown
-theme: jekyll-theme-primer # Keep this line to prevent build errors, though we override it
+theme: jekyll-theme-primer 
 plugins:
   - jekyll-seo-tag
