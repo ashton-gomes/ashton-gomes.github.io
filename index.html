@@ -1,333 +1,83 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alex Engineer | Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        surf: {
-                            50: '#f0fdfa',
-                            100: '#ccfbf1',
-                            200: '#99f6e4',
-                            300: '#5eead4', // Surf Green Light
-                            500: '#14b8a6', // Surf Green Main
-                            600: '#0d9488', // Surf Green Dark
-                            900: '#134e4a',
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                        serif: ['Georgia', 'Times New Roman', 'serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    <script src="https://unpkg.com/feather-icons"></script>
-    <style>
-        /* Custom smooth scrolling and selection color */
-        ::selection { background-color: #99f6e4; color: #134e4a; }
-        .blob { animation: blob 7s infinite; }
-        @keyframes blob {
-            0% { transform: translate(0px, 0px) scale(1); }
-            33% { transform: translate(30px, -50px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
-            100% { transform: translate(0px, 0px) scale(1); }
-        }
-        .animation-delay-2000 { animation-delay: 2s; }
-    </style>
-</head>
-<body class="bg-white text-slate-800 antialiased selection:bg-surf-200">
+---
+layout: default
+title: Home
+---
 
-    <nav class="fixed w-full bg-white/90 backdrop-blur-md border-b border-slate-100 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0 flex items-center gap-2">
-                    <div class="w-8 h-8 bg-surf-600 rounded-lg flex items-center justify-center text-white font-serif font-bold italic shadow-md shadow-surf-500/30">
-                        A
-                    </div>
-                    <span class="text-xl font-serif font-bold tracking-tight text-slate-900">
-                        Alex Engineer
-                    </span>
-                </div>
-                
-                <div class="hidden md:flex space-x-12">
-                    <a href="#about" class="text-sm font-medium text-slate-500 hover:text-surf-600 transition-colors uppercase tracking-widest relative group">About</a>
-                    <a href="#skills" class="text-sm font-medium text-slate-500 hover:text-surf-600 transition-colors uppercase tracking-widest relative group">Capabilities</a>
-                    <a href="#projects" class="text-sm font-medium text-slate-500 hover:text-surf-600 transition-colors uppercase tracking-widest relative group">Work</a>
-                    <a href="#contact" class="text-sm font-medium text-slate-500 hover:text-surf-600 transition-colors uppercase tracking-widest relative group">Contact</a>
-                </div>
-
-                <div class="md:hidden">
-                    <button onclick="toggleMenu()" class="text-slate-800 hover:text-surf-600">
-                        <i data-feather="menu"></i>
-                    </button>
-                </div>
+<section id="about" class="pt-20 pb-12 px-4 max-w-6xl mx-auto border-b border-slate-200">
+    <div class="flex flex-col md:flex-row items-center gap-12">
+        <div class="flex-1 space-y-6">
+            <div class="inline-block px-2 py-1 bg-surf-50 border border-surf-200 text-surf-900 text-[10px] font-mono font-bold uppercase tracking-widest">
+                Mechanical Engineering Senior
             </div>
-        </div>
-
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-100 absolute w-full">
-            <div class="px-4 pt-2 pb-6 space-y-4">
-                <a href="#about" onclick="toggleMenu()" class="block text-slate-700 font-medium hover:text-surf-600">About</a>
-                <a href="#skills" onclick="toggleMenu()" class="block text-slate-700 font-medium hover:text-surf-600">Capabilities</a>
-                <a href="#projects" onclick="toggleMenu()" class="block text-slate-700 font-medium hover:text-surf-600">Work</a>
-                <a href="#contact" onclick="toggleMenu()" class="block text-slate-700 font-medium hover:text-surf-600">Contact</a>
-            </div>
-        </div>
-    </nav>
-
-    <section id="about" class="relative pt-40 pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden">
-        <div class="absolute inset-0 z-0 opacity-[0.4]" 
-             style="background-image: radial-gradient(#cbd5e1 1px, transparent 1px); background-size: 24px 24px;">
-        </div>
-
-        <div class="relative z-10 flex flex-col md:flex-row items-center gap-16">
-            <div class="flex-1 space-y-8">
-                <div class="inline-flex items-center gap-2 px-3 py-1 bg-surf-50 border border-surf-200 text-surf-900 text-xs font-bold tracking-widest uppercase rounded-full">
-                    <span class="w-2 h-2 rounded-full bg-surf-500 animate-pulse"></span>
-                    Available for Hire 2025
-                </div>
-
-                <h1 class="text-5xl md:text-7xl font-serif font-medium text-slate-900 leading-[1.1]">
-                    Engineering with <br />
-                    <span class="italic text-surf-600 relative inline-block">
-                        Character
-                        <svg class="absolute w-full h-3 -bottom-1 left-0 text-surf-200 -z-10" viewBox="0 0 100 10" preserveAspectRatio="none">
-                            <path d="M0 5 Q 50 10 100 5" stroke="currentColor" stroke-width="8" fill="none" />
-                        </svg>
-                    </span>
-                </h1>
-
-                <p class="text-xl text-slate-600 max-w-xl font-light leading-relaxed">
-                    Bridging the gap between CAD design, thermal analysis, and automated manufacturing.
-                </p>
-
-                <div class="flex flex-wrap gap-4 pt-4">
-                    <a href="#projects" class="px-8 py-4 bg-slate-900 text-white text-sm font-bold tracking-wide hover:bg-surf-600 transition-all flex items-center rounded-lg shadow-lg hover:shadow-surf-500/20 group">
-                        View Selected Works <i data-feather="chevron-right" class="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
-                    </a>
-                    <a href="#" class="px-8 py-4 bg-white text-slate-900 border border-slate-200 text-sm font-bold tracking-wide hover:border-surf-400 hover:text-surf-600 transition-all flex items-center rounded-lg">
-                        <i data-feather="download" class="mr-2 w-4 h-4"></i> Download Resume
-                    </a>
-                </div>
-            </div>
-            
-            <div class="hidden md:block w-1/3 relative">
-                 <div class="aspect-[4/5] bg-gradient-to-br from-surf-50 to-white rounded-2xl border border-slate-100 flex items-center justify-center relative shadow-2xl shadow-slate-200 overflow-hidden">
-                    <div class="absolute top-10 right-10 w-32 h-32 bg-surf-200 rounded-full mix-blend-multiply filter blur-2xl opacity-70 blob"></div>
-                    <div class="absolute bottom-10 left-10 w-32 h-32 bg-blue-100 rounded-full mix-blend-multiply filter blur-2xl opacity-70 blob animation-delay-2000"></div>
-                    
-                    <div class="text-center p-8 relative z-10 bg-white/80 backdrop-blur-sm rounded-xl border border-white shadow-sm">
-                        <i data-feather="anchor" class="w-12 h-12 text-surf-500 mx-auto mb-4"></i>
-                        <div class="text-xs font-mono text-slate-500 tracking-widest uppercase">
-                            Portfolio<br/>v2.5.0
-                        </div>
-                    </div>
-                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="skills" class="py-24 bg-white relative border-t border-slate-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-16 pb-8 border-b border-slate-100 flex justify-between items-end">
-                <div>
-                    <h2 class="text-4xl font-serif text-slate-900 mb-2">Technical Proficiency</h2>
-                    <p class="text-slate-500 max-w-xl">A toolkit built for precision and innovation.</p>
-                </div>
-                <i data-feather="zap" class="w-8 h-8 text-surf-300 hidden md:block"></i>
-            </div>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="group p-8 rounded-2xl bg-white border border-slate-100 hover:border-surf-300 transition-all hover:shadow-xl hover:shadow-surf-100">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="p-3 bg-surf-50 text-surf-600 rounded-lg group-hover:scale-110 transition-transform">
-                            <i data-feather="pen-tool"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-slate-900 font-serif">Design & CAD</h3>
-                    </div>
-                    <ul class="space-y-3">
-                        <li class="flex items-center text-slate-600 text-sm"><span class="w-1.5 h-1.5 bg-surf-400 rounded-full mr-3"></span>SolidWorks (CSWP)</li>
-                        <li class="flex items-center text-slate-600 text-sm"><span class="w-1.5 h-1.5 bg-surf-400 rounded-full mr-3"></span>Fusion 360</li>
-                        <li class="flex items-center text-slate-600 text-sm"><span class="w-1.5 h-1.5 bg-surf-400 rounded-full mr-3"></span>GD&T</li>
-                        <li class="flex items-center text-slate-600 text-sm"><span class="w-1.5 h-1.5 bg-surf-400 rounded-full mr-3"></span>DfM/DfA</li>
-                    </ul>
-                </div>
-
-                <div class="group p-8 rounded-2xl bg-white border border-slate-100 hover:border-surf-300 transition-all hover:shadow-xl hover:shadow-surf-100">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="p-3 bg-surf-50 text-surf-600 rounded-lg group-hover:scale-110 transition-transform">
-                            <i data-feather="activity"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-slate-900 font-serif">Analysis</h3>
-                    </div>
-                    <ul class="space-y-3">
-                        <li class="flex items-center text-slate-600 text-sm"><span class="w-1.5 h-1.5 bg-surf-400 rounded-full mr-3"></span>ANSYS Fluent (CFD)</li>
-                        <li class="flex items-center text-slate-600 text-sm"><span class="w-1.5 h-1.5 bg-surf-400 rounded-full mr-3"></span>FEA Structural</li>
-                        <li class="flex items-center text-slate-600 text-sm"><span class="w-1.5 h-1.5 bg-surf-400 rounded-full mr-3"></span>MATLAB</li>
-                        <li class="flex items-center text-slate-600 text-sm"><span class="w-1.5 h-1.5 bg-surf-400 rounded-full mr-3"></span>Thermodynamics</li>
-                    </ul>
-                </div>
-
-                <div class="group p-8 rounded-2xl bg-white border border-slate-100 hover:border-surf-300 transition-all hover:shadow-xl hover:shadow-surf-100">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="p-3 bg-surf-50 text-surf-600 rounded-lg group-hover:scale-110 transition-transform">
-                            <i data-feather="cpu"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-slate-900 font-serif">Prototyping</h3>
-                    </div>
-                    <ul class="space-y-3">
-                        <li class="flex items-center text-slate-600 text-sm"><span class="w-1.5 h-1.5 bg-surf-400 rounded-full mr-3"></span>Python (Pandas)</li>
-                        <li class="flex items-center text-slate-600 text-sm"><span class="w-1.5 h-1.5 bg-surf-400 rounded-full mr-3"></span>C++ (Arduino)</li>
-                        <li class="flex items-center text-slate-600 text-sm"><span class="w-1.5 h-1.5 bg-surf-400 rounded-full mr-3"></span>3D Printing</li>
-                        <li class="flex items-center text-slate-600 text-sm"><span class="w-1.5 h-1.5 bg-surf-400 rounded-full mr-3"></span>Mechatronics</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-slate-50 rounded-3xl my-12">
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-8">
-            <div>
-                <h2 class="text-4xl font-serif text-slate-900 mb-4">Selected Works</h2>
-                <p class="text-slate-500 font-light">Engineering projects 2021 — 2025</p>
-            </div>
-            
-            <div class="flex space-x-1 bg-white p-1 rounded-lg border border-slate-200">
-                <button onclick="filterProjects('all')" class="filter-btn px-4 py-2 text-sm font-bold rounded-md bg-surf-50 text-surf-900 shadow-sm transition-all" data-filter="all">All</button>
-                <button onclick="filterProjects('design')" class="filter-btn px-4 py-2 text-sm font-bold rounded-md text-slate-500 hover:bg-slate-50 transition-all" data-filter="design">Design</button>
-                <button onclick="filterProjects('analysis')" class="filter-btn px-4 py-2 text-sm font-bold rounded-md text-slate-500 hover:bg-slate-50 transition-all" data-filter="analysis">Analysis</button>
-                <button onclick="filterProjects('code')" class="filter-btn px-4 py-2 text-sm font-bold rounded-md text-slate-500 hover:bg-slate-50 transition-all" data-filter="code">Code</button>
-            </div>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-10">
-            <div class="project-card group bg-white rounded-2xl border border-slate-100 overflow-hidden hover:shadow-xl hover:shadow-surf-900/5 transition-all duration-300" data-category="design">
-                <div class="relative h-64 overflow-hidden bg-surf-100 flex items-center justify-center">
-                   <i data-feather="image" class="w-12 h-12 text-surf-300"></i> <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-md text-xs font-bold text-surf-900 uppercase tracking-wider shadow-sm">Design</div>
-                </div>
-                <div class="p-8">
-                    <h3 class="text-2xl font-serif text-slate-900 mb-3 group-hover:text-surf-600 transition-colors">Autonomous Rover Suspension</h3>
-                    <p class="text-slate-600 mb-6 text-sm leading-relaxed">Designed a rocker-bogie suspension system for a 5kg autonomous rover. Optimized linkage lengths using MATLAB.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-bold rounded-full">SolidWorks</span>
-                        <span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-bold rounded-full">MATLAB</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card group bg-white rounded-2xl border border-slate-100 overflow-hidden hover:shadow-xl hover:shadow-surf-900/5 transition-all duration-300" data-category="analysis">
-                <div class="relative h-64 overflow-hidden bg-surf-100 flex items-center justify-center">
-                   <i data-feather="thermometer" class="w-12 h-12 text-surf-300"></i> <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-md text-xs font-bold text-surf-900 uppercase tracking-wider shadow-sm">Analysis</div>
-                </div>
-                <div class="p-8">
-                    <h3 class="text-2xl font-serif text-slate-900 mb-3 group-hover:text-surf-600 transition-colors">Heat Sink Thermal Optimization</h3>
-                    <p class="text-slate-600 mb-6 text-sm leading-relaxed">Conducted CFD simulations in ANSYS to optimize fin geometry for a high-power LED array, resulting in a 15% temp reduction.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-bold rounded-full">ANSYS</span>
-                        <span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-bold rounded-full">Python</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card group bg-white rounded-2xl border border-slate-100 overflow-hidden hover:shadow-xl hover:shadow-surf-900/5 transition-all duration-300" data-category="code">
-                <div class="relative h-64 overflow-hidden bg-surf-100 flex items-center justify-center">
-                   <i data-feather="terminal" class="w-12 h-12 text-surf-300"></i> <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-md text-xs font-bold text-surf-900 uppercase tracking-wider shadow-sm">Code</div>
-                </div>
-                <div class="p-8">
-                    <h3 class="text-2xl font-serif text-slate-900 mb-3 group-hover:text-surf-600 transition-colors">PID Control System</h3>
-                    <p class="text-slate-600 mb-6 text-sm leading-relaxed">Implemented a PID control loop on an Arduino to control DC motor position with encoder feedback.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-bold rounded-full">C++</span>
-                        <span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-bold rounded-full">Controls</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="project-card group bg-white rounded-2xl border border-slate-100 overflow-hidden hover:shadow-xl hover:shadow-surf-900/5 transition-all duration-300" data-category="design">
-                <div class="relative h-64 overflow-hidden bg-surf-100 flex items-center justify-center">
-                   <i data-feather="box" class="w-12 h-12 text-surf-300"></i> <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-md text-xs font-bold text-surf-900 uppercase tracking-wider shadow-sm">Design</div>
-                </div>
-                <div class="p-8">
-                    <h3 class="text-2xl font-serif text-slate-900 mb-3 group-hover:text-surf-600 transition-colors">Injection Mold Tooling</h3>
-                    <p class="text-slate-600 mb-6 text-sm leading-relaxed">Designed a multi-cavity injection mold for a consumer plastic part. Included draft angle analysis.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-bold rounded-full">SolidWorks</span>
-                        <span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-bold rounded-full">DfM</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="py-24 bg-slate-900 text-white relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-64 h-64 bg-surf-500 rounded-full mix-blend-overlay opacity-20 -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
-        <div class="absolute bottom-0 left-0 w-96 h-96 bg-surf-800 rounded-full mix-blend-overlay opacity-20 translate-y-1/2 -translate-x-1/2 blur-3xl"></div>
-
-        <div class="max-w-3xl mx-auto px-4 text-center relative z-10">
-            <h2 class="text-4xl font-serif mb-6">Let's discuss your engineering needs.</h2>
-            <p class="text-slate-300 mb-10 text-lg font-light">
-                I am currently available for full-time opportunities in product design and manufacturing analysis.
+            <h1 class="text-4xl md:text-6xl font-bold text-slate-900 tracking-tight leading-tight">
+                Designing systems for <br />
+                <span class="text-surf-600 font-mono">Dynamics & Control.</span>
+            </h1>
+            <p class="text-lg text-slate-600 max-w-xl font-medium leading-relaxed">
+                Vehicle Dynamics Lead at Stony Brook Motorsports. Specializing in mechanical design, thermal analysis, and robotic kinematics.
             </p>
-            
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
-                <a href="mailto:alex.engineer@example.edu" class="flex items-center gap-3 px-8 py-4 bg-white text-slate-900 text-sm font-bold rounded-lg hover:bg-surf-50 transition-colors shadow-lg shadow-black/20">
-                    <i data-feather="mail" class="w-4 h-4"></i> Get in Touch
+            <div class="flex gap-4 pt-2">
+                <a href="#projects" class="px-6 py-3 bg-slate-900 text-white text-xs font-mono font-bold hover:bg-surf-600 transition-all shadow-md">
+                    VIEW PROJECTS_
                 </a>
-                
-                <div class="flex gap-8 px-8">
-                    <a href="#" class="text-surf-300 hover:text-white transition-colors"><i data-feather="linkedin"></i></a>
-                    <a href="#" class="text-surf-300 hover:text-white transition-colors"><i data-feather="github"></i></a>
-                </div>
+                <a href="#" class="px-6 py-3 bg-white border border-slate-300 text-slate-700 text-xs font-mono font-bold hover:border-surf-600 hover:text-surf-600 transition-all">
+                    RESUME.PDF
+                </a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <footer class="bg-black text-slate-500 py-12 border-t border-slate-900">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <p class="text-xs font-mono tracking-widest uppercase mb-2">Designed & Built by Alex Engineer</p>
-            <p class="text-xs text-slate-700">&copy; 2025 All Rights Reserved.</p>
+<section id="skills" class="py-12 bg-slate-50 border-b border-slate-200">
+    <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-xs font-mono font-bold text-slate-400 uppercase tracking-widest mb-8">Technical Proficiency</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+            {% for skill in site.data.skills %}
+            <div class="bg-white p-6 border border-slate-200 shadow-sm hover:border-surf-400 transition-colors">
+                <div class="flex items-center gap-3 mb-4 text-surf-600">
+                    <i data-feather="{{ skill.icon }}" class="w-5 h-5"></i>
+                    <h3 class="font-mono font-bold text-sm text-slate-900 uppercase">{{ skill.category }}</h3>
+                </div>
+                <ul class="space-y-2">
+                    {% for item in skill.items %}
+                    <li class="flex items-center text-slate-600 text-xs font-medium font-mono">
+                        <span class="w-1 h-1 bg-surf-400 rounded-full mr-2"></span>{{ item }}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
         </div>
-    </footer>
+    </div>
+</section>
 
-    <script>
-        // Initialize Icons
-        feather.replace();
+<section id="projects" class="py-12 px-4 max-w-6xl mx-auto">
+    <div class="flex justify-between items-end mb-8">
+        <h2 class="text-2xl font-bold text-slate-900">Selected Engineering Works</h2>
+        <span class="text-xs font-mono text-slate-400 hidden md:inline-block">2023 — PRES</span>
+    </div>
 
-        // Mobile Menu Toggle
-        function toggleMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
-
-        // Project Filtering Logic
-        function filterProjects(category) {
-            // Update buttons
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                if(btn.dataset.filter === category) {
-                    btn.classList.remove('text-slate-500', 'hover:bg-slate-50');
-                    btn.classList.add('bg-surf-50', 'text-surf-900', 'shadow-sm');
-                } else {
-                    btn.classList.add('text-slate-500', 'hover:bg-slate-50');
-                    btn.classList.remove('bg-surf-50', 'text-surf-900', 'shadow-sm');
-                }
-            });
-
-            // Filter items
-            document.querySelectorAll('.project-card').forEach(card => {
-                if (category === 'all' || card.dataset.category === category) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-    </script>
-</body>
-</html>
+    <div class="grid md:grid-cols-2 gap-6">
+        {% for project in site.data.projects %}
+        <a href="{{ project.url }}" class="group block bg-white border border-slate-200 hover:border-surf-500 transition-all hover:shadow-lg hover:shadow-surf-500/10">
+            <div class="h-48 bg-slate-100 border-b border-slate-100 relative overflow-hidden group-hover:opacity-90 transition-opacity">
+                <div class="absolute inset-0 flex items-center justify-center text-slate-300">
+                    <i data-feather="{{ project.icon }}" class="w-12 h-12"></i>
+                </div>
+                <div class="absolute top-0 right-0 bg-surf-600 text-white text-[10px] font-mono font-bold px-2 py-1">
+                    {{ project.category | upcase }}
+                </div>
+            </div>
+            <div class="p-6">
+                <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-surf-600 font-mono">{{ project.title }}</h3>
+                <p class="text-slate-600 text-sm leading-relaxed mb-4">{{ project.description }}</p>
+                <div class="flex flex-wrap gap-2">
+                    {% for tag in project.tags %}
+                    <span class="px-2 py-1 bg-slate-50 border border-slate-200 text-slate-600 text-[10px] font-mono font-bold uppercase">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</section>

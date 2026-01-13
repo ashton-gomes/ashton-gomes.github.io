@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }} | {{ site.title }}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { surf: { 50: '#f0fdfa', 100: '#ccfbf1', 200: '#99f6e4', 300: '#5eead4', 500: '#14b8a6', 600: '#0d9488', 900: '#134e4a' } },
+                    fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'Menlo', 'monospace'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Engineering Grid Background */
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+        }
+        ::selection { background-color: #99f6e4; color: #134e4a; }
+    </style>
+</head>
+<body class="bg-white text-slate-800 antialiased bg-grid flex flex-col min-h-screen">
+
+    <nav class="fixed w-full bg-white/95 backdrop-blur border-b border-slate-200 z-50 h-16">
+        <div class="max-w-6xl mx-auto px-4 h-full flex justify-between items-center">
+            <a href="/" class="flex items-center gap-2 group">
+                <div class="w-8 h-8 bg-surf-600 text-white flex items-center justify-center font-mono font-bold text-sm rounded shadow-sm group-hover:bg-surf-900 transition-colors">AG</div>
+                <span class="font-mono font-bold text-slate-900 tracking-tight text-sm">ASHTON.GOMES</span>
+            </a>
+            <div class="hidden md:flex space-x-8">
+                <a href="/#about" class="text-xs font-mono font-semibold text-slate-500 hover:text-surf-600 uppercase tracking-widest">Profile</a>
+                <a href="/#skills" class="text-xs font-mono font-semibold text-slate-500 hover:text-surf-600 uppercase tracking-widest">Tech Stack</a>
+                <a href="/#projects" class="text-xs font-mono font-semibold text-slate-500 hover:text-surf-600 uppercase tracking-widest">Engineering</a>
+                <a href="mailto:{{ site.email }}" class="text-xs font-mono font-bold text-surf-600 border border-surf-200 px-3 py-1 rounded hover:bg-surf-50">CONTACT</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow pt-16">
+        {{ content }}
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 py-8 mt-12">
+        <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
+            <p class="text-[10px] font-mono text-slate-400 uppercase">System Status: Online // {{ site.time | date: "%Y" }}</p>
+            <p class="text-[10px] font-mono text-slate-400">Built with Jekyll & Tailwind</p>
+        </div>
+    </footer>
+
+    <script>
+        feather.replace();
+    </script>
+</body>
+</html>

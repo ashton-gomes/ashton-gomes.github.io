@@ -1,0 +1,36 @@
+---
+layout: default
+---
+
+<article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-12 border-b border-slate-200 pb-8">
+        <a href="/" class="inline-flex items-center text-xs font-mono text-slate-400 hover:text-surf-600 mb-6">
+            <i data-feather="arrow-left" class="w-3 h-3 mr-1"></i> RETURN TO HOME
+        </a>
+        <h1 class="text-3xl md:text-5xl font-bold text-slate-900 mb-4">{{ page.title }}</h1>
+        <p class="text-xl text-slate-600 font-light">{{ page.description }}</p>
+    </header>
+
+    <div class="flex flex-col md:flex-row gap-12">
+        <div class="flex-1 prose prose-slate prose-headings:font-mono prose-a:text-surf-600 hover:prose-a:text-surf-900">
+            {{ content }}
+        </div>
+
+        <aside class="w-full md:w-64 space-y-8">
+            <div class="bg-slate-50 p-6 border border-slate-200">
+                <h3 class="text-xs font-mono font-bold text-slate-400 uppercase tracking-widest mb-4">Tech Stack</h3>
+                <div class="flex flex-wrap gap-2">
+                    {% for tag in page.tags %}
+                    <span class="px-2 py-1 bg-white border border-slate-200 text-slate-700 text-[10px] font-mono font-bold uppercase">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            {% if page.github_link %}
+            <a href="{{ page.github_link }}" class="flex items-center justify-center w-full px-4 py-3 bg-slate-900 text-white text-xs font-mono font-bold hover:bg-surf-600 transition-colors">
+                <i data-feather="github" class="w-4 h-4 mr-2"></i> VIEW CODE
+            </a>
+            {% endif %}
+        </aside>
+    </div>
+</article>

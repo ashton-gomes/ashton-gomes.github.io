@@ -1,0 +1,27 @@
+- title: "Baja SAE Vehicle Dynamics"
+  category: "design"
+  description: "Lead Vehicle Dynamics Engineer. Designed suspension geometry and steering systems for off-road durability."
+  icon: "truck"
+  tags: ["SolidWorks", "Suspension Design", "Lotus Shark"]
+  url: "/projects/baja-sae.html"
+
+- title: "Robotic Manipulator Control"
+  category: "code"
+  description: "Developed kinematic solvers and trajectory planning for a Kinova Gen3 robotic arm using Python."
+  icon: "cpu"
+  tags: ["Python", "Robotics", "Kinematics"]
+  url: "/projects/robotics.html"
+
+- title: "Thermal System Optimization"
+  category: "analysis"
+  description: "Analyzed fluid flow and heat transfer efficiency in high-pressure systems using MATLAB and CFD."
+  icon: "thermometer"
+  tags: ["Thermodynamics", "ANSYS", "MATLAB"]
+  url: "/projects/thermal.html"
+
+- title: "Feedback Control System"
+  category: "code"
+  description: "Implemented PID controllers for precise motor positioning and analyzed system stability (Bode/Nyquist)."
+  icon: "activity"
+  tags: ["Controls", "Simulink", "MATLAB"]
+  url: "/projects/controls.html"
