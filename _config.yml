@@ -5,12 +5,12 @@ title: "Ashton Gomes"
 url: "https://ashton-gomes.github.io"
 description: "Mechanical Engineering Portfolio"
 
-# This enables the sidebars and author details
+# This enables the sidebars
 plugins:
   - jekyll-include-cache
   - jekyll-remote-theme
 
-# Your Sidebar Info (This appears on the left of every page)
+# sidebar info
 author:
   name: "Ashton Gomes"
   avatar: "/assets/images/headshot.jpg" # You will need to upload an image here later
