@@ -1,9 +1,7 @@
-remote_theme: mmistakes/minimal-mistakes
-minimal_mistakes_skin: "air" # Options: "air", "aqua", "contrast", "dark", "dirt", "mint", "sunrise"
-locale: "en-US"
-title: "Ashton Gomes"
-url: "https://ashton-gomes.github.io"
-description: "Mechanical Engineering Portfolio"
+theme: minima
+title: Ashton Gomes
+description: Mechanical Engineer | Vehicle Dynamics
+author: Ashton Gomes
 
 # sidebars and author details
 plugins:
@@ -26,3 +24,4 @@ author:
     - label: "GitHub"
       url: "https://github.com/ashton-gomes"
       icon: "fab fa-fw fa-github"
+
