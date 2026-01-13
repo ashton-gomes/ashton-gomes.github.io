@@ -5,7 +5,7 @@ title: "Ashton Gomes"
 url: "https://ashton-gomes.github.io"
 description: "Mechanical Engineering Portfolio"
 
-# This enables the sidebars
+# enables sidebars
 plugins:
   - jekyll-include-cache
   - jekyll-remote-theme
