@@ -2,6 +2,7 @@
   category: "design"
   description: "Vehicle Dynamics Lead. Designed suspension geometry and steering systems for an off-road racing vehicle."
   icon: "truck"
+  image: "/assets/rear_suspension92.jpg"
   tags: ["SolidWorks", "Design", "FEA", "Python", "MATLAB"]
   url: "/projects/baja-sae.html"
 
@@ -9,6 +10,7 @@
   category: "code"
   description: "Developed kinematic solvers and trajectory planning for a Kinova Gen3 robotic arm using Python."
   icon: "cpu"
+  image: "/assets/finnedphonecase.jpg"
   tags: ["Python", "Robotics", "Kinematics"]
   url: "/projects/robotics.html"
 
@@ -16,6 +18,7 @@
   category: "design"
   description: "Developed and tested a TPU smartphone case."
   icon: "thermometer"
+  image: "/assets/rear_suspension92.jpg"
   tags: ["Thermodynamics", "CFD", "CAD", "Physical Testing"]
   url: "/projects/thermal.html"
 
@@ -23,6 +26,7 @@
   category: "design"
   description: "Developed a custom shock dynamometer to analyze suspension damping characteristics"
   icon: "activity"
+  image: "/assets/rear_suspension92.jpg"
   tags: ["Controls", "Simulink", "MATLAB"]
   url: "/projects/controls.html"
 
@@ -30,5 +34,6 @@
   category: "code"
   description: "Implemented a digital PID controller to control an oscillating turntable"
   icon: "activity"
+  image: "/assets/rear_suspension92.jpg"
   tags: ["Controls", "LabVIEW", "MATLAB"]
   url: "/projects/changeafter.html"

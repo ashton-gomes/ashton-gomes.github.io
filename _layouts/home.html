@@ -56,20 +56,26 @@ layout: default
         <span class="text-xs font-mono text-slate-400 hidden md:inline-block">2023 — PRES</span>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-6">
-        {% for project in site.data.projects %}
-        <a href="{{ project.url }}" class="group block bg-white border border-slate-200 hover:border-surf-500 transition-all hover:shadow-lg hover:shadow-surf-500/10 no-underline">
-            <div class="h-48 bg-slate-100 border-b border-slate-100 relative overflow-hidden group-hover:opacity-90 transition-opacity">
-                <div class="absolute inset-0 flex items-center justify-center text-slate-300">
-                    <i data-feather="{{ project.icon }}" class="w-12 h-12"></i>
-                </div>
-                <div class="absolute top-0 right-0 bg-surf-600 text-white text-[10px] font-mono font-bold px-2 py-1">
+<div class="grid md:grid-cols-2 gap-8"> {% for project in site.data.projects %}
+        <a href="{{ project.url }}" class="group block bg-white border border-slate-200 hover:border-surf-500 transition-all hover:shadow-xl hover:shadow-surf-500/10 no-underline rounded-xl overflow-hidden">
+            
+            <div class="h-72 bg-slate-100 border-b border-slate-100 relative overflow-hidden">
+                
+                {% if project.image %}
+                    <img src="{{ project.image }}" alt="{{ project.title }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                {% else %}
+                    <div class="absolute inset-0 flex items-center justify-center text-slate-300">
+                        <i data-feather="{{ project.icon }}" class="w-16 h-16"></i>
+                    </div>
+                {% endif %}
+
+                <div class="absolute top-4 right-4 bg-white/90 backdrop-blur text-surf-600 text-[10px] font-mono font-bold px-3 py-1 rounded shadow-sm border border-slate-100">
                     {{ project.category | upcase }}
                 </div>
             </div>
-            <div class="p-6">
-                <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-surf-600 font-mono">{{ project.title }}</h3>
-                <p class="text-slate-600 text-sm leading-relaxed mb-4">{{ project.description }}</p>
+
+            <div class="p-8"> <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-surf-600 font-mono transition-colors">{{ project.title }}</h3>
+                <p class="text-slate-600 text-sm leading-relaxed mb-6">{{ project.description }}</p>
                 <div class="flex flex-wrap gap-2">
                     {% for tag in project.tags %}
                     <span class="px-2 py-1 bg-slate-50 border border-slate-200 text-slate-600 text-[10px] font-mono font-bold uppercase">{{ tag }}</span>
