@@ -1,27 +1,7 @@
 theme: minima
 title: Ashton Gomes
-description: Mechanical Engineer | Vehicle Dynamics
-author: Ashton Gomes
-
-# sidebars and author details
-plugins:
-  - jekyll-include-cache
-  - jekyll-remote-theme
-
-# sidebar info to the left
+description: Mechanical Engineer | Vehicle Dynamics | Robotics
+url: "https://ashton-gomes.github.io"
 author:
-  name: "Ashton Gomes"
-  avatar: "/assets/images/headshot.jpg" # You will need to upload an image here later
-  bio: "Vehicle Dynamics Lead & MS Mechanical Engineering Student"
-  location: "New York, NY"
-  links:
-    - label: "Email"
-      url: "mailto:ashton.gomes@outlook.com"
-      icon: "fas fa-fw fa-envelope-square"
-    - label: "LinkedIn"
-      url: "https://linkedin.com/in/ashton-gomes"
-      icon: "fab fa-fw fa-linkedin"
-    - label: "GitHub"
-      url: "https://github.com/ashton-gomes"
-      icon: "fab fa-fw fa-github"
-
+  name: Ashton Gomes
+  email: ashton.gomes@outlook.com
