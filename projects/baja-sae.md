@@ -39,6 +39,8 @@ As the Vehicle Dynamics Lead, I am in charge of the Brakes, Steering, and Suspen
 * Individual suspension components were 286% stronger while being less than a pound heavier
 
 
-![Machining with a 4 Jaw Chuck](/assets/4%20jaw%20chuck.mp4){: width="500" }
+<video width="500" controls>
+  <source src="/assets/4%20jaw%20chuck.mp4" type="video/mp4">
+</video>
 ![FEA Stress Analysis](/assets/lathebushing.jpg){: width="500" }
 
