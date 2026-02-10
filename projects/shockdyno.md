@@ -22,3 +22,6 @@ To achieve repeatable and accurate data, a custom dynamometer was engineered fro
 * Enabled the generation of precise **Force-Velocity (FV) curves**, replacing guesswork with quantifiable metrics.
 * Allowed for the isolation and tuning of compression and rebound damping circuits to maximize tire contact and vehicle stability in rough terrain.
 * Validated the system's capability to run variable velocity profiles for comprehensive shock analysis.
+
+
+![Shock Dyno Render](/assets/shock_dyno_render.jpg){: width="500" }

@@ -26,3 +26,5 @@ The addition of fins provided a significant increase in surface area and turbule
 * **Forced Convection:** The finned case demonstrated a 46% improvement in heat transfer efficiency compared to the standard TPU case.
 * **Natural Convection:** Under passive cooling conditions, the finned design yielded a 12% improvement.
 * **Model Correlation:** The SolidWorks CFD results showed strong agreement with the Excel-based analytical heat transfer models, confirming the validity of the geometry optimization.
+
+![Finned Phone Case](/assets/finnedphonecase.jpg){: width="500" }
