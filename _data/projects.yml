@@ -27,8 +27,8 @@
   description: "Developed a custom shock dynamometer to analyze suspension damping characteristics"
   icon: "activity"
   image: "/assets/shock_dyno_render.jpg"
-  tags: ["Controls", "Simulink", "MATLAB"]
-  url: "/projects/controls.html"
+  tags: [Mechanical Design, Vehicle Dynamics, DAQ, Controls]
+  url: "/projects/shockdyno.html"
 
 - title: "Control Systems - PID Turntable Controller"
   category: "code"
@@ -36,4 +36,4 @@
   icon: "activity"
   image: "/assets/PIDcontroller.jpg"
   tags: ["Controls", "LabVIEW", "MATLAB"]
-  url: "/projects/changeafter.html"
+  url: "/projects/controls.html"
