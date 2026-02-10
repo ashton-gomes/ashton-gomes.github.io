@@ -6,7 +6,7 @@ tags: [Controls, Simulink, MATLAB]
 github_link: "#"
 ---
 
-## **Overview**
+## **Overview** 
 Designed a closed-loop control system to precisely regulate the position of a DC motor under varying load disturbances.
 
 
