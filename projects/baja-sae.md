@@ -34,10 +34,10 @@ As the Vehicle Dynamics Lead, I am in charge of the Brakes, Steering, and Suspen
 * Individual suspension components were 286% stronger while being less than a pound heavier
 
 # Some images of the CAD and Design Process:
-![Full Assembly Model](/assets/FullAssembly2526.jpg){: width="500" }
+![Full Assembly Model](/assets/FullAssembly2526.jpg)
 * Here, the full model of the car seen. This includes most of the major components except for outer body panels and such. The car is still currently being fabricated, and I will post more images then.
 
-![FEA Stress Analysis](/assets/suspension_geometry.jpg){: width="500" }
+![FEA Stress Analysis](/assets/suspension_geometry.jpg)
 * Here is one of the images of my suspension geometry I calculated and drafted. There are a lot of individual parts that go into it, such as picking the correct values and curves to give the kinematic response I want. In this case, you can see that most of the design stems from the instant center points picked that go off towards the top of the image. 
 
 * The following are some images and videos of my fabrication that I had, in particular lathing bushings to a fraction of a thou (0.0005 inches)
