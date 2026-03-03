@@ -3,7 +3,6 @@ layout: project
 title: Finned Phone Case Thermal Analysis
 description: Comparative thermal analysis of finned vs. standard TPU phone cases using SolidWorks CFD and analytical modeling.
 tags: [Heat Transfer, SolidWorks, Excel, CFD]
-github_link: "#"
 ---
 
 ## **Problem Statement**

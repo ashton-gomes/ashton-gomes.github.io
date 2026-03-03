@@ -3,7 +3,6 @@ layout: project
 title: Feedback Control System
 description: PID controller implementation and stability analysis.
 tags: [Controls, Simulink, MATLAB]
-github_link: "#"
 ---
 
 ## **Overview** 

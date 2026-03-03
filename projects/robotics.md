@@ -3,7 +3,6 @@ layout: project
 title: Robotic Manipulator Control
 description: Kinematic solvers and trajectory planning for a Kinova Gen3 arm.
 tags: [Python, Robotics, Kinematics]
-github_link: "#"
 ---
 
 ## **Project Overview**

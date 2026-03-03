@@ -2,9 +2,9 @@
 layout: project
 title: Custom Scotch Yoke Shock Dynamometer
 description: Design and fabrication of a custom dynamometer for objective suspension tuning and characterization.
-tags: [Mechanical Design, Vehicle Dynamics, DAQ, Controls]
-github_link: "#"
+tags: [Mechanical Design, Vehicle Dynamics, DAQ, Controls]#"
 ---
+## **This section is currently in progress! My senior design isn't done just yet**
 
 ## **Problem Statement**
 In off-road racing, vehicles frequently utilize over 12 inches of suspension travel to absorb high-velocity impacts. Relying on subjective "driver feel" for tuning is insufficient for managing such complex dynamics. This project focused on building a tool to generate objective data, allowing for precise damping characterization and optimization of suspension performance.
@@ -14,7 +14,7 @@ To achieve repeatable and accurate data, a custom dynamometer was engineered fro
 
 
 1.  **Mechanical Architecture:** Designed a **Scotch Yoke mechanism** to convert rotary motion into perfect sinusoidal linear motion. The system was engineered to deliver a peak velocity of **18 in/s** over a **4-inch stroke**, simulating realistic suspension velocities encountered on the trail.
-2.  **Power & Control:** Developed the power transmission system utilizing a high-torque **AC motor** driven by a **Variable Frequency Drive (VFD)**.
+2.  **Power & Control:** Developed the power transmission system utilizing a high-torque AC motor driven by a Variable Frequency Drive (VFD).
 3.  **Data Acquisition:** Integrated a load cell and position sensor DAQ system to capture real-time force and velocity data during actuation.
 
 
