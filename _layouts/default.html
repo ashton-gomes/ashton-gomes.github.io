@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }} | {{ site.title }}</title>
-    <!-- Fonts: Syne (display) + IBM Plex Mono -->
+    <!-- Fonts: IBM Plex Mono for labels/headings (Segoe UI used natively as body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/feather-icons"></script>
     <script>
@@ -26,8 +26,9 @@
                         }
                     },
                     fontFamily: {
-                        sans: ['Syne', 'sans-serif'],
-                        mono: ['IBM Plex Mono', 'Menlo', 'monospace']
+                        /* Segoe UI first — falls back gracefully on non-Windows */
+                        sans: ['"Segoe UI"', '"Segoe UI Variable"', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                        mono: ['"IBM Plex Mono"', 'Consolas', 'Menlo', 'monospace']
                     }
                 }
             }
@@ -43,7 +44,11 @@
         }
         ::selection { background-color: #99f6e4; color: #134e4a; }
 
-        /* Smooth nav on scroll */
+        /* Base reading size */
+        html { font-size: 16px; }
+        body { font-size: 1rem; color: #1e293b; }
+
+        /* Nav smooth scroll */
         nav { transition: box-shadow 0.2s; }
     </style>
 </head>
@@ -62,7 +67,7 @@
                 <a href="/#about" class="text-[11px] font-mono font-semibold text-slate-500 hover:text-surf-600 uppercase tracking-widest transition-colors no-underline">Profile</a>
                 <a href="/#projects" class="text-[11px] font-mono font-semibold text-slate-500 hover:text-surf-600 uppercase tracking-widest transition-colors no-underline">Projects</a>
                 <a href="{{ site.resume_url }}" class="text-[11px] font-mono font-semibold text-slate-500 hover:text-surf-600 uppercase tracking-widest transition-colors no-underline">Resume</a>
-                <a href="mailto:{{ site.email }}" class="text-[11px] font-mono font-bold text-surf-700 border border-surf-300 px-3.5 py-1.5 rounded-lg hover:bg-surf-50 hover:border-surf-500 transition-all no-underline">
+                <a href="/cdn-cgi/l/email-protection#0b70702b78627f6e256e666a62672b7676" class="text-[11px] font-mono font-bold text-surf-700 border border-surf-300 px-3.5 py-1.5 rounded-lg hover:bg-surf-50 hover:border-surf-500 transition-all no-underline">
                     CONTACT
                 </a>
             </div>
@@ -84,6 +89,4 @@
         </div>
     </footer>
 
-    <script>feather.replace();</script>
-</body>
-</html>
+    <script data-
