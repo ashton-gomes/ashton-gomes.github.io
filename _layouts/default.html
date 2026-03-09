@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }} | {{ site.title }}</title>
-    <!-- Fonts: IBM Plex Mono for labels/headings (Segoe UI used natively as body) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/feather-icons"></script>
     <script>
@@ -26,16 +23,14 @@
                         }
                     },
                     fontFamily: {
-                        /* Segoe UI first — falls back gracefully on non-Windows */
                         sans: ['"Segoe UI"', '"Segoe UI Variable"', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
-                        mono: ['"IBM Plex Mono"', 'Consolas', 'Menlo', 'monospace']
+                        mono: ['Consolas', 'Menlo', 'monospace']
                     }
                 }
             }
         }
     </script>
     <style>
-        /* Engineering grid background */
         .bg-grid {
             background-size: 32px 32px;
             background-image:
@@ -43,12 +38,8 @@
                 linear-gradient(to bottom, rgba(0,0,0,0.04) 1px, transparent 1px);
         }
         ::selection { background-color: #99f6e4; color: #134e4a; }
-
-        /* Base reading size */
         html { font-size: 16px; }
         body { font-size: 1rem; color: #1e293b; }
-
-        /* Nav smooth scroll */
         nav { transition: box-shadow 0.2s; }
     </style>
 </head>
@@ -59,19 +50,18 @@
         <div class="max-w-6xl mx-auto px-4 h-full flex justify-between items-center">
             <!-- Logo -->
             <a href="/" class="flex items-center gap-2.5 group no-underline">
-                <div class="w-8 h-8 bg-surf-600 text-white flex items-center justify-center font-mono font-bold text-xs rounded-lg shadow-sm group-hover:bg-surf-900 transition-colors">AG</div>
-                <span class="font-mono font-bold text-slate-900 tracking-tight text-sm">ASHTON.GOMES</span>
+                <div class="w-8 h-8 bg-surf-600 text-white flex items-center justify-center font-sans font-bold text-xs rounded-lg shadow-sm group-hover:bg-surf-900 transition-colors">AG</div>
+                <span class="font-sans font-bold text-slate-900 tracking-tight text-sm">Ashton Gomes</span>
             </a>
             <!-- Links -->
             <div class="hidden md:flex items-center gap-8">
-                <a href="/#about" class="text-[11px] font-mono font-semibold text-slate-500 hover:text-surf-600 uppercase tracking-widest transition-colors no-underline">Profile</a>
-                <a href="/#projects" class="text-[11px] font-mono font-semibold text-slate-500 hover:text-surf-600 uppercase tracking-widest transition-colors no-underline">Projects</a>
-                <a href="{{ site.resume_url }}" class="text-[11px] font-mono font-semibold text-slate-500 hover:text-surf-600 uppercase tracking-widest transition-colors no-underline">Resume</a>
-                <a href="/cdn-cgi/l/email-protection#0b70702b78627f6e256e666a62672b7676" class="text-[11px] font-mono font-bold text-surf-700 border border-surf-300 px-3.5 py-1.5 rounded-lg hover:bg-surf-50 hover:border-surf-500 transition-all no-underline">
-                    CONTACT
+                <a href="/#about"    class="text-sm font-sans font-medium text-slate-500 hover:text-surf-600 transition-colors no-underline">Profile</a>
+                <a href="/#projects" class="text-sm font-sans font-medium text-slate-500 hover:text-surf-600 transition-colors no-underline">Projects</a>
+                <a href="{{ site.resume_url }}" class="text-sm font-sans font-medium text-slate-500 hover:text-surf-600 transition-colors no-underline">Resume</a>
+                <a href="mailto:{{ site.email }}" class="text-sm font-sans font-semibold text-surf-700 border border-surf-300 px-4 py-1.5 rounded-lg hover:bg-surf-50 hover:border-surf-500 transition-all no-underline">
+                    Contact
                 </a>
             </div>
-            <!-- Mobile hamburger placeholder (optional) -->
         </div>
     </nav>
 
@@ -82,11 +72,13 @@
     <footer class="bg-white border-t border-slate-200 py-8 mt-16">
         <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-3">
             <div class="flex items-center gap-2">
-                <div class="w-5 h-5 bg-surf-600 text-white flex items-center justify-center font-mono font-bold text-[9px] rounded">AG</div>
-                <p class="text-[10px] font-mono text-slate-400 uppercase tracking-widest">Ashton Gomes · Mechanical Engineering</p>
+                <div class="w-5 h-5 bg-surf-600 text-white flex items-center justify-center font-sans font-bold text-[9px] rounded">AG</div>
+                <p class="text-sm font-sans text-slate-400">Ashton Gomes · Mechanical Engineering</p>
             </div>
-            <p class="text-[10px] font-mono text-slate-400">Built with Jekyll & Tailwind · {{ site.time | date: "%Y" }}</p>
+            <p class="text-sm font-sans text-slate-400">Built with Jekyll & Tailwind · {{ site.time | date: "%Y" }}</p>
         </div>
     </footer>
 
-    <script data-
+    <script>feather.replace();</script>
+</body>
+</html>
