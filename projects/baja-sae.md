@@ -45,6 +45,11 @@ I performed Finite Element Analysis on the A-arms and chassis tabs, simulating a
 
 - **Result:** Identified a stress concentration in the previous year's clevis design. Redesigned the tab geometry to distribute load more evenly across the bulkhead, pushing the FoS from 1.1 to 3.1.
 
+### FEA Validation 
+
+![Suspension Geometry Analysis](/assets/FEA.png)
+*Sample FEA of the Front Left Upper Control Arm, highlighting the greatly improved factor of safety from the new design at the point that broke in the 2025 competition.*
+
 ### 3. Precision Manufacturing
 
 To ensure the simulation matched reality, I designed a custom welding jig for the control arms. I personally performed the manual machining for the bushings, holding tolerances of **±0.0005"** on a manual lathe to eliminate slop in the suspension joints.
