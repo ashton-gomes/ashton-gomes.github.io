@@ -74,7 +74,7 @@ layout: default
 
   /* ── H2 section headers ── */
   .project-content h2 {
-    font-family: var(--font-body);
+    font-family: 'Segoe UI', 'Segoe UI Variable', system-ui, -apple-system, BlinkMacSystemFont, sans-serif !important;
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--color-heading);
@@ -83,18 +83,20 @@ layout: default
     padding-bottom: 0.55rem;
     border-bottom: 2px solid #f1f5f9;
     letter-spacing: -0.01em;
+    text-transform: none !important;
   }
 
   .project-content h2:first-child { margin-top: 0; }
 
-  /* ── H3 sub-section headers — Segoe UI, teal ── */
+  /* ── H3 sub-section headers ── */
   .project-content h3 {
-    font-family: var(--font-body);
-    font-size: 1rem;
+    font-family: 'Segoe UI', 'Segoe UI Variable', system-ui, -apple-system, BlinkMacSystemFont, sans-serif !important;
+    font-size: 1.2rem !important;
     font-weight: 700;
     color: var(--color-accent);
-    text-transform: none;
-    letter-spacing: 0;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+    font-variant: normal !important;
     margin-top: 2.25rem;
     margin-bottom: 0.6rem;
   }
