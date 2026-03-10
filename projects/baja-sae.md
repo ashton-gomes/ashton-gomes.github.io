@@ -7,79 +7,69 @@ tags: [SolidWorks, Python, MATLAB, FEA, Manual Machining]
 
 ## Overview
 
-As Vehicle Dynamics Lead, I headed the design and fabrication of the Steering, Brakes, and Suspension subsystems. The primary objective for the 2025–2026 season was a ground-up redesign to address the catastrophic fatigue failure of the previous year's aluminum A-arms, while simultaneously improving low-speed maneuverability.
+As Vehicle Dynamics Lead for Stony Brook Motorsports, I owned the full design-to-fabrication cycle for the Steering, Brakes, and Suspension subsystems. The 2025–2026 season demanded a ground-up redesign after our aluminum A-arms suffered a catastrophic fatigue failure during the 2025 endurance race — ending our run early. The goals were clear: build something stronger, lighter, and more precise.
 
-## Design Requirements & Constraints
+---
 
-### 1. Structural Reliability
-Increase **Factor of Safety (FoS)** on control arms to **2.5+** under peak impact loading. This ensures the assembly can withstand high-stress events without plastic deformation.
+## Design Requirements
 
-### 2. Kinematic Optimization
-Focus on precision handling by achieving the following metrics:
-* **Ackermann Steering:** Achieve **60%** to significantly reduce tire scrub in tight corners.
-* **Bump Steer:** Maintain **<0.05°** throughout full travel to prevent unintended steering inputs.
-* **Roll Stability:** Optimize Instant Centers to stabilize the Roll Center relative to the Center of Gravity during cornering.
+Before any CAD was opened, I defined a set of quantitative targets to keep the design accountable:
 
-
-
-### 3. Weight Management
-Limit total mass increase to **<1.0 lb** despite the material transition. This requires aggressive wall-thickness optimization when switching from Aluminum to **4130 Chromoly Steel**.
+- **Structural Reliability:** Factor of Safety ≥ 2.5 on all control arms under a worst-case 4G impact load.
+- **Ackermann Geometry:** Achieve 60% Ackermann steering to minimize tire scrub in tight, low-speed corners.
+- **Bump Steer:** Hold toe change to < 0.05° across full suspension travel to prevent unintended steering inputs.
+- **Roll Center Stability:** Optimize Instant Center locations to keep the Roll Center stable relative to the Center of Gravity during body roll.
+- **Weight Budget:** Total mass increase < 1.0 lb despite switching from aluminum to 4130 Chromoly Steel, requiring aggressive wall-thickness optimization.
 
 ---
 
 ## Engineering Process
 
-### 1. Kinematic Modeling & Simulation
+### 1 — Kinematic Modeling & Simulation
 
-Using a combination of **MATLAB** and **SolidWorks Layout Sketches**, I modeled the suspension linkage to track the virtual swing arm length. This allowed for real-time iteration of mounting points to achieve a **33% reduction in turning radius**.
-
-### Kinematic Synthesis
+Using **MATLAB** and **SolidWorks Layout Sketches** in tandem, I modeled the full suspension linkage to track virtual swing arm length in real time. Iterating mounting point positions against live kinematic feedback, I converged on a geometry that achieved all handling targets — most notably a **33% reduction in turning radius**.
 
 ![Suspension Geometry Analysis](/assets/suspension_geometry.jpg)
-*Instant Center layout. The geometry ensures the Roll Center remains stable relative to the Center of Gravity during body roll, promoting predictable handling.*
+*Instant Center layout diagram. The geometry keeps the Roll Center stable relative to the Center of Gravity throughout body roll, producing predictable, progressive handling.*
 
+---
 
-### 2. FEA & Validation
+### 2 — FEA & Structural Validation
 
-I performed Finite Element Analysis on the A-arms and chassis tabs, simulating a "Worst-Case" 4G landing scenario.
+I ran Finite Element Analysis on the A-arms and chassis attachment tabs, simulating a worst-case 4G landing event. The analysis revealed a critical stress concentration in the previous year's clevis design — the exact location of the 2025 failure. I redesigned the tab geometry to redistribute load across a wider contact area at the bulkhead, pushing the Factor of Safety from **1.1 to 3.1**.
 
-- **Result:** Identified a stress concentration in the previous year's clevis design. Redesigned the tab geometry to distribute load more evenly across the bulkhead, pushing the FoS from 1.1 to 3.1.
+![FEA Results](/assets/FEA.png)
+*FEA of the Front Left Upper Control Arm. The redesigned tab geometry eliminates the stress riser that caused the 2025 competition failure.*
 
-### FEA Validation 
+---
 
-![Suspension Geometry Analysis](/assets/FEA.png)
-*Sample FEA of the Front Left Upper Control Arm, highlighting the greatly improved factor of safety from the new design at the point that broke in the 2025 competition.*
+### 3 — Precision Manufacturing
 
-### 3. Precision Manufacturing
-
-To ensure the simulation matched reality, I designed a custom welding jig for the control arms. I personally performed the manual machining for the bushings, holding tolerances of **±0.0005"** on a manual lathe to eliminate slop in the suspension joints.
-
-### High-Precision Fabrication
+Simulation accuracy is only as good as the parts you build. To close the gap between model and reality, I designed a custom welding jig to hold control arm geometry during TIG welding. I personally machined all suspension bushings on a manual lathe, holding tolerances of **±0.0005"** to achieve a true press-fit assembly with zero slop in the joints.
 
 <video width="100%" controls>
   <source src="/assets/4%20jaw%20chuck.mp4" type="video/mp4">
 </video>
+*Dialing in a 4-jaw chuck to hold concentricity for the custom suspension bushings.*
 
-*Dialing in a 4-jaw chuck to ensure concentricity for custom suspension bushings.*
-
-![Bushing Finish](/assets/lathebushing.jpg)
-*Finished 4130 steel bushings held to a 0.0005" tolerance for a press-fit assembly.*
-
----
-
-## Results & Impact
-
-- **Strength:** Individual components are **286% stronger** (FoS 3.1) with a negligible weight penalty.
-- **Agility:** **33% reduction in turning radius** and a 10% increase in total steering angle.
-- **Stability:** Achieved near-zero bump steer, significantly reducing driver fatigue during endurance heats.
+![Finished Bushings](/assets/lathebushing.jpg)
+*Finished 4130 Chromoly bushings. Surface finish and dimensional accuracy ensure a press-fit that eliminates joint play.*
 
 ---
 
-## Gallery
+## Results
 
-### Full Assembly Integration
+| Metric | 2025 (Previous) | 2026 (Redesign) | Improvement |
+|---|---|---|---|
+| Control Arm FoS | 1.1 | 3.1 | **+182%** |
+| Turning Radius | Baseline | −33% | **33% reduction** |
+| Total Steering Angle | Baseline | +10% | **10% increase** |
+| Bump Steer | Unmeasured | < 0.05° | **Near-zero** |
+| Weight Delta | — | < +1.0 lb | **Target met** |
+
+---
+
+## Full Assembly
 
 ![Full Assembly Model](/assets/FullAssembly2526.jpg)
-*The integrated 2026 chassis model. Body panels are omitted to show suspension packaging and steering rack clearance.*
-
-
+*Integrated 2026 chassis model with body panels removed to show suspension packaging and steering rack clearance.*

@@ -434,13 +434,62 @@ layout: default
     font-size: 1rem;
   }
 
-  /* ── Bold label at start of list item (e.g. "Strength:") ── */
+  /* ── Bold label at start of list item ── */
   .project-content li strong:first-child {
     color: var(--color-accent);
   }
 
-  /* ── Sidebar font alignment ── */
-  aside {
-    font-family: var(--font-mono);
+  /* ── Results table ── */
+  .project-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0 2rem;
+    font-size: 0.9375rem;
+    font-family: var(--font-body);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+  }
+
+  .project-content thead tr {
+    background: #f8fafc;
+    border-bottom: 2px solid #e2e8f0;
+  }
+
+  .project-content th {
+    text-align: left;
+    padding: 0.7rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #64748b;
+  }
+
+  .project-content td {
+    padding: 0.65rem 1rem;
+    border-bottom: 1px solid #f1f5f9;
+    color: var(--color-body);
+    vertical-align: middle;
+  }
+
+  .project-content tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .project-content tbody tr:hover td {
+    background: #f0fdfa;
+    transition: background 0.15s;
+  }
+
+  .project-content td strong {
+    color: var(--color-accent);
+    font-weight: 700;
+  }
+
+  /* ── Sidebar: Segoe UI throughout ── */
+  aside,
+  aside * {
+    font-family: var(--font-body) !important;
   }
 </style>
