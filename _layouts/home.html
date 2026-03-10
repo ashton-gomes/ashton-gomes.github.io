@@ -44,9 +44,9 @@ layout: default
     <a href="{{ project.url }}" class="group block bg-white border border-slate-200 hover:border-surf-400 transition-all hover:shadow-xl hover:shadow-surf-500/10 no-underline rounded-xl overflow-hidden">
 
       <!-- Image -->
-      <div class="bg-slate-100 relative overflow-hidden" style="aspect-ratio: 4/3;">
+      <div class="bg-slate-100 relative overflow-hidden" style="height: 280px;">
         {% if project.image %}
-          <img src="{{ project.image }}" alt="{{ project.title }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+          <img src="{{ project.image }}" alt="{{ project.title }}" style="width:100%; height:100%; object-fit:cover; display:block;" class="transition-transform duration-700 group-hover:scale-105">
         {% else %}
           <div class="absolute inset-0 flex items-center justify-center text-slate-300">
             <i data-feather="{{ project.icon }}" class="w-16 h-16"></i>
