@@ -3,6 +3,7 @@
   description: "Vehicle Dynamics Lead. Designed suspension geometry and steering systems for an off-road racing vehicle."
   icon: "truck"
   image: "/assets/rear_suspension92.jpg"
+  image_position: "center center"
   tags: ["SolidWorks", "Design", "FEA", "Python", "MATLAB"]
   url: "/projects/baja-sae.html"
 
@@ -11,6 +12,7 @@
   description: "Developed kinematic solvers and trajectory planning for a Kinova Gen3 robotic arm using Python."
   icon: "cpu"
   image: "/assets/robot_motion.jpg"
+  image_position: "center center"
   tags: ["Python", "Robotics", "Kinematics"]
   url: "/projects/robotics.html"
 
@@ -19,21 +21,24 @@
   description: "Developed and tested a TPU smartphone case."
   icon: "thermometer"
   image: "/assets/finnedphonecase.jpg"
+  image_position: "center top"
   tags: ["Thermodynamics", "CFD", "CAD", "Physical Testing"]
   url: "/projects/thermal.html"
 
-- title: "Shock Dynamometer - Senior Design"
+- title: "Shock Dynamometer — Senior Design"
   category: "design"
-  description: "Developed a custom shock dynamometer to analyze suspension damping characteristics"
+  description: "Developed a custom shock dynamometer to analyze suspension damping characteristics."
   icon: "activity"
   image: "/assets/shock_dyno_render.jpg"
-  tags: [Mechanical Design, Vehicle Dynamics, DAQ, Controls]
+  image_position: "center center"
+  tags: ["Mechanical Design", "Vehicle Dynamics", "DAQ", "Controls"]
   url: "/projects/shockdyno.html"
 
-- title: "Control Systems - PID Turntable Controller"
+- title: "Control Systems — PID Turntable Controller"
   category: "code"
-  description: "Implemented a digital PID controller to control an oscillating turntable"
+  description: "Implemented a digital PID controller to control an oscillating turntable."
   icon: "activity"
   image: "/assets/PIDcontroller.jpg"
+  image_position: "center center"
   tags: ["Controls", "LabVIEW", "MATLAB"]
   url: "/projects/controls.html"

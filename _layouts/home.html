@@ -44,9 +44,9 @@ layout: default
     <a href="{{ project.url }}" class="group block bg-white border border-slate-200 hover:border-surf-400 transition-all hover:shadow-xl hover:shadow-surf-500/10 no-underline rounded-xl overflow-hidden">
 
       <!-- Image -->
-      <div class="h-56 bg-slate-100 relative overflow-hidden">
+      <div class="h-72 bg-slate-100 relative overflow-hidden">
         {% if project.image %}
-          <img src="{{ project.image }}" alt="{{ project.title }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+          <img src="{{ project.image }}" alt="{{ project.title }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" style="object-position: {{ project.image_position | default: 'center center' }}">
         {% else %}
           <div class="absolute inset-0 flex items-center justify-center text-slate-300">
             <i data-feather="{{ project.icon }}" class="w-16 h-16"></i>
