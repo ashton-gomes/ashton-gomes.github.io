@@ -16,6 +16,15 @@
   tags: ["Python", "Robotics", "Kinematics"]
   url: "/projects/robotics.html"
 
+- title: "Shock Dynamometer — Senior Design"
+  category: "design"
+  description: "Developed a custom shock dynamometer to analyze suspension damping characteristics."
+  icon: "activity"
+  image: "/assets/shock_dyno_render.jpg"
+  image_position: "center center"
+  tags: ["Mechanical Design", "Vehicle Dynamics", "DAQ", "Controls"]
+  url: "/projects/shockdyno.html"
+
 - title: "Samsung Galaxy Phone Case Prototyping"
   category: "design"
   description: "Developed and tested a TPU smartphone case."
@@ -26,20 +35,3 @@
   tags: ["Thermodynamics", "CFD", "CAD", "Physical Testing"]
   url: "/projects/thermal.html"
 
-- title: "Shock Dynamometer — Senior Design"
-  category: "design"
-  description: "Developed a custom shock dynamometer to analyze suspension damping characteristics."
-  icon: "activity"
-  image: "/assets/shock_dyno_render.jpg"
-  image_position: "center center"
-  tags: ["Mechanical Design", "Vehicle Dynamics", "DAQ", "Controls"]
-  url: "/projects/shockdyno.html"
-
-- title: "Control Systems — PID Turntable Controller"
-  category: "code"
-  description: "Implemented a digital PID controller to control an oscillating turntable."
-  icon: "activity"
-  image: "/assets/PIDcontroller.jpg"
-  image_position: "center center"
-  tags: ["Controls", "LabVIEW", "MATLAB"]
-  url: "/projects/controls.html"
