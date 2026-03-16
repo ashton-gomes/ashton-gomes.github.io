@@ -4,7 +4,7 @@ title: Custom Scotch Yoke Shock Dynamometer
 description: Design and fabrication of a custom dynamometer for objective suspension tuning and characterization.
 tags: [Mechanical Design, Vehicle Dynamics, DAQ, Controls]#"
 ---
-## **This section is currently in progress! My senior design isn't done just yet**
+## **This section is currently in progress! My senior design isn't done just yet!**
 
 ## **Problem Statement**
 In off-road racing, vehicles frequently utilize over 12 inches of suspension travel to absorb high-velocity impacts. Relying on subjective "driver feel" for tuning is insufficient for managing such complex dynamics. This project focused on building a tool to generate objective data, allowing for precise damping characterization and optimization of suspension performance.
