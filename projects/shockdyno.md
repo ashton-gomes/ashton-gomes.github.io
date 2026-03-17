@@ -11,7 +11,7 @@ Off-road racing vehicles can experience over 12 inches of suspension travel duri
 
 The dyno is being built as a senior capstone project in collaboration with Stony Brook Motorsports, where it will be used to objectively characterize and tune the team's dampers rather than relying on subjective on-car feedback. The system is currently in active fabrication, with the frame jigged and tacked, crank components being machined, and a functional load cell DAQ already validated.
 
-![Full Assembly CAD](/assets/shockdyno_final_assembly_cad.jpg)
+![Full Assembly CAD](/assets/shockdyno_final_assembly_cad.png)
 *Complete SolidWorks assembly of the final design. The worm gearbox and crank-flywheel drive sit at the base, with the shock running vertically through the braced tower structure to the Whiffle Tree load cell interface at the top.*
 
 ---
@@ -44,7 +44,7 @@ At the output shaft, a precision-machined **6" diameter, 2"-thick steel flywheel
 
 ### Crank Assembly
 
-![Crank Assembly Exploded](/assets/shockdyno_crank_assembly_exploded.jpg)
+![Crank Assembly Exploded](/assets/shockdyno_crank_assembly_exploded.png)
 *Exploded view of the crank assembly. The 1144 steel pin seats into dual precision roller bearings pressed into the 6" flywheel face, eliminating the cantilevered bending typical of single-bearing crank pins.*
 
 ### 2. Force Measurement & Whiffle Tree Assembly
@@ -55,10 +55,10 @@ As the shock cycles, the floating lower brace transfers force directly up throug
 
 ### Whiffle Tree Assembly
 
-![Whiffle Tree CAD](/assets/shockdyno_whiffle_tree_assembly.jpg)
+![Whiffle Tree CAD](/assets/shockdyno_whiffle_tree_assembly.png)
 *Whiffle Tree CAD. The S-type load cell is constrained between a fixed upper datum and a floating lower brace, with Heim joints on both ends enforcing pure axial loading.*
 
-![Whiffle Tree Drawing](/assets/shockdyno_whiffle_tree_drawing.jpg)
+![Whiffle Tree Drawing](/assets/shockdyno_whiffle_tree_drawing.png)
 *Detail drawing for the Whiffle Tree crossbar (Rev G), showing the slotted adjustment holes and tight tolerances on the pivot pin bores.*
 
 ### 3. FEA & Structural Validation
@@ -69,10 +69,10 @@ A worst-case static simulation applied **750 lbf at 5° off-axis** at the crank 
 
 ### FEA Results
 
-![Frame CAD](/assets/shockdyno_frame.jpg)
+![Frame CAD](/assets/shockdyno_frame.png)
 *Frame CAD showing the diagonal tower bracing added to handle the off-axis and reciprocating crank loads absent in the original Scotch Yoke design.*
 
-![Frame FEA FoS](/assets/shockdyno_fos_fea.jpg)
+![Frame FEA FoS](/assets/shockdyno_fos_fea.png)
 *Frame Factor of Safety distribution. Minimum FoS = 3.1 at the gearbox mounting plate under 750 lbf at 5° off-axis with combined gearbox reaction torque.*
 
 ### 4. Data Acquisition & Position Correction
@@ -83,7 +83,7 @@ Because the shock operates as a connecting rod rather than a pure linear actuato
 
 ### DAQ Bench Validation
 
-![DAQ Quick Test Bench](/assets/shockdyno_quick_test_bench.jpg)
+![DAQ Quick Test Bench](/assets/shockdyno_quick_test_bench.png)
 *Early bench validation of the Teensy 4.1 + ADS1220 DAQ stack, confirming load cell signal quality prior to full mechanical integration.*
 
 ---
@@ -99,5 +99,5 @@ Because the shock operates as a connecting rod rather than a pure linear actuato
 
 ## Gallery
 
-![Shock Dyno Render](/assets/shock_dyno_render.jpg)
-*Early render of the full assembly, showing overall system packaging and the vertical shock load path through the tower structure.*
+![Original Shock Dyno Scotch-Yoke Render](/assets/shock_dyno_render.jpg)
+*Early render of the scotch-yoke full assembly, showing overall system packaging and the vertical shock load path through the tower structure.*
