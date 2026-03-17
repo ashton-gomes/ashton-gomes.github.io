@@ -12,15 +12,13 @@ As Vehicle Dynamics Lead, I headed the design and fabrication of the Steering, B
 ## Design Requirements & Constraints
 
 ### 1. Structural Reliability
-Increase **Factor of Safety (FoS)** on control arms to **2.5+** under peak impact loading. This ensures the assembly can withstand high-stress events without plastic deformation.
+Increase **Factor of Safety (FoS)** at critical stress concentrations to **1.4+**, with overall control arm FoS exceeding **5.0**. This ensures the assembly can withstand high-stress events without plastic deformation at the points that caused the previous year's failure.
 
 ### 2. Kinematic Optimization
 Focus on precision handling by achieving the following metrics:
 * **Ackermann Steering:** Achieve **60%** to significantly reduce tire scrub in tight corners.
 * **Bump Steer:** Maintain **<0.05°** throughout full travel to prevent unintended steering inputs.
 * **Roll Stability:** Optimize Instant Centers to stabilize the Roll Center relative to the Center of Gravity during cornering.
-
-
 
 ### 3. Weight Management
 Limit total mass increase to **<1.0 lb** despite the material transition. This requires aggressive wall-thickness optimization when switching from Aluminum to **4130 Chromoly Steel**.
@@ -31,7 +29,7 @@ Limit total mass increase to **<1.0 lb** despite the material transition. This r
 
 ### 1. Kinematic Modeling & Simulation
 
-Using a combination of **MATLAB** and **SolidWorks Layout Sketches**, I modeled the suspension linkage to track the virtual swing arm length. This allowed for real-time iteration of mounting points to achieve a **33% reduction in turning radius**.
+Using a combination of **MATLAB** and **SolidWorks Layout Sketches**, I modeled the suspension linkage to track the virtual swing arm length. This allowed for real-time iteration of mounting points to achieve a **25% reduction in turning radius** (10 ft to 7.5 ft).
 
 ### Kinematic Synthesis
 
@@ -43,12 +41,12 @@ Using a combination of **MATLAB** and **SolidWorks Layout Sketches**, I modeled 
 
 I performed Finite Element Analysis on the A-arms and chassis tabs, simulating a "Worst-Case" 4G landing scenario.
 
-- **Result:** Identified a stress concentration in the previous year's clevis design. Redesigned the tab geometry to distribute load more evenly across the bulkhead, pushing the FoS from 1.1 to 3.1.
+- **Result:** Identified a stress concentration in the previous year's clevis design. Redesigned the tab geometry to distribute load more evenly across the bulkhead, pushing the FoS at the critical failure point from 1.0 to 1.45 — a 45% improvement — while the overall control arm structure exceeds FoS 5.0.
 
 ### FEA Validation 
 
 ![Suspension Geometry Analysis](/assets/FEA.png)
-*Sample FEA of the Front Left Upper Control Arm, highlighting the greatly improved factor of safety from the new design at the point that broke in the 2025 competition.*
+*Sample FEA of the Front Left Upper Control Arm, highlighting the improved factor of safety at the critical stress concentration that caused the 2025 competition failure.*
 
 ### 3. Precision Manufacturing
 
@@ -69,8 +67,8 @@ To ensure the simulation matched reality, I designed a custom welding jig for th
 
 ## Results & Impact
 
-- **Strength:** Individual components are **286% stronger** (FoS 3.1) with a negligible weight penalty.
-- **Agility:** **33% reduction in turning radius** and a 10% increase in total steering angle.
+- **Strength:** **45% stronger at critical stress concentrations** (FoS 1.0 → 1.45), with overall control arm FoS exceeding 5.0 and a negligible weight penalty.
+- **Agility:** **25% reduction in turning radius** (10 ft to 7.5 ft) and a **10.9° increase** in total steering angle.
 - **Stability:** Achieved near-zero bump steer, significantly reducing driver fatigue during endurance heats.
 
 ---
@@ -81,5 +79,3 @@ To ensure the simulation matched reality, I designed a custom welding jig for th
 
 ![Full Assembly Model](/assets/FullAssembly2526.jpg)
 *The integrated 2026 chassis model. Body panels are omitted to show suspension packaging and steering rack clearance.*
-
-
