@@ -7,6 +7,15 @@
   tags: ["SolidWorks", "Design", "FEA", "Python", "MATLAB"]
   url: "/projects/baja-sae.html"
 
+- title: "Shock Dynamometer — Senior Design"
+  category: "design"
+  description: "Developed a custom shock dynamometer to analyze suspension damping characteristics."
+  icon: "activity"
+  image: "/assets/shockdyno_final_assembly_cad.png"
+  image_position: "center center"
+  tags: ["Mechanical Design", "Vehicle Dynamics", "DAQ", "Controls"]
+  url: "/projects/shockdyno.html"
+
 - title: "Robotic Manipulator Control"
   category: "code"
   description: "Developed kinematic solvers and trajectory planning for a Kinova Gen3 robotic arm using Python."
@@ -16,14 +25,6 @@
   tags: ["Python", "Robotics", "Kinematics"]
   url: "/projects/robotics.html"
 
-- title: "Shock Dynamometer — Senior Design"
-  category: "design"
-  description: "Developed a custom shock dynamometer to analyze suspension damping characteristics."
-  icon: "activity"
-  image: "/assets/shock_dyno_render.jpg"
-  image_position: "center center"
-  tags: ["Mechanical Design", "Vehicle Dynamics", "DAQ", "Controls"]
-  url: "/projects/shockdyno.html"
 
 - title: "Samsung Galaxy Phone Case Prototyping"
   category: "design"
