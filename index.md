@@ -2,5 +2,5 @@
 layout: home
 title: Home
 header_title: Designing 
-header_highlight: Dynamic systems.
+header_highlight: Dynamic Systems.
 ---
