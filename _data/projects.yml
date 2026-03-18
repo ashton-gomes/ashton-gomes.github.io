@@ -2,7 +2,7 @@
   category: "design"
   description: "Vehicle Dynamics Lead. Designed suspension geometry and steering systems for an off-road racing vehicle."
   icon: "truck"
-  image: "/assets/FullAssembly2526"
+  image: "/assets/FullAssembly2526.jpg"
   image_position: "center 30%"
   tags: ["SolidWorks", "Design", "FEA", "Python", "MATLAB"]
   url: "/projects/baja-sae.html"
@@ -29,7 +29,7 @@
   category: "code"
   description: "SE(3) motion planner built on dual quaternion algebra, closed via a Resolved-Motion Rate Controller on the Kinova Gen3"
   icon: "cpu"
-  image: "/assets/sclerp_trajectory"
+  image: "/assets/sclerp_trajectory.png"
   image_position: "center 75%"
   image_scale: "1.8"
   tags: ["Dual Quaternions", "Python", "Robotics", "Kinematics", "ScLERP", "RMRC"]
