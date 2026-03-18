@@ -9,6 +9,26 @@ tags: [SolidWorks, Python, MATLAB, FEA, Manual Machining]
 
 As Vehicle Dynamics Lead, I headed the design and fabrication of the Steering, Brakes, and Suspension subsystems. The primary objective for the 2025–2026 season was a ground-up redesign to address the catastrophic fatigue failure of the previous year's aluminum A-arms, while simultaneously improving low-speed maneuverability.
 
+---
+
+## 2025 Failure Analysis
+
+The redesign was motivated by a structural failure during competition. The images below document the failure mode that drove every design decision in the 2026 season.
+
+### System-Level View
+
+![Car 92 rear suspension after failure](/assets/bajasae_92failedsides.jpg)
+*Car #92 at the 2025 competition following A-arm failure. The collapsed lower control arm geometry is visible at the rear axle, with the suspension dropping out of its designed travel range — a direct consequence of the weld joint fracture shown below.*
+
+### Fracture Detail
+
+![Failed A-arm weld joint close-up](/assets/bajasae_92failedarm.jpg)
+*Close-up of the fractured weld joint at the A-arm tube junction. The crack initiated and propagated through the heat-affected zone (HAZ) at the gusset-to-tube interface — a classic fatigue failure driven by stress concentration at an under-reinforced weld. The Factor of Safety at this joint was effectively 1.0 at the point of fracture.*
+
+The failure mode informed two immediate design changes: a **material transition from aluminum to 4130 Chromoly Steel** (higher fatigue strength and weldability), and a **tab geometry redesign** to distribute load away from the weld toe and reduce stress concentration at the critical joint.
+
+---
+
 ## Design Requirements & Constraints
 
 ### 1. Structural Reliability
@@ -19,8 +39,6 @@ Focus on precision handling by achieving the following metrics:
 * **Ackermann Steering:** Achieve **60%** to significantly reduce tire scrub in tight corners.
 * **Bump Steer:** Maintain **<0.05°** throughout full travel to prevent unintended steering inputs.
 * **Roll Stability:** Optimize Instant Centers to stabilize the Roll Center relative to the Center of Gravity during cornering.
-
-
 
 ### 3. Weight Management
 Limit total mass increase to **<1.0 lb** despite the material transition. This requires aggressive wall-thickness optimization when switching from Aluminum to **4130 Chromoly Steel**.

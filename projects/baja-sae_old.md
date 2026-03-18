@@ -12,7 +12,7 @@ As Vehicle Dynamics Lead, I headed the design and fabrication of the Steering, B
 ## Design Requirements & Constraints
 
 ### 1. Structural Reliability
-Increase **Factor of Safety (FoS)** on control arms to **2.5+** under peak impact loading. This ensures the assembly can withstand high-stress events without plastic deformation.
+Increase **Factor of Safety (FoS)** at critical stress concentrations to **1.4+**, with overall control arm FoS exceeding **5.0**. This ensures the assembly can withstand high-stress events without plastic deformation at the points that caused the previous year's failure.
 
 ### 2. Kinematic Optimization
 Focus on precision handling by achieving the following metrics:
@@ -31,7 +31,7 @@ Limit total mass increase to **<1.0 lb** despite the material transition. This r
 
 ### 1. Kinematic Modeling & Simulation
 
-Using a combination of **MATLAB** and **SolidWorks Layout Sketches**, I modeled the suspension linkage to track the virtual swing arm length. This allowed for real-time iteration of mounting points to achieve a **33% reduction in turning radius**.
+Using a combination of **MATLAB** and **SolidWorks Layout Sketches**, I modeled the suspension linkage to track the virtual swing arm length. This allowed for real-time iteration of mounting points to achieve a **25% reduction in turning radius (10 ft to 7.5 ft)**.
 
 ### Kinematic Synthesis
 
@@ -43,37 +43,37 @@ Using a combination of **MATLAB** and **SolidWorks Layout Sketches**, I modeled 
 
 I performed Finite Element Analysis on the A-arms and chassis tabs, simulating a "Worst-Case" 4G landing scenario.
 
-- **Result:** Identified a stress concentration in the previous year's weld joint and shock mounting design. Redesigned the tab geometry to distribute load more evenly, pushing the FoS from 1.1 to 3.1 at that specific area. 
+- **Result:** Identified a stress concentration in the previous year's weld joint and shock mounting design. Redesigned the tab geometry to distribute load more evenly, pushing the FoS at the critical failure point from 1.0 to 1.45 (a 45% improvement), while the overall control arm structure exceeds FoS 5.0.
 
 ### FEA Validation 
 
 ![Suspension Geometry Analysis](/assets/FEA.png)
-*Sample FEA of the Front Left Upper Control Arm, highlighting the greatly improved factor of safety from the new design at the point that broke in the 2025 competition.*
+*Sample FEA of the Front Left Upper Control Arm, highlighting the improved factor of safety at the critical stress concentration that caused the 2025 competition failure.*
 
 ### 3. Suspension Jigging & Geometric Validation
 
-With the kinematic model finalized, the critical challenge was translating simulation accuracy into physical hardware — particularly given the compounding tolerances inherent in plasma-cut tabs and hand-fabricated tubing. To solve this, I designed and built a custom **in-house aluminum plate jig** specifically to provide an analytical solution to these cumulative errors, allowing individual component positions to be adjusted relative to one another until the target suspension geometry was achieved, rather than relying on the accuracy of any single part.
+With the kinematic model finalized, the critical challenge was translating simulation accuracy into physical hardware, particularly given the compounding tolerances inherent in plasma-cut tabs and hand-fabricated tubing. To solve this, I designed and built a custom **in-house aluminum plate jig** specifically to provide an analytical solution to these cumulative errors, allowing individual component positions to be adjusted relative to one another until the target suspension geometry was achieved, rather than relying on the accuracy of any single part.
 
 #### Establishing a Reference Datum
 
 ![Height Gauge Setup](/assets/bajasae_heightgauge.jpg)
-*Mitutoyo digital height gauge measuring 8.8770" below the floor plane tube — the reference datum for the entire jigging setup.*
+*Mitutoyo digital height gauge measuring 8.8770" below the floor plane tube, the reference datum for the entire jigging setup.*
 
-The first step was establishing a precise vertical datum. Using a **Mitutoyo digital height gauge**, I measured **8.8770" below the bottom of the floor plane tube** — the reference tube used as the global datum for the entire vehicle. Since the tube has a 1.25" outer diameter, half the tube diameter was subtracted from the raw reading to locate the true centerline reference plane. This 8.8770" dimension corresponds to the designed **neutral ride height of ~10 inches** at the wheel, accounting for driver-loaded static deflection. By jigging the suspension at this exact loaded position, I ensured the hardpoints were set at the precise point in travel where the kinematic calculations were derived — keeping the physical geometry consistent with the CAD model.
+The first step was establishing a precise vertical datum. Using a **Mitutoyo digital height gauge**, I measured **8.8770" below the bottom of the floor plane tube**, which serves as the global datum for the entire vehicle. Since the tube has a 1.25" outer diameter, half the tube diameter was subtracted from the raw reading to locate the true centerline reference plane. This 8.8770" dimension corresponds to the designed **neutral ride height of ~10 inches** at the wheel, accounting for driver-loaded static deflection. By jigging the suspension at this exact loaded position, I ensured the hardpoints were set at the precise point in travel where the kinematic calculations were derived, keeping the physical geometry consistent with the CAD model.
 
 #### Lower Control Arm Tack and Geometry Setting
 
 ![Lower Control Arm Jigging](/assets/bajasae_lowercontrolarm.jpg)
 *Lower control arm tacked in position on the aluminum plate jig, with clamps holding position prior to upper arm adjustment.*
 
-With the datum established, the lower control arm was clamped and tacked in place on the jig. This locked the LCA node positions as the fixed reference for the next step: setting the upper control arm to achieve the target **2° of static camber** and **8° of caster**. Rather than trusting the dimensional accuracy of any individual plasma-cut tab, the jig allowed me to dial in the relative positions of both arms iteratively until the desired angles were confirmed — absorbing compounding fabrication error in the process. Hardpoint placement was held **within ±0.1"** across the assembly, with final geometry verified against the kinematic drawings before any final welds were made.
+With the datum established, the lower control arm was clamped and tacked in place on the jig. This locked the LCA node positions as the fixed reference for the next step: setting the upper control arm to achieve the target **2° of static camber** and **8° of caster**. Rather than trusting the dimensional accuracy of any individual plasma-cut tab, the jig allowed me to dial in the relative positions of both arms iteratively until the desired angles were confirmed, absorbing compounding fabrication error in the process. Hardpoint placement was held **within ±0.1"** across the assembly, with final geometry verified against the kinematic drawings before any final welds were made.
 
 #### Final Assembled Corner
 
 ![Front Left Suspension Assembly](/assets/bajasae_frontleftsuspension_setup.jpg)
 *Completed front left corner showing the AFCO 63 coilover (8" travel, adjustable rebound), uprights, and A-arm geometry as assembled.*
 
-The finished corner — fitted with the **AFCO 63 coilover** running 8 inches of travel with adjustable rebound — confirmed that the jig process successfully translated the kinematic design into hardware. The geometry matched design targets within tolerance, validating the jigging approach as an effective method for maintaining simulation accuracy through fabrication.
+The finished corner, fitted with the **AFCO 63 coilover** running 8 inches of travel with adjustable rebound, confirmed that the jig process successfully translated the kinematic design into hardware. The geometry matched design targets within tolerance, validating the jigging approach as an effective method for maintaining simulation accuracy through fabrication.
 
 ### 4. Precision Manufacturing
 
@@ -94,8 +94,8 @@ To ensure the simulation matched reality, I designed a custom welding jig for th
 
 ## Results & Impact
 
-- **Strength:** Individual components are **286% stronger** (FoS 3.1) with a negligible weight penalty.
-- **Agility:** **33% reduction in turning radius** and a 10% increase in total steering angle.
+- **Strength:** **45% stronger at critical stress concentrations** (FoS 1.0 → 1.45), with overall control arm FoS exceeding 5.0 and a negligible weight penalty.
+- **Agility:** **25% reduction in turning radius** (10 ft to 7.5 ft) and a **10.9° increase** in total steering angle.
 - **Stability:** Achieved near-zero bump steer, significantly reducing driver fatigue during endurance heats.
 
 ---

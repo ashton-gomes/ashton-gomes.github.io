@@ -44,7 +44,7 @@ With the power operator in place, the ScLERP formula reduces to a single line:
 
 $$C(\tau) = A \cdot (A^* \cdot B)^\tau$$
 
-where $A$ is the start pose, $B$ is the goal pose, and $A^*$ is the dual quaternion conjugate of $A$. The product $(A^* \cdot B)$ isolates the relative displacement from start to goal as a screw motion, and raising it to the power τ ∈ [0, 1] scales that screw uniformly — giving a path that sweeps along the unique geodesic connecting the two poses in SE(3).
+where **A** is the start pose, **B** is the goal pose, and **A\*** is the dual quaternion conjugate of **A**. The product **A\*** · **B** isolates the relative displacement from start to goal as a screw motion, and raising it to the power τ ∈ [0, 1] scales that screw uniformly — giving a path that sweeps along the unique geodesic connecting the two poses in SE(3).
 
 ```python
 def sclerp(A, B, tau):

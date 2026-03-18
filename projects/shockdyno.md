@@ -38,6 +38,9 @@ Support rapid interchangeability between different damper architectures — incl
 
 The original mechanism was a **Scotch Yoke** — a slider-crank variant that converts rotary motion into perfectly sinusoidal linear displacement by constraining a pin inside a translating slotted yoke. The appeal was kinematic purity: the output stroke is mathematically sinusoidal regardless of RPM, with no velocity distortion at the ends of travel. This made it an intuitive first choice for a dynamometer where accurate velocity profiles matter.
 
+![Scotch Yoke Design](/assets/shock_dyno_render.jpg)
+*Early Scotch Yoke design. The open frame and sliding yoke mechanism at the base required close tolerances on slot width and pin diameter throughout the full stroke — a high-risk manufacturing challenge that drove the redesign.*
+
 In practice, however, the Scotch Yoke introduced significant fabrication and mechanical complexity. The yoke itself — a precision-slotted sliding member that must remain in tight contact with the crank pin throughout the stroke — requires close tolerances on both the slot width and the pin diameter to prevent slop, binding, and side-loading on the shock's internal seals. Holding those tolerances on shop equipment, and doing so repeatably across the full stroke under cyclic loading, was identified as a high-risk manufacturing challenge. The yoke also added considerable reciprocating mass, increasing the inertial loads the frame and gearbox would need to absorb at speed.
 
 The design was revised to a **direct-link crank**, where the shock absorber itself serves as the connecting rod between the crank pin and a fixed upper mount. This eliminated the yoke entirely — the most complex custom-fabricated component in the original design — and replaced it with a single precision-machined steel pin and bearing stack. The shock's eyelets, already designed to handle axial cyclic loading, handle the kinematic constraint naturally. Off-axis forces are managed by the dual-bearing crank pin interface rather than a sliding yoke, which is both easier to manufacture and more robust under sustained cyclic loads.
@@ -45,8 +48,6 @@ The design was revised to a **direct-link crank**, where the shock absorber itse
 The tradeoff is that a direct-link crank produces **approximately** sinusoidal motion rather than perfectly sinusoidal — the instantaneous velocity deviates slightly from ideal depending on the connecting rod length ratio. For this application that's acceptable, because the encoder-based position measurement tracks the actual crank angle in real time. The Python post-processing pipeline computes the true instantaneous piston velocity from encoder data at every sample, so the output FV curves reflect actual measured velocity rather than an assumed sinusoidal profile. The kinematic impurity of the mechanism is fully corrected in software.
 
 ### 2. Mechanism Design & Kinematic Analysis
-
-
 
 The drivetrain consists of a **3 HP AC motor** running at **1750 RPM**, coupled to a **20:1 worm gearbox** to produce the low-speed, high-torque output required for damper actuation. A **4 HP-rated VFD** controls motor speed, enabling variable velocity sweeps across the damper's full operating range.
 
@@ -109,5 +110,7 @@ Because the shock operates as a connecting rod rather than a pure linear actuato
 
 ## Gallery
 
-![Shock Dyno Render](/assets/shock_dyno_render.jpg)
-*Early render of the full assembly, showing overall system packaging and the vertical shock load path through the tower structure.*
+### Full Assembly
+
+![Full Assembly CAD](/assets/shockdyno_final_assembly_cad.png)
+*Final SolidWorks assembly. The worm gearbox and crank-flywheel drive sit at the base, with the shock running vertically through the braced tower structure to the Whiffle Tree load cell interface at the top.*
