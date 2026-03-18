@@ -25,6 +25,16 @@
   tags: ["Python", "Robotics", "Kinematics"]
   url: "/projects/robotics.html"
 
+- title: "Interacting Robotic Systems Laboratory — ScLERP & RMRC"
+  category: "code"
+  description: "SE(3) motion planner built on dual quaternion algebra, closed via a Resolved-Motion Rate Controller on the Kinova Gen3"
+  icon: "cpu"
+  image: "/assets/sclerp_trajectory.png"
+  image_position: "center 75%"
+  image_scale: "1.8"
+  tags: ["Dual Quaternions", "Python", "Robotics", "Kinematics", "ScLERP", "RMRC"]
+  url: "/projects/sclerp.html"
+
 
 - title: "Samsung Galaxy Phone Case Prototyping"
   category: "design"
