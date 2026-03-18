@@ -1,13 +1,13 @@
 ---
 layout: project
-title: Interacting Robotic Systems Laboratory — ScLERP & RMRC Motion Planner
+title: Interacting Robotic Systems Laboratory - ScLERP & RMRC Motion Planner
 description: SE(3) task-space motion planner built on dual quaternion algebra, closed via a Resolved-Motion Rate Controller on the Kinova Gen3.
 tags: [Dual Quaternions, Python, Robotics, Kinematics, ScLERP, RMRC]
 ---
 
 ## Overview
 
-This project implements a complete SE(3) motion planning pipeline for the Kinova Gen3 7-DOF manipulator, grounded in dual quaternion algebra and following the Screw Linear Interpolation (ScLERP) formulation from the published literature. Rather than separating rotation and translation into two independent interpolations — as SLERP-based planners do — ScLERP encodes a full rigid-body displacement as a single screw motion. The result is a geodesically minimal path in SE(3) that automatically satisfies motion subgroup constraints without any explicit enforcement, a property that becomes practically important for constrained tasks like door-handle turning.
+This project implements a complete SE(3) motion planning pipeline for the Kinova Gen3 7-DOF manipulator, grounded in dual quaternion algebra and following the Screw Linear Interpolation (ScLERP) formulation from the published literature. Rather than separating rotation and translation into two independent interpolations, as SLERP-based planners do, ScLERP encodes a full rigid-body displacement as a single screw motion. The result is a geodesically minimal path in SE(3) that automatically satisfies motion subgroup constraints without any explicit enforcement, a property that becomes practically important for constrained tasks like door-handle turning.
 
 The planner was validated end-to-end on the Kinova Gen3: ScLERP generates a sequence of target poses, and a Resolved-Motion Rate Controller (RMRC) closes the loop at each step by mapping the pose error to a joint velocity command via the Jacobian pseudoinverse.
 
@@ -15,7 +15,7 @@ The planner was validated end-to-end on the Kinova Gen3: ScLERP generates a sequ
 
 ## Dual Quaternion Algebra
 
-The foundation of the planner is a from-scratch dual quaternion library implemented in Python. A dual quaternion encodes a full SE(3) pose — rotation and translation together — as a pair of quaternions linked by a dual unit ε (where ε² = 0):
+The foundation of the planner is a from-scratch dual quaternion library implemented in Python. A dual quaternion encodes a full SE(3) pose, rotation and translation together, as a pair of quaternions linked by a dual unit ε (where ε² = 0):
 
 $$\hat{q} = q_r + \varepsilon q_d$$
 
@@ -27,10 +27,10 @@ where **t** is the pure quaternion representation of the translation vector. Thi
 
 The library implements all required operations from scratch:
 
-- **Construction** — `r_q(theta, axis)` builds the rotation quaternion, `r_t(t_vec)` builds the translation quaternion, and `dual_quaternion(rq, q_mult(tq, rq))` assembles the full 8-vector.
-- **Multiplication** — `dq_mult(dq1, dq2)` follows the dual number product rule: real parts multiply normally, while the dual part accumulates cross terms from both halves.
-- **Conjugate & Inverse** — `dq_conj` negates the dual part; `dq_inv` computes the full inverse via the conjugate of each half.
-- **Power** — `dq_power(dq, tau)` is the key primitive for ScLERP. It extracts the screw parameters (rotation angle θ, pitch d, axis **u**, moment **m**) from the dual quaternion and scales them by τ before reconstructing:
+- **Construction:** `r_q(theta, axis)` builds the rotation quaternion, `r_t(t_vec)` builds the translation quaternion, and `dual_quaternion(rq, q_mult(tq, rq))` assembles the full 8-vector.
+- **Multiplication:** `dq_mult(dq1, dq2)` follows the dual number product rule, where real parts multiply normally and the dual part accumulates cross terms from both halves.
+- **Conjugate & Inverse:** `dq_conj` negates the dual part; `dq_inv` computes the full inverse via the conjugate of each half.
+- **Power:** `dq_power(dq, tau)` is the key primitive for ScLERP. It extracts the screw parameters (rotation angle θ, pitch d, axis **u**, moment **m**) from the dual quaternion and scales them by τ before reconstructing:
 
 $$\hat{q}^\tau = \exp(\tau \cdot \hat{\xi})$$
 
@@ -44,7 +44,7 @@ With the power operator in place, the ScLERP formula reduces to a single line:
 
 $$C(\tau) = A \cdot (A^* \cdot B)^\tau$$
 
-where **A** is the start pose, **B** is the goal pose, and **A\*** is the dual quaternion conjugate of **A**. The product **A\*** · **B** isolates the relative displacement from start to goal as a screw motion, and raising it to the power τ ∈ [0, 1] scales that screw uniformly — giving a path that sweeps along the unique geodesic connecting the two poses in SE(3).
+where **A** is the start pose, **B** is the goal pose, and **A\*** is the dual quaternion conjugate of **A**. The product **A\*** · **B** isolates the relative displacement from start to goal as a screw motion, and raising it to the power τ ∈ [0, 1] scales that screw uniformly, giving a path that sweeps along the unique geodesic connecting the two poses in SE(3).
 
 ```python
 def sclerp(A, B, tau):
@@ -55,7 +55,7 @@ def sclerp(A, B, tau):
     return C_t
 ```
 
-The midpoint test (τ = 0.5) confirmed the expected arc behavior: the interpolated position is **not** the linear midpoint between start and goal, but a point on the screw arc — which is the correct SE(3) geodesic.
+The midpoint test (τ = 0.5) confirmed the expected arc behavior: the interpolated position is **not** the linear midpoint between start and goal, but a point on the screw arc, which is the correct SE(3) geodesic.
 
 ---
 
@@ -76,16 +76,16 @@ $$\mathbf{p} = 2 q_d \cdot q_r^*$$
 
 With the ScLERP path generating a sequence of target poses, a Resolved-Motion Rate Controller tracks them at the joint level. At each step:
 
-1. **Target pose** — the ScLERP pose at the current τ is converted from dual quaternion to a 4×4 SE(3) matrix via `dual_quat_to_matrix`.
-2. **Current pose** — FK is evaluated at the current joint state using `FK_SpaceForm(M, S_list, q)`, the same screw-axis forward kinematics from the Gen3 kinematic stack.
-3. **Error twist** — the error transform $T_{bd} = T_{sd} \cdot T_{sb}^{-1}$ is mapped to a spatial velocity via the matrix logarithm and `se3ToVec`.
-4. **Jacobian solve** — the space Jacobian $J_s \in \mathbb{R}^{6 \times 7}$ is computed at the current configuration, and joint velocities are resolved via the damped pseudoinverse:
+1. **Target pose:** the ScLERP pose at the current τ is converted from dual quaternion to a 4x4 SE(3) matrix via `dual_quat_to_matrix`.
+2. **Current pose:** FK is evaluated at the current joint state using `FK_SpaceForm(M, S_list, q)`, the same screw-axis forward kinematics from the Gen3 kinematic stack.
+3. **Error twist:** the error transform $T_{bd} = T_{sd} \cdot T_{sb}^{-1}$ is mapped to a spatial velocity via the matrix logarithm and `se3ToVec`.
+4. **Jacobian solve:** the space Jacobian $J_s \in \mathbb{R}^{6 \times 7}$ is computed at the current configuration, and joint velocities are resolved via the damped pseudoinverse:
 
 $$\dot{q} = J_s^\dagger V_s, \quad J_s^\dagger = (J_s^T J_s + \lambda^2 I)^{-1} J_s^T$$
 
 The damping factor λ = 0.01 regularizes the inversion near singular configurations without introducing large tracking errors in well-conditioned regions. A proportional gain $K_p = 0.5$ scales the error twist before the pseudoinverse solve, preventing overshoot at the start of the motion when the error is largest.
 
-5. **Integration** — joints are updated via forward Euler: `q = q + q_dot * dt`.
+5. **Integration:** joints are updated via forward Euler: `q = q + q_dot * dt`.
 
 ```python
 for i in range(steps):
@@ -107,7 +107,7 @@ The joint trajectory plot shows all seven actuators responding smoothly to the S
 ![Joint Trajectories (RMRC)](/assets/sclerp_rmrc.png)
 *Joint angle histories for all seven actuators over the 100-step RMRC tracking run. Actuators 3 and 5 carry the majority of the motion, consistent with the dominant rotation and reach components of the target screw.*
 
-The pipeline was validated on a door-handle turning task: the start pose was extracted directly from the robot's home configuration matrix $M$, and the goal was set to a 90° rotation about the Z-axis with a 20 cm offset in X — a motion that requires coupled rotation and translation characteristic of a constrained manipulation task. The ScLERP planner handled the coupled motion naturally without any explicit constraint encoding.
+The pipeline was validated on a door-handle turning task: the start pose was extracted directly from the robot's home configuration matrix $M$, and the goal was set to a 90° rotation about the Z-axis with a 20 cm offset in X, a motion that requires coupled rotation and translation characteristic of a constrained manipulation task. The ScLERP planner handled the coupled motion naturally without any explicit constraint encoding.
 
 ---
 

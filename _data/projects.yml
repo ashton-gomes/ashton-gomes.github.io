@@ -14,7 +14,7 @@
   image: "/assets/shockdyno_final_assembly_cad.png"
   image_position: "center center"
   tags: ["Mechanical Design", "Vehicle Dynamics", "DAQ", "Controls"]
-  url: "/projects/shockdyno.md"
+  url: "/projects/shockdyno.html"
 
 - title: "Robotic Manipulator Control"
   category: "code"

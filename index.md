@@ -1,6 +1,7 @@
 ---
 layout: home
 title: Home
-header_title: Designing systems for
-header_highlight: Dynamics & Control.
+header_title: Designing 
+header_highlight: Dynamic
+header_title: systems.
 ---

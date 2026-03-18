@@ -7,7 +7,7 @@ tags: [SolidWorks, Python, MATLAB, FEA, Manual Machining]
 
 ## Overview
 
-As Vehicle Dynamics Lead, I headed the design and fabrication of the Steering, Brakes, and Suspension subsystems. The primary objective for the 2025–2026 season was a ground-up redesign to address the catastrophic fatigue failure of the previous year's aluminum A-arms, while simultaneously improving low-speed maneuverability.
+As Vehicle Dynamics Lead, I headed the design and fabrication of the Steering, Brakes, and Suspension subsystems. The primary objective for the 2025-2026 season was a ground-up redesign to address the catastrophic fatigue failure of the previous year's aluminum A-arms, while simultaneously improving low-speed maneuverability.
 
 ---
 
@@ -18,14 +18,14 @@ The redesign was motivated by a structural failure during competition. The image
 ### System-Level View
 
 ![Car 92 rear suspension after failure](/assets/bajasae_92failedsides.jpg)
-*Car #92 at the 2025 competition following A-arm failure. The collapsed lower control arm geometry is visible at the rear axle, with the suspension dropping out of its designed travel range — a direct consequence of the weld joint fracture shown below.*
+*Car #92 at the 2025 competition following A-arm failure. The collapsed lower control arm geometry is visible at the rear axle, with the suspension dropping out of its designed travel range, a direct consequence of the weld joint fracture shown below.*
 
 ### Fracture Detail
 
 ![Failed A-arm weld joint close-up](/assets/bajasae_92failedarm.jpg)
-*Close-up of the fractured weld joint at the A-arm tube junction. The crack initiated and propagated through the heat-affected zone (HAZ) at the gusset-to-tube interface — a classic fatigue failure driven by stress concentration at an under-reinforced weld. The Factor of Safety at this joint was effectively 1.0 at the point of fracture.*
+*Close-up of the fractured weld joint at the A-arm tube junction. The crack initiated and propagated through the heat-affected zone (HAZ) at the gusset-to-tube interface, a classic fatigue failure driven by stress concentration at an under-reinforced weld. The Factor of Safety at this joint was effectively 1.0 at the point of fracture.*
 
-The failure mode informed two immediate design changes: a **material transition from aluminum to 4130 Chromoly Steel** (higher fatigue strength and weldability), and a **tab geometry redesign** to distribute load away from the weld toe and reduce stress concentration at the critical joint.
+The failure mode informed two immediate design changes: a material transition from aluminum to 4130 Chromoly Steel (higher fatigue strength and weldability), and a tab geometry redesign to distribute load away from the weld toe and reduce stress concentration at the critical joint.
 
 ---
 
@@ -56,14 +56,13 @@ Using a combination of **MATLAB** and **SolidWorks Layout Sketches**, I modeled 
 ![Suspension Geometry Analysis](/assets/suspension_geometry.jpg)
 *Instant Center layout. The geometry ensures the Roll Center remains stable relative to the Center of Gravity during body roll, promoting predictable handling.*
 
-
 ### 2. FEA & Validation
 
 I performed Finite Element Analysis on the A-arms and chassis tabs, simulating a "Worst-Case" 4G landing scenario.
 
 - **Result:** Identified a stress concentration in the previous year's weld joint and shock mounting design. Redesigned the tab geometry to distribute load more evenly, pushing the FoS at the critical failure point from 1.0 to 1.45 (a 45% improvement), while the overall control arm structure exceeds FoS 5.0.
 
-### FEA Validation 
+### FEA Validation
 
 ![Suspension Geometry Analysis](/assets/FEA.png)
 *Sample FEA of the Front Left Upper Control Arm, highlighting the improved factor of safety at the critical stress concentration that caused the 2025 competition failure.*
@@ -112,7 +111,7 @@ To ensure the simulation matched reality, I designed a custom welding jig for th
 
 ## Results & Impact
 
-- **Strength:** **45% stronger at critical stress concentrations** (FoS 1.0 → 1.45), with overall control arm FoS exceeding 5.0 and a negligible weight penalty.
+- **Strength:** **45% stronger at critical stress concentrations** (FoS 1.0 to 1.45), with overall control arm FoS exceeding 5.0 and a negligible weight penalty.
 - **Agility:** **25% reduction in turning radius** (10 ft to 7.5 ft) and a **10.9° increase** in total steering angle.
 - **Stability:** Achieved near-zero bump steer, significantly reducing driver fatigue during endurance heats.
 
