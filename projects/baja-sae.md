@@ -7,25 +7,25 @@ tags: [SolidWorks, Python, MATLAB, FEA, Manual Machining]
 
 ## Overview
 
-As Vehicle Dynamics Lead, I headed the design and fabrication of the Steering, Brakes, and Suspension subsystems. The primary objective for the 2025-2026 season was a ground-up redesign to address the catastrophic fatigue failure of the previous year's aluminum A-arms, while simultaneously improving low-speed maneuverability.
+As Vehicle Dynamics Lead, I headed the design and fabrication of the Steering, Brakes, and Suspension subsystems. The primary objective for the 2025-2026 season was a ground-up redesign to address the catastrophic fatigue failure of the previous year's aluminum A-arms, while simultaneously improving low-speed maneuverability and general handling.
 
 ---
 
 ## 2025 Failure Analysis
 
-The redesign was motivated by a structural failure during competition. The images below document the failure mode that drove every design decision in the 2026 season.
+The redesign was motivated by a structural failure and a failure to pass the manuverability test during competition. The images below document the failure mode that drove every design decision in the 2026 season.
 
 ### System-Level View
 
 ![Car 92 rear suspension after failure](/assets/bajasae_92failedsides.jpg)
-*Car #92 at the 2025 competition following A-arm failure. The collapsed lower control arm geometry is visible at the rear axle, with the suspension dropping out of its designed travel range, a direct consequence of the weld joint fracture shown below.*
+*Car #92 at the 2025 competition following A-arm failure. The collapsed lower control arm geometry is visible, with the suspension being significantly compressed from its proper position, a direct consequence of the weld joint fracture shown below.*
 
 ### Fracture Detail
 
 ![Failed A-arm weld joint close-up](/assets/bajasae_92failedarm.jpg)
-*Close-up of the fractured weld joint at the A-arm tube junction. The crack initiated and propagated through the heat-affected zone (HAZ) at the gusset-to-tube interface, a classic fatigue failure driven by stress concentration at an under-reinforced weld. The Factor of Safety at this joint was effectively 1.0 at the point of fracture.*
+*Close-up of the fractured weld joint at the A-arm tube junction. The crack initiated and propagated through the heat-affected zone (HAZ) at the tube weld, a fatigue failure driven by stress concentration at an under-reinforced weld. The Factor of Safety at this joint was well below 1.0 at the point of fracture, due to suboptimal jigging and a disregard for the significant heat-affected zone negating the heat treatment of the aluminum tubes.*
 
-The failure mode informed two immediate design changes: a material transition from aluminum to 4130 Chromoly Steel (higher fatigue strength and weldability), and a tab geometry redesign to distribute load away from the weld toe and reduce stress concentration at the critical joint.
+The failure mode informed two immediate design changes: a material transition from aluminum to 4130 Chromoly Steel (higher fatigue strength and weldability), a, tab geometry redesign to distribute load away from the weld toe and reduce stress concentration at the critical joint, and a control arm geometry redesign to make them more manufacturable.
 
 ---
 
@@ -54,13 +54,13 @@ Using a combination of **MATLAB** and **SolidWorks Layout Sketches**, I modeled 
 ### Kinematic Synthesis
 
 ![Suspension Geometry Analysis](/assets/suspension_geometry.jpg)
-*Instant Center layout. The geometry ensures the Roll Center remains stable relative to the Center of Gravity during body roll, promoting predictable handling.*
+*Instant Center layout. The geometry ensures the Roll Center remains stable relative to the Center of Gravity during body roll, promoting predictable handling. Their relative points were tested throughout the entire suspension range to make sure they did not cross over.*
 
 ### 2. FEA & Validation
 
-I performed Finite Element Analysis on the A-arms and chassis tabs, simulating a "Worst-Case" 4G landing scenario.
+I performed Finite Element Analysis on the A-arms and chassis tabs, simulating a "Worst-Case" scenario involving 400 lbf of braking load, 400 lbf of steering load, and 1200 lbf coming from the wheel load.
 
-- **Result:** Identified a stress concentration in the previous year's weld joint and shock mounting design. Redesigned the tab geometry to distribute load more evenly, pushing the FoS at the critical failure point from 1.0 to 1.45 (a 45% improvement), while the overall control arm structure exceeds FoS 5.0.
+- **Result:** Identified a stress concentration in the previous year's weld joint and shock mounting design. Redesigned the tab geometry to distribute load more evenly, pushing the FoS at the critical failure point from 1.0 to 1.45 (a 45% improvement), while the overall control arm structure exceeds FoS 5.0. This is comparing both ideal cases, which was not actually the case when comparing the manufactured versions. My control arm design has a significantly smaller heat affected zone while also being easier to manufacture in plane, while the aluminum control arm was not able to be jigged ideally. 
 
 ### FEA Validation
 
@@ -90,7 +90,7 @@ With the datum established, the lower control arm was clamped and tacked in plac
 ![Front Left Suspension Assembly](/assets/bajasae_frontleftsuspension_setup.jpg)
 *Completed front left corner showing the AFCO 63 coilover (8" travel, adjustable rebound), uprights, and A-arm geometry as assembled.*
 
-The finished corner, fitted with the **AFCO 63 coilover** running 8 inches of travel with adjustable rebound, confirmed that the jig process successfully translated the kinematic design into hardware. The geometry matched design targets within tolerance, validating the jigging approach as an effective method for maintaining simulation accuracy through fabrication.
+The finished corner, fitted with the **AFCO 63 coilover** running **13.6 inches of travel** with adjustable rebound, confirmed that the jig process successfully translated the kinematic design into hardware. The geometry matched design targets within tolerance, validating the jigging approach as an effective method for maintaining simulation accuracy through fabrication.
 
 ### 4. Precision Manufacturing
 

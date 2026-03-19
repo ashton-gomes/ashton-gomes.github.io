@@ -7,9 +7,9 @@ tags: [SolidWorks, Python, FEA, DAQ, Controls, Manual Machining]
 
 ## Overview
 
-Off-road racing vehicles can experience over 12 inches of suspension travel during high-velocity impacts, and tuning dampers based on "driver feel" alone introduces unacceptable variability into that process. This project is the design and fabrication of a custom shock dynamometer, a machine capable of actuating a shock absorber through a repeatable sinusoidal stroke at controlled velocities and capturing real-time Force-Velocity (FV) curves with high-resolution DAQ hardware.
+Off-road racing vehicles can experience over 8 inches of jounce travel during high-velocity impacts, and tuning dampers based on driver feel alone introduces unacceptable variability into that process. This project is the design and fabrication of a custom shock dynamometer, a machine capable of actuating a shock absorber through a repeatable sinusoidal stroke at controlled velocities and capturing real-time Force-Velocity (FV) curves with high-resolution DAQ hardware.
 
-The dyno is being built as a senior capstone project in collaboration with Stony Brook Motorsports, where it will be used to objectively characterize and tune the team's dampers rather than relying on subjective on-car feedback. The system is currently in active fabrication, with the frame jigged and tacked, crank components being machined, and a functional load cell DAQ already validated.
+The dyno is being built as a senior capstone project for Stony Brook Motorsports, where it will be used to objectively characterize and tune the team's dampers rather than relying on subjective on-car feedback. The system is currently in active fabrication, with the frame jigged and tacked, crank components being machined, and a functional load cell DAQ already validated.
 
 ![Full Assembly CAD](/assets/shockdyno_final_assembly_cad.png)
 *Complete SolidWorks assembly of the final design. The worm gearbox and crank-flywheel drive sit at the base, with the shock running vertically through the braced tower structure to the Whiffle Tree load cell interface at the top.*
@@ -19,7 +19,7 @@ The dyno is being built as a senior capstone project in collaboration with Stony
 ## Design Requirements & Constraints
 
 ### 1. Actuation Fidelity
-Deliver a repeatable **4-inch stroke** (2" crank eccentricity) at a peak velocity of **15 in/s**, accurately simulating real suspension velocities encountered during Baja SAE competition. Variable-speed control via VFD allows the full range of damping velocities to be swept in a single test session.
+Deliver a repeatable **4-inch stroke** (2" crank eccentricity) at a peak velocity of **15 in/s**, accurately simulating real suspension velocities encountered during testing. Variable-speed control via VFD allows the full range of damping velocities to be swept in a single test session.
 
 ### 2. Structural Integrity
 Survive a worst-case loading scenario of **750 lbf at 5° off-axis**, the estimated peak force at the crank pin intersection under maximum damping combined with gearbox reaction torque. The frame must achieve a minimum **FoS of 3.0** under this condition to ensure operator safety across thousands of fatigue cycles.
