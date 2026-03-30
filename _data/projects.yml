@@ -36,13 +36,13 @@
   url: "/projects/sclerp.html"
 
 
-- title: "Samsung Galaxy Phone Case Prototyping"
-  category: "design"
-  description: "Developed and tested a TPU smartphone case."
-  icon: "thermometer"
-  image: "/assets/finnedphonecase.jpg"
-  image_position: "center 75%"
-  image_scale: "1.8"
-  tags: ["Thermodynamics", "CFD", "CAD", "Physical Testing"]
-  url: "/projects/thermal.html"
+#- title: "Samsung Galaxy Phone Case Prototyping"
+ # category: "design"
+ # description: "Developed and tested a TPU smartphone case."
+ # icon: "thermometer"
+ # image: "/assets/finnedphonecase.jpg"
+ # image_position: "center 75%"
+ # image_scale: "1.8"
+ # tags: ["Thermodynamics", "CFD", "CAD", "Physical Testing"]
+ # url: "/projects/thermal.html"
 
