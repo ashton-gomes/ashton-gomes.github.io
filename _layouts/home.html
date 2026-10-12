@@ -2,81 +2,57 @@
 layout: default
 ---
 
-<!-- Hero -->
-<section id="about" class="pt-24 pb-16 px-4 max-w-6xl mx-auto">
-  <div class="max-w-3xl">
-    <div class="inline-flex items-center gap-2 px-3 py-1 bg-surf-50 border border-surf-200 text-surf-700 text-[10px] font-sans font-bold uppercase tracking-wide rounded mb-6">
-      <span class="w-1.5 h-1.5 bg-surf-500 rounded-full animate-pulse"></span>
-      {{ site.description }}
-    </div>
-    <h1 class="text-5xl md:text-7xl font-bold text-slate-900 tracking-tight leading-[1.1] mb-6">
-      {{ page.header_title }}<br>
-      <span class="text-surf-600 font-sans">{{ page.header_highlight }}</span>
-    </h1>
-    <p class="text-lg text-slate-500 max-w-xl leading-relaxed mb-8">
-      {{ site.tagline }}
-    </p>
-    <div class="flex flex-wrap gap-3">
-      <a href="#projects" class="px-6 py-3 bg-slate-900 text-white text-xs font-sans font-bold hover:bg-surf-600 transition-all shadow-md rounded-lg no-underline">
-        VIEW PROJECTS →
-      </a>
-      <a href="{{ site.resume_url }}" class="px-6 py-3 bg-white border border-slate-300 text-slate-700 text-xs font-sans font-bold hover:border-surf-500 hover:text-surf-600 transition-all rounded-lg no-underline">
-        MY RESUME
-      </a>
+<section id="about" class="hero container" aria-labelledby="intro-title">
+  <div class="hero-heading">
+    <p class="hero-context">{{ site.description }}</p>
+    <h1 id="intro-title">{{ site.title }}</h1>
+    <p class="hero-specialty">{{ page.header_title }} {{ page.header_highlight }}</p>
+  </div>
+  <div class="hero-details">
+    <p class="hero-description">{{ site.tagline }}</p>
+    <div class="hero-links">
+      <a class="button" href="#projects">Explore projects <span aria-hidden="true">&darr;</span></a>
+      <a class="text-link" href="{{ site.resume_url | relative_url }}">View resume <span aria-hidden="true">&nearr;</span></a>
     </div>
   </div>
 </section>
 
-<!-- Divider -->
-<div class="border-t border-slate-200 max-w-6xl mx-auto px-4"></div>
-
-<!-- Projects -->
-<section id="projects" class="py-16 px-4 max-w-6xl mx-auto">
-  <div class="flex items-end justify-between mb-10">
-    <div>
-      <p class="text-[10px] font-sans font-bold text-surf-600 uppercase tracking-wide mb-1">Portfolio</p>
-      <h2 class="text-3xl font-bold text-slate-900 tracking-tight">Projects</h2>
-    </div>
+<section id="projects" class="projects-section container" aria-labelledby="projects-title">
+  <div class="section-heading">
+    <h2 id="projects-title">Selected projects</h2>
+    <p>Design, fabrication &amp; control</p>
   </div>
 
-  <div class="grid md:grid-cols-2 gap-6">
+  <div class="project-list">
     {% for project in site.data.projects %}
-    <a href="{{ project.url }}" class="group block bg-white border border-slate-200 hover:border-surf-400 transition-all hover:shadow-xl hover:shadow-surf-500/10 no-underline rounded-xl overflow-hidden">
-
-      <!-- Image -->
-      <div class="bg-slate-100 relative overflow-hidden" style="height: 280px;">
+    <article class="project-entry">
+      <a class="project-image-link" href="{{ project.url | relative_url }}" aria-label="View {{ project.title | escape }}" tabindex="-1">
         {% if project.image %}
-          <img src="{{ project.image }}" alt="{{ project.title }}" style="width:100%; height:100%; object-fit:cover; display:block;" class="transition-transform duration-700 group-hover:scale-105">
+        <img src="{{ project.image | relative_url }}" alt="" width="960" height="640" loading="lazy" decoding="async" style="object-position: {{ project.image_position | default: 'center' }}; object-fit: {{ project.image_fit | default: 'cover' }};">
         {% else %}
-          <div class="absolute inset-0 flex items-center justify-center text-slate-300">
-            <i data-feather="{{ project.icon }}" class="w-16 h-16"></i>
-          </div>
+        <span class="project-image-placeholder">{{ project.title }}</span>
         {% endif %}
-        <!-- Category badge -->
-        <div class="absolute top-3 right-3 bg-white/90 backdrop-blur text-surf-700 text-[10px] font-sans font-bold px-2.5 py-1 rounded-md shadow-sm border border-slate-100 uppercase">
-          {{ project.category }}
-        </div>
-      </div>
-
-      <!-- Content -->
-      <div class="p-6">
-        <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-surf-600 font-sans transition-colors leading-snug">{{ project.title }}</h3>
-        <p class="text-slate-500 text-sm leading-relaxed mb-5">{{ project.description }}</p>
-        <div class="flex flex-wrap gap-1.5">
+      </a>
+      <div class="project-summary">
+        <p class="project-category">{% if project.category == 'design' %}Mechanical design{% elsif project.category == 'code' %}Robotics &amp; control{% else %}{{ project.category }}{% endif %}</p>
+        <h3><a href="{{ project.url | relative_url }}">{{ project.title }}</a></h3>
+        <p class="project-description">{{ project.description }}</p>
+        <ul class="project-tags" aria-label="Skills used">
           {% for tag in project.tags %}
-          <span class="px-2 py-0.5 bg-slate-50 border border-slate-200 text-slate-500 text-[10px] font-sans font-bold uppercase rounded">{{ tag }}</span>
+          <li>{{ tag }}</li>
           {% endfor %}
-        </div>
+        </ul>
+        <a class="text-link project-detail-link" href="{{ project.url | relative_url }}" aria-label="Read about {{ project.title | escape }}">View project <span aria-hidden="true">&rarr;</span></a>
       </div>
-
-      <!-- Footer link hint -->
-      <div class="px-6 pb-5">
-        <span class="text-[10px] font-sans font-bold text-surf-500 uppercase tracking-wider group-hover:gap-2 flex items-center gap-1 transition-all">
-          View Project <i data-feather="arrow-right" class="w-3 h-3 group-hover:translate-x-1 transition-transform"></i>
-        </span>
-      </div>
-
-    </a>
+    </article>
     {% endfor %}
   </div>
+</section>
+
+<section class="contact-section container" aria-labelledby="contact-title">
+  <div>
+    <h2 id="contact-title">Get in touch.</h2>
+    <p>For engineering opportunities and project conversations.</p>
+  </div>
+  <a class="text-link contact-link" href="mailto:{{ site.email }}">{{ site.email }} <span aria-hidden="true">&nearr;</span></a>
 </section>

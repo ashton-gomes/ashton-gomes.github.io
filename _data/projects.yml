@@ -13,6 +13,7 @@
   icon: "activity"
   image: "/assets/shockdyno_final_assembly_cad.png"
   image_position: "center center"
+  image_fit: "contain"
   tags: ["Mechanical Design", "Vehicle Dynamics", "DAQ", "Controls"]
   url: "/projects/shockdyno.html"
 
@@ -31,7 +32,7 @@
   icon: "cpu"
   image: "/assets/sclerp_trajectory.png"
   image_position: "center 75%"
-  image_scale: "1.8"
+  image_fit: "contain"
   tags: ["Dual Quaternions", "Python", "Robotics", "Kinematics", "ScLERP", "RMRC"]
   url: "/projects/sclerp.html"
 

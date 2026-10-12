@@ -8,6 +8,3 @@ url: ""
 
 # Build settings
 markdown: kramdown
-theme: jekyll-theme-primer 
-plugins:
-  - jekyll-seo-tag

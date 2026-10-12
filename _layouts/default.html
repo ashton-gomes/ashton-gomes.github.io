@@ -1,94 +1,48 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title }} | {{ site.title }}</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/feather-icons"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        surf: {
-                          50: '#f0fdfa',
-                          100: '#ccfbf1',
-                          200: '#99f6e4',
-                          300: '#5eead4',
-                          500: '#14b8a6',
-                          600: '#0d9488',
-                          700: '#0f766e',
-                          900: '#134e4a'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['"Segoe UI"', '"Segoe UI Variable"', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
-                        mono: ['Consolas', 'Menlo', 'monospace']
-                    }
-                }
-            }
-        }
-    </script>
-    <script>
-    MathJax = {
-        tex: {
-            inlineMath: [['$', '$'], ['\\(', '\\)']],
-            displayMath: [['$$', '$$'], ['\\[', '\\]']]
-        },
-        svg: { fontCache: 'global' }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{ page.description | default: site.tagline | escape }}">
+  <title>{% if page.layout == 'home' %}{{ site.title | escape }} | Mechanical Engineering{% else %}{{ page.title | escape }} | {{ site.title | escape }}{% endif %}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+  {% if page.layout == 'project' %}
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: { fontCache: 'global' }
     };
-</script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
-    <style>
-        .bg-grid {
-            background-size: 32px 32px;
-            background-image:
-                linear-gradient(to right, rgba(0,0,0,0.04) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(0,0,0,0.04) 1px, transparent 1px);
-        }
-        ::selection { background-color: #99f6e4; color: #134e4a; }
-        html { font-size: 16px; }
-        body { font-size: 1rem; color: #1e293b; }
-        nav { transition: box-shadow 0.2s; }
-    </style>
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+  {% endif %}
 </head>
-<body class="bg-white text-slate-800 antialiased bg-grid flex flex-col min-h-screen">
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-    <!-- Navigation -->
-    <nav class="fixed w-full bg-white/95 backdrop-blur-sm border-b border-slate-200 z-50 h-16">
-        <div class="max-w-6xl mx-auto px-4 h-full flex justify-between items-center">
-            <!-- Logo -->
-            <a href="/" class="flex items-center gap-2.5 group no-underline">
-                <div class="w-8 h-8 bg-surf-600 text-white flex items-center justify-center font-sans font-bold text-xs rounded-lg shadow-sm group-hover:bg-surf-900 transition-colors">AG</div>
-                <span class="font-sans font-bold text-slate-900 tracking-tight text-sm">Ashton Gomes</span>
-            </a>
-            <!-- Links -->
-            <div class="hidden md:flex items-center gap-8">
-                <a href="/#about"    class="text-sm font-sans font-medium text-slate-500 hover:text-surf-600 transition-colors no-underline">Profile</a>
-                <a href="/#projects" class="text-sm font-sans font-medium text-slate-500 hover:text-surf-600 transition-colors no-underline">Projects</a>
-                <a href="{{ site.resume_url }}" class="text-sm font-sans font-medium text-slate-500 hover:text-surf-600 transition-colors no-underline">Resume</a>
-                <a href="mailto:{{ site.email }}" class="text-sm font-sans font-semibold text-surf-700 border border-surf-300 px-4 py-1.5 rounded-lg hover:bg-surf-50 hover:border-surf-500 transition-all no-underline">
-                    Contact
-                </a>
-            </div>
-        </div>
-    </nav>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="site-name" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="{{ '/#about' | relative_url }}">About</a>
+        <a href="{{ '/#projects' | relative_url }}">Projects</a>
+        <a href="{{ site.resume_url | relative_url }}">Resume</a>
+        <a href="mailto:{{ site.email }}">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-    <main class="flex-grow pt-16">
-        {{ content }}
-    </main>
+  <main id="main" tabindex="-1">
+    {{ content }}
+  </main>
 
-    <footer class="bg-white border-t border-slate-200 py-8 mt-16">
-        <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-3">
-            <div class="flex items-center gap-2">
-                <div class="w-5 h-5 bg-surf-600 text-white flex items-center justify-center font-sans font-bold text-[9px] rounded">AG</div>
-                <p class="text-sm font-sans text-slate-400">Ashton Gomes · Mechanical Engineering</p>
-            </div>
-            <p class="text-sm font-sans text-slate-400">Built with Jekyll & Tailwind · {{ site.time | date: "%Y" }}</p>
-        </div>
-    </footer>
-
-    <script>feather.replace();</script>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>{{ site.title }} <span aria-hidden="true">&middot;</span> Mechanical Engineering</p>
+      <p>&copy; {{ site.time | date: '%Y' }}</p>
+    </div>
+  </footer>
 </body>
 </html>
