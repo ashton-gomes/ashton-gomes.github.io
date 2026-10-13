@@ -86,6 +86,20 @@ img, video { display: block; max-width: 100%; height: auto; }
 .contact-section p { margin-top: .75rem; color: var(--muted); font-size: .9375rem; }
 .contact-link { overflow-wrap: anywhere; }
 
+/* Resume information */
+.resume-section { padding-top: 4.5rem; }
+.resume-entry { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 2.5rem; padding-block: 1.5rem; border-bottom: 1px solid var(--line); }
+.resume-meta { color: var(--muted); font-size: .875rem; }
+.resume-meta p + p { margin-top: .35rem; }
+.resume-details h3 { font-size: 1.25rem; font-weight: 600; line-height: 1.4; letter-spacing: -.015em; }
+.resume-organization { margin-top: .35rem; color: var(--muted); }
+.resume-details ul { padding-left: 1.25rem; margin: 1rem 0 0; color: var(--body); }
+.resume-details li { margin-bottom: .65rem; }
+.resume-details li:last-child { margin-bottom: 0; }
+.technical-skills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 3rem; margin: 0; padding-top: 1rem; }
+.technical-skills dt { font-weight: 600; }
+.technical-skills dd { margin: .5rem 0 0; color: var(--body); }
+
 /* Project pages */
 .project-page { padding-top: 2.5rem; }
 .back-link { color: var(--muted); }
@@ -150,6 +164,9 @@ img, video { display: block; max-width: 100%; height: auto; }
   .project-summary h3 { max-width: 30ch; font-size: 1.625rem; }
   .project-detail-link { margin-top: .75rem; }
   .contact-section { align-items: flex-start; flex-direction: column; gap: 1rem; padding-top: 3rem; }
+  .resume-section { padding-top: 3rem; }
+  .resume-entry { grid-template-columns: minmax(0, 1fr); gap: .75rem; }
+  .technical-skills { grid-template-columns: minmax(0, 1fr); }
   .site-footer { margin-top: 3rem; }
   .footer-inner { flex-wrap: wrap; gap: .5rem; }
   .project-page { padding-top: 1.5rem; }

@@ -1,7 +1,7 @@
 ---
 layout: project
 title: Kinova Gen3 Kinematic Modeling & Trajectory Planning
-description: Full kinematic stack for a 7-DOF redundant manipulator, screw axis derivation, workspace mapping, singularity analysis, Newton-Raphson IK, and multi-mode trajectory planning.
+description: Python kinematics and trajectory planning for the 7-DOF Kinova Gen3, forming the foundation for subsequent C++ task-space planning and resolved-rate control research.
 tags: [Python, Robotics, Kinematics, Trajectory Planning, NumPy, Modern Robotics]
 ---
 
@@ -10,6 +10,8 @@ tags: [Python, Robotics, Kinematics, Trajectory Planning, NumPy, Modern Robotics
 This project built a complete kinematic and trajectory planning stack for the Kinova Gen3, a 7-DOF serial manipulator, from first principles. Rather than relying on a pre-built robotics library, every component, forward kinematics, Jacobian computation, numerical inverse kinematics, and five distinct trajectory planners, was derived from the Modern Robotics (screw theory) framework and implemented in Python from scratch.
 
 The pipeline starts at the URDF level: joint axes are parsed programmatically, converted to space-frame screw axes, and validated against the pytransform3d ground truth before anything downstream is trusted. Every subsequent module, IK, singularity detection, trajectory planning, chains off that verified kinematic model.
+
+This page documents the Python kinematics foundation. My current work as a **Graduate Researcher in the Interacting Robotic Systems Laboratory**, beginning in **January 2026**, extends that work into a **C++ task-space planner** using goal-directed RRT, dual-quaternion ScLERP, and resolved-rate control, benchmarked in MuJoCo. The current simulation results and their evaluation scope are documented in [Robot Motion Planning — RRT, ScLERP & Resolved-Rate Control]({{ '/projects/sclerp.html' | relative_url }}).
 
 ---
 

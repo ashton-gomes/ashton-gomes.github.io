@@ -13,6 +13,7 @@ layout: default
     <div class="hero-links">
       <a class="button" href="#projects">Explore projects <span aria-hidden="true">&darr;</span></a>
       <a class="text-link" href="{{ site.resume_url | relative_url }}">View resume <span aria-hidden="true">&nearr;</span></a>
+      <a class="text-link" href="{{ site.linkedin_url }}">LinkedIn <span aria-hidden="true">&nearr;</span></a>
     </div>
   </div>
 </section>
@@ -47,6 +48,58 @@ layout: default
     </article>
     {% endfor %}
   </div>
+</section>
+
+<section id="experience" class="resume-section container" aria-labelledby="experience-title">
+  <div class="section-heading">
+    <h2 id="experience-title">Work &amp; research experience</h2>
+  </div>
+  {% for experience in site.data.profile.experience %}
+  <article class="resume-entry">
+    <div class="resume-meta">
+      <p>{{ experience.dates | escape }}</p>
+      <p>{{ experience.location | escape }}</p>
+    </div>
+    <div class="resume-details">
+      <h3>{{ experience.role | escape }}</h3>
+      <p class="resume-organization">{{ experience.organization | escape }}</p>
+      <ul>
+        {% for point in experience.points %}
+        <li>{{ point | escape }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </article>
+  {% endfor %}
+</section>
+
+<section class="resume-section container" aria-labelledby="education-title">
+  <div class="section-heading">
+    <h2 id="education-title">Education</h2>
+  </div>
+  {% for education in site.data.profile.education %}
+  <article class="resume-entry">
+    <p class="resume-meta">{{ education.completion | escape }}</p>
+    <div class="resume-details">
+      <h3>{{ education.degree | escape }}</h3>
+      <p class="resume-organization">{{ education.institution | escape }} &middot; GPA {{ education.gpa | escape }}</p>
+    </div>
+  </article>
+  {% endfor %}
+</section>
+
+<section class="resume-section container" aria-labelledby="technical-skills-title">
+  <div class="section-heading">
+    <h2 id="technical-skills-title">Technical skills</h2>
+  </div>
+  <dl class="technical-skills">
+    {% for skill in site.data.profile.skills %}
+    <div>
+      <dt>{{ skill.category | escape }}</dt>
+      <dd>{{ skill.items | join: ', ' | escape }}</dd>
+    </div>
+    {% endfor %}
+  </dl>
 </section>
 
 <section class="contact-section container" aria-labelledby="contact-title">

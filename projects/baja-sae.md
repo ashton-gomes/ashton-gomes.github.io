@@ -1,8 +1,8 @@
 ---
 layout: project
 title: Baja SAE Vehicle Dynamics Lead
-description: Complete redesign of front suspension kinematics and steering geometry following a 2025 structural failure.
-tags: [SolidWorks, Python, MATLAB, FEA, Manual Machining]
+description: Led a 12-member steering, suspension, and braking team; reduced inside turning radius from 9 ft to 2 ft and control-arm weight by approximately 0.8 lb per arm.
+tags: [SolidWorks, MATLAB, Suspension Kinematics, FEA, DFM, DFA, Manual Machining]
 hero_image: /assets/bajasae_finalimage.jpg
 hero_alt: Completed Stony Brook Motorsports Baja SAE car 99 with its suspension assembled at the competition paddock.
 hero_caption: "The completed Baja SAE vehicle at the competition paddock. The assembled car brings the suspension geometry, steering packaging, and fabrication work described below into a single system."
@@ -10,7 +10,9 @@ hero_caption: "The completed Baja SAE vehicle at the competition paddock. The as
 
 ## Overview
 
-As Vehicle Dynamics Lead, I headed the design and fabrication of the Steering, Brakes, and Suspension subsystems. The primary objective for the 2025-2026 season was a ground-up redesign to address the catastrophic fatigue failure of the previous year's aluminum A-arms, while simultaneously improving low-speed maneuverability and general handling.
+As **Vehicle Dynamics Lead for Stony Brook Motorsports since June 2025**, I lead a **12-member team** responsible for steering, suspension, and braking. I coordinate design reviews, FEA, and fabrication schedules, completing all three systems by the end of the academic year. The 2025-2026 redesign addressed the previous year's aluminum A-arm failure while improving maneuverability, reducing control-arm mass, and simplifying fabrication.
+
+The updated suspension and steering contributed to the team's **9th-place finish in the overall dynamic-event standings**, an improvement from **40th to 18th in acceleration**, and **18th place in hill climb**.
 
 The completed vehicle shown above is the outcome of that redesign. The process below follows the suspension from the 2025 failure analysis through kinematic modeling, structural validation, precision fabrication, and final integration into the car.
 
@@ -18,7 +20,7 @@ The completed vehicle shown above is the outcome of that redesign. The process b
 
 ## 2025 Failure Analysis
 
-The redesign was motivated by a structural failure and a failure to pass the manuverability test during competition. The images below document the failure mode that drove every design decision in the 2026 season.
+The redesign was motivated by a structural failure and a failure to pass the maneuverability test during competition. The images below document the failure mode that informed the 2026 redesign.
 
 ### System-Level View
 
@@ -28,25 +30,25 @@ The redesign was motivated by a structural failure and a failure to pass the man
 ### Fracture Detail
 
 ![Failed A-arm weld joint close-up](/assets/bajasae_92failedarm.jpg)
-*Close-up of the fractured weld joint at the A-arm tube junction. The crack initiated and propagated through the heat-affected zone (HAZ) at the tube weld, a fatigue failure driven by stress concentration at an under-reinforced weld. The Factor of Safety at this joint was well below 1.0 at the point of fracture, due to suboptimal jigging and a disregard for the significant heat-affected zone negating the heat treatment of the aluminum tubes.*
+*Close-up of the fractured weld joint at the A-arm tube junction. The failure focused the redesign on weld access, heat-affected regions, and a control-arm geometry that could be jigged and manufactured more consistently.*
 
-The failure mode informed two immediate design changes: a material transition from aluminum to 4130 Chromoly Steel (higher fatigue strength and weldability), a, tab geometry redesign to distribute load away from the weld toe and reduce stress concentration at the critical joint, and a control arm geometry redesign to make them more manufacturable.
+The redesign combined a transition from aluminum to 4130 Chromoly Steel with revised tab geometry and a simpler control-arm layout. I eliminated tube bends and halved weld-related heat-affected regions to simplify fabrication and improve weld access.
 
 ---
 
 ## Design Requirements & Constraints
 
 ### 1. Structural Reliability
-Increase **Factor of Safety (FoS)** at critical stress concentrations to **1.4+**, with overall control arm FoS exceeding **5.0**. This ensures the assembly can withstand high-stress events without plastic deformation at the points that caused the previous year's failure.
+Reduce control-arm deformation while improving the load path around the shock mounts and welds. Relocating the shock mounts to the upper control arms contributed to a **40% reduction in FEA-predicted deformation**.
 
 ### 2. Kinematic Optimization
 Focus on precision handling by achieving the following metrics:
-* **Ackermann Steering:** Achieve **60%** to significantly reduce tire scrub in tight corners.
+* **Steering Geometry:** Replace **40% Ackermann** with **20% anti-Ackermann** and incorporate passive rear steer, reducing the **inside turning radius from 9 ft to 2 ft**.
 * **Bump Steer:** Maintain **<0.05°** throughout full travel to prevent unintended steering inputs.
-* **Roll Stability:** Optimize Instant Centers to stabilize the Roll Center relative to the Center of Gravity during cornering.
+* **Handling & Traction:** Revise roll-center geometry, roll stiffness, and anti-squat, supported by MATLAB suspension-kinematics and damping models.
 
 ### 3. Weight Management
-Limit total mass increase to **<1.0 lb** despite the material transition. This requires aggressive wall-thickness optimization when switching from Aluminum to **4130 Chromoly Steel**.
+Reduce mass alongside the structural and manufacturing changes. Tube wall thickness decreased from **0.085 in to 0.049 in**, helping reduce weight by **approximately 0.8 lb per control arm**.
 
 ---
 
@@ -54,7 +56,7 @@ Limit total mass increase to **<1.0 lb** despite the material transition. This r
 
 ### 1. Kinematic Modeling & Simulation
 
-Using a combination of **MATLAB** and **SolidWorks Layout Sketches**, I modeled the suspension linkage to track the virtual swing arm length. This allowed for real-time iteration of mounting points to achieve a **25% reduction in turning radius (10 ft to 7.5 ft)**.
+Using **MATLAB** suspension-kinematics and damping models alongside **SolidWorks Layout Sketches**, I evaluated mounting points, motion ratio, and damping selection. The steering redesign replaced **40% Ackermann with 20% anti-Ackermann** and incorporated **passive rear steer**, reducing the **inside turning radius from 9 ft to 2 ft**. Revisions to roll-center geometry, roll stiffness, and anti-squat also improved cornering and acceleration traction.
 
 ### Kinematic Synthesis
 
@@ -65,12 +67,12 @@ Using a combination of **MATLAB** and **SolidWorks Layout Sketches**, I modeled 
 
 I performed Finite Element Analysis on the A-arms and chassis tabs, simulating a "Worst-Case" scenario involving 400 lbf of braking load, 400 lbf of steering load, and 1200 lbf coming from the wheel load.
 
-- **Result:** Identified a stress concentration in the previous year's weld joint and shock mounting design. Redesigned the tab geometry to distribute load more evenly, pushing the FoS at the critical failure point from 1.0 to 1.45 (a 45% improvement), while the overall control arm structure exceeds FoS 5.0. This is comparing both ideal cases, which was not actually the case when comparing the manufactured versions. My control arm design has a significantly smaller heat affected zone while also being easier to manufacture in plane, while the aluminum control arm was not able to be jigged ideally. 
+- **Result:** Relocated the shock mounts to the upper control arms and reduced tube wall thickness from **0.085 to 0.049 in**, reducing **FEA-predicted deformation by 40%** and weight by **approximately 0.8 lb per control arm**. Eliminating tube bends and halving weld-related heat-affected regions also improved manufacturability and weld access.
 
 ### FEA Validation
 
 ![Suspension Geometry Analysis](/assets/FEA.png)
-*Sample FEA of the Front Left Upper Control Arm, highlighting the improved factor of safety at the critical stress concentration that caused the 2025 competition failure.*
+*Sample FEA of the front left upper control arm, used to evaluate the revised shock-mount load path and structural response.*
 
 ### 3. Suspension Jigging & Geometric Validation
 
@@ -93,9 +95,9 @@ With the datum established, the lower control arm was clamped and tacked in plac
 #### Final Assembled Corner
 
 ![Front Left Suspension Assembly](/assets/bajasae_frontleftsuspension_setup.jpg)
-*Completed front left corner showing the AFCO 63 coilover (8" travel, adjustable rebound), uprights, and A-arm geometry as assembled.*
+*Completed front left corner showing the AFCO 63 coilover, uprights, and A-arm geometry as assembled.*
 
-The finished corner, fitted with the **AFCO 63 coilover** running **13.6 inches of travel** with adjustable rebound, confirmed that the jig process successfully translated the kinematic design into hardware. The geometry matched design targets within tolerance, validating the jigging approach as an effective method for maintaining simulation accuracy through fabrication.
+The finished corner, fitted with the **AFCO 63 coilover** with adjustable rebound, confirmed that the jig process translated the kinematic design into hardware. The geometry matched design targets within tolerance, connecting the MATLAB motion-ratio and damping models to the assembled suspension.
 
 ### 4. Precision Manufacturing
 
@@ -124,9 +126,11 @@ This stage brought the individually jigged suspension corners into the full vehi
 ## Results & Impact
 
 - **Integration:** Brought the redesigned suspension from kinematic layouts and individually jigged corners into the assembled Baja SAE vehicle.
-- **Strength:** **45% stronger at critical stress concentrations** (FoS 1.0 to 1.45), with overall control arm FoS exceeding 5.0 and a negligible weight penalty.
-- **Agility:** **25% reduction in turning radius** (10 ft to 7.5 ft) and a **10.9° increase** in total steering angle.
-- **Stability:** Achieved near-zero bump steer, significantly reducing driver fatigue during endurance heats.
+- **Mass & Structural Response:** Reduced weight by **approximately 0.8 lb per control arm** and **FEA-predicted deformation by 40%**.
+- **Manufacturability:** Reduced tube wall thickness from **0.085 to 0.049 in**, eliminated tube bends, and halved weld-related heat-affected regions.
+- **Agility:** Reduced **inside turning radius from 9 ft to 2 ft** with **20% anti-Ackermann** geometry and passive rear steer.
+- **Competition:** Contributed to **9th overall in dynamic events**, an acceleration improvement from **40th to 18th**, and **18th in hill climb**.
+- **Leadership:** Coordinated a **12-member team**, design reviews, FEA, and fabrication schedules across steering, suspension, and braking.
 
 ---
 

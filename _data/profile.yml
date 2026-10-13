@@ -1,0 +1,44 @@
+education:
+  - degree: "MS in Mechanical Engineering"
+    institution: "Stony Brook University"
+    completion: "Expected May 2027"
+    gpa: "3.67/4.0"
+  - degree: "BE in Mechanical Engineering"
+    institution: "Stony Brook University"
+    completion: "Graduated May 2026"
+    gpa: "3.57/4.0"
+
+experience:
+  - role: "Graduate Researcher"
+    organization: "Interacting Robotic Systems Laboratory"
+    location: "Stony Brook, NY"
+    dates: "Jan 2026 – Present"
+    points:
+      - "Develop a C++ task-space planner for a 7-DOF Kinova Gen3 using goal-directed RRT and dual-quaternion ScLERP; achieved 108 ms median planning time across MuJoCo trials passing collision and joint-limit checks."
+      - "Implement resolved-rate control with dual-quaternion forward kinematics, a damped Jacobian pseudoinverse, and quaternion sign alignment; final position error was below 0.004 mm across 23 validated simulation trials."
+      - "Benchmark 40 reachable-goal trials in empty and randomized obstacle scenes: 97.5% pose-target completion, with 240 collision and joint-limit checks per path segment."
+  - role: "Vehicle Dynamics Lead"
+    organization: "Stony Brook Motorsports"
+    location: "Stony Brook, NY"
+    dates: "June 2025 – Present"
+    points:
+      - "Lead a 12-member steering, suspension, and braking team, coordinating design reviews, FEA, and fabrication schedules to complete all three systems by the end of the academic year."
+      - "Reduced weight by approximately 0.8 lb per control arm and FEA-predicted deformation by 40%; reduced tube wall thickness from 0.085 to 0.049 in, eliminated tube bends, and halved weld-related heat-affected regions."
+      - "Reduced inside turning radius from 9 ft to 2 ft using 20% anti-Ackermann geometry and passive rear steer; contributed to 9th overall in dynamic events, an acceleration improvement from 40th to 18th, and 18th in hill climb."
+  - role: "Project Management Intern"
+    organization: "Dormitory Authority of the State of New York"
+    location: "New York, NY"
+    dates: "May 2025 – Aug 2025"
+    points:
+      - "Tracked a $4.4M renovation, comparing field installations with engineering drawings and specifications to identify discrepancies and monitor milestones."
+      - "Conducted MEP field inspections to assess building-code compliance and document safety risks."
+
+skills:
+  - category: "CAD & Analysis"
+    items: ["SolidWorks", "Fusion 360", "Siemens NX", "Finite Element Analysis (FEA)", "Tolerancing"]
+  - category: "Programming & Robotics"
+    items: ["Python", "C++", "MATLAB", "Simulink", "MuJoCo", "ROS/ROS2", "Git", "Linux"]
+  - category: "Engineering Methods"
+    items: ["Suspension Kinematics", "Robot Kinematics", "Dynamics", "Motion Planning", "PID Control", "DFM", "DFA"]
+  - category: "Manufacturing & Instrumentation"
+    items: ["CNC Machining", "Milling", "Turning", "Soldering", "Data Acquisition", "LabVIEW", "NI-DAQ", "UART"]

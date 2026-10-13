@@ -1,8 +1,8 @@
 ---
 layout: project
 title: Custom Shock Dynamometer
-description: Design and fabrication of a custom dynamometer for objective suspension tuning and damping characterization of Baja SAE shocks.
-tags: [SolidWorks, Python, FEA, DAQ, Controls, Manual Machining]
+description: Designed and fabricated a crank-driven shock dynamometer with a 4-inch stroke, integrated force and encoder acquisition, and Python analysis of compression/rebound force-velocity curves.
+tags: [SolidWorks, Python, FEA, Teensy 4.1, DAQ, Firmware, Manual Machining]
 hero_image: /assets/shockdyno_mainimage.jpg
 hero_alt: Assembled shock dynamometer with an AFCO coilover, Whiffle Tree load cell mount, guarded crank, and control enclosure.
 hero_caption: "The assembled shock dynamometer with an AFCO shock installed. The Whiffle Tree load cell mount, guarded crank-flywheel drive, and control enclosure bring the mechanical design and instrumentation into one test system."
@@ -10,9 +10,9 @@ hero_caption: "The assembled shock dynamometer with an AFCO shock installed. The
 
 ## Overview
 
-Off-road racing vehicles can experience over 8 inches of jounce travel during high-velocity impacts, and tuning dampers based on driver feel alone introduces unacceptable variability into that process. This project is the design and fabrication of a custom shock dynamometer, a machine capable of actuating a shock absorber through a repeatable sinusoidal stroke at controlled velocities and capturing real-time Force-Velocity (FV) curves with high-resolution DAQ hardware.
+I designed and fabricated this crank-driven shock dynamometer as a **senior design project from August 2025 to May 2026**. A **3 HP motor**, **20:1 worm gearbox**, and variable-frequency drive provide a **4-inch stroke**, with a **15 in/s peak velocity target** for damping characterization. The project combines mechanical actuation, force acquisition, and encoder-based axial velocity calculation to generate compression and rebound force-velocity curves.
 
-The dyno was developed as a senior capstone project for Stony Brook Motorsports to objectively characterize and tune the team's dampers. The system has progressed from frame fabrication and standalone load cell DAQ validation to an assembled machine operating with an AFCO shock installed. The photograph above and operating videos below connect the original design decisions to the physical hardware.
+The dyno was developed for Stony Brook Motorsports to objectively characterize and tune the team's dampers. I developed **Teensy 4.1 firmware** and a **Python analysis pipeline** integrating a **24-bit ADS1220 ADC** and **quadrature encoder**. The assembled system operates with an AFCO shock installed, while the analysis generates compression/rebound force-velocity curves and estimates branch slopes through median binning and cross-validated fitting.
 
 ### Assembled Dyno in Operation
 
@@ -28,7 +28,7 @@ The dyno was developed as a senior capstone project for Stony Brook Motorsports 
 ## Design Requirements & Constraints
 
 ### 1. Actuation Fidelity
-Deliver a repeatable **4-inch stroke** (2" crank eccentricity) at a peak velocity of **15 in/s**, accurately simulating real suspension velocities encountered during testing. Variable-speed control via VFD allows the full range of damping velocities to be swept in a single test session.
+Provide a repeatable **4-inch stroke** (2" crank eccentricity), **targeting 15 in/s peak velocity** for damping characterization. Variable-speed control via VFD allows testing at different damping velocities.
 
 ### 2. Structural Integrity
 Survive a worst-case loading scenario of **750 lbf at 5° off-axis**, the estimated peak force at the crank pin intersection under maximum damping combined with gearbox reaction torque. The frame must achieve a minimum **FoS of 3.0** under this condition to ensure operator safety across thousands of fatigue cycles.
@@ -54,7 +54,7 @@ In practice, however, the Scotch Yoke introduced significant fabrication and mec
 
 The design was revised to a **direct-link crank**, where the shock absorber itself serves as the connecting rod between the crank pin and a fixed upper mount. This eliminated the yoke entirely, the most complex custom-fabricated component in the original design, and replaced it with a single precision-machined steel pin and bearing stack. The shock's eyelets, already designed to handle axial cyclic loading, handle the kinematic constraint naturally. Off-axis forces are managed by the dual-bearing crank pin interface rather than a sliding yoke, which is both easier to manufacture and more robust under sustained cyclic loads.
 
-The tradeoff is that a direct-link crank produces **approximately** sinusoidal motion rather than perfectly sinusoidal, as the instantaneous velocity deviates slightly from ideal depending on the connecting rod length ratio. For this application that's acceptable, because the encoder-based position measurement tracks the actual crank angle in real time. The Python post-processing pipeline computes the true instantaneous piston velocity from encoder data at every sample, so the output FV curves reflect actual measured velocity rather than an assumed sinusoidal profile. The kinematic impurity of the mechanism is fully corrected in software.
+The tradeoff is that a direct-link crank produces **approximately sinusoidal motion**, with instantaneous velocity depending on the mechanism geometry. The quadrature encoder tracks rotation, and the Python pipeline calculates axial velocity from that position information and the crank geometry. The force-velocity analysis therefore uses the calculated shock velocity at each sample rather than assuming an ideal sinusoidal profile.
 
 ### 2. Mechanism Design & Kinematic Analysis
 
@@ -97,9 +97,9 @@ A worst-case static simulation applied **750 lbf at 5° off-axis** at the crank 
 
 ### 5. Data Acquisition & Position Correction
 
-Data is logged via a **Teensy 4.1 microcontroller** paired with a **24-bit ADS1220 ADC** for high-resolution analog load cell acquisition. A **2048 CPR incremental rotary encoder** is mounted directly on the motor shaft, with the high-resolution placement intentional: the 20:1 gearbox reduction amplifies encoder resolution at the crank output, yielding precise angular position data throughout the stroke.
+I developed firmware for a **Teensy 4.1 microcontroller** paired with a **24-bit ADS1220 ADC** and **quadrature encoder**. The system captures force and encoder position together, providing the inputs for the Python pipeline to calculate axial velocity throughout the stroke.
 
-Because the shock operates as a connecting rod rather than a pure linear actuator, the instantaneous force vector rotates as a function of crank angle. The Teensy logs raw encoder counts and load cell voltage simultaneously; a **Python post-processing pipeline** then applies a cosine correction factor derived from the instantaneous crank angle to project all force data back onto the axial reference frame. This ensures the output FV curves reflect true hydraulic damping resistance rather than the apparent force along the crank's line of action.
+Because the shock operates as a connecting rod rather than a pure linear actuator, its angle changes through the crank cycle. The **Python analysis pipeline** uses encoder position and mechanism geometry to calculate axial velocity and apply the force correction described in the design. It generates separate **compression and rebound force-velocity curves**, then estimates the branch slopes using **median binning and cross-validated fitting**.
 
 ### DAQ Bench Validation
 
@@ -124,7 +124,9 @@ The assembled dyno brings the braced steel frame, machined crank, Whiffle Tree a
 - **Structural:** Frame validated to a minimum FoS of **3.1** under worst-case loading; Whiffle Tree crossbar achieves **5.8 FoS** with only **0.006" deflection**, confirming the load path routes through the sensor rather than the structure.
 - **Fabrication & Integration:** Assembled the frame, machined drivetrain, Whiffle Tree load cell interface, guard, and control enclosure into the physical dynamometer shown above.
 - **Mechanical Operation:** Demonstrated crank-driven cycling of an installed AFCO shock in the full-system and close-up operating videos.
-- **DAQ Validation:** Validated load cell signal acquisition with the Teensy/ADS1220 bench system before integrating the mechanical assembly and controls.
+- **Actuation:** Provided a **4-inch stroke** using a **3 HP motor**, **20:1 worm gearbox**, and VFD, with a **15 in/s peak velocity target**.
+- **Firmware & DAQ:** Integrated the **Teensy 4.1**, **24-bit ADS1220 ADC**, and **quadrature encoder** to capture force and calculate axial velocity.
+- **Damping Analysis:** Generated compression/rebound **force-velocity curves** and estimated branch slopes through **median binning and cross-validated fitting**.
 - **Motivated by real data:** An on-car linear potentiometer and body accelerometer system was used to estimate actual shock forces experienced during testing. This data directly drove the 750 lbf worst-case design load and confirmed the velocity range the dyno needs to cover.
 
 ---
