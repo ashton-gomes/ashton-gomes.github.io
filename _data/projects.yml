@@ -2,16 +2,17 @@
   category: "design"
   description: "Vehicle Dynamics Lead. Designed suspension geometry and steering systems for an off-road racing vehicle."
   icon: "truck"
-  image: "/assets/FullAssembly2526.jpg"
-  image_position: "center 30%"
+  image: "/assets/bajasae_finalimage.jpg"
+  image_position: "center center"
+  image_fit: "contain"
   tags: ["SolidWorks", "Design", "FEA", "Python", "MATLAB"]
   url: "/projects/baja-sae.html"
 
 - title: "Shock Dynamometer — Senior Design"
   category: "design"
-  description: "Developed a custom shock dynamometer to analyze suspension damping characteristics."
+  description: "Designed, fabricated, and operated a custom shock dynamometer for suspension damping characterization."
   icon: "activity"
-  image: "/assets/shockdyno_final_assembly_cad.png"
+  image: "/assets/shockdyno_mainimage.jpg"
   image_position: "center center"
   image_fit: "contain"
   tags: ["Mechanical Design", "Vehicle Dynamics", "DAQ", "Controls"]

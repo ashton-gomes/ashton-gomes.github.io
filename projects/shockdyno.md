@@ -3,16 +3,25 @@ layout: project
 title: Custom Shock Dynamometer
 description: Design and fabrication of a custom dynamometer for objective suspension tuning and damping characterization of Baja SAE shocks.
 tags: [SolidWorks, Python, FEA, DAQ, Controls, Manual Machining]
+hero_image: /assets/shockdyno_mainimage.jpg
+hero_alt: Assembled shock dynamometer with an AFCO coilover, Whiffle Tree load cell mount, guarded crank, and control enclosure.
+hero_caption: "The assembled shock dynamometer with an AFCO shock installed. The Whiffle Tree load cell mount, guarded crank-flywheel drive, and control enclosure bring the mechanical design and instrumentation into one test system."
 ---
 
 ## Overview
 
 Off-road racing vehicles can experience over 8 inches of jounce travel during high-velocity impacts, and tuning dampers based on driver feel alone introduces unacceptable variability into that process. This project is the design and fabrication of a custom shock dynamometer, a machine capable of actuating a shock absorber through a repeatable sinusoidal stroke at controlled velocities and capturing real-time Force-Velocity (FV) curves with high-resolution DAQ hardware.
 
-The dyno is being built as a senior capstone project for Stony Brook Motorsports, where it will be used to objectively characterize and tune the team's dampers rather than relying on subjective on-car feedback. The system is currently in active fabrication, with the frame jigged and tacked, crank components being machined, and a functional load cell DAQ already validated.
+The dyno was developed as a senior capstone project for Stony Brook Motorsports to objectively characterize and tune the team's dampers. The system has progressed from frame fabrication and standalone load cell DAQ validation to an assembled machine operating with an AFCO shock installed. The photograph above and operating videos below connect the original design decisions to the physical hardware.
 
-![Full Assembly CAD](/assets/shockdyno_final_assembly_cad.png)
-*Complete SolidWorks assembly of the final design. The worm gearbox and crank-flywheel drive sit at the base, with the shock running vertically through the braced tower structure to the Whiffle Tree load cell interface at the top.*
+### Assembled Dyno in Operation
+
+<video width="1920" height="1080" controls playsinline preload="none" poster="{{ '/assets/shockdyno_mainvideo_poster.jpg' | relative_url }}" aria-label="Full view of the assembled shock dynamometer operating with an AFCO shock">
+  <source src="{{ '/assets/shockdyno_mainvideo_web.mp4' | relative_url }}" type="video/mp4">
+  <a href="{{ '/assets/shockdyno_mainvideo_web.mp4' | relative_url }}">Watch the shock dynamometer operating.</a>
+</video>
+
+*Full-system operating view. The rotating crank cycles the AFCO shock beneath the Whiffle Tree mount, with the control enclosure and display alongside the guarded mechanism.*
 
 ---
 
@@ -97,13 +106,25 @@ Because the shock operates as a connecting rod rather than a pure linear actuato
 ![DAQ Quick Test Bench](/assets/shockdyno_quick_test_bench.png)
 *Early bench validation of the Teensy 4.1 + ADS1220 DAQ stack, confirming load cell signal quality prior to full mechanical integration.*
 
+### 6. Fabrication & System Integration
+
+The assembled dyno brings the braced steel frame, machined crank, Whiffle Tree assembly, and controls together around the installed AFCO shock. The transparent guard keeps the crank and lower shock interface visible, while the adjacent enclosure houses the operator controls and display. This is the transition from the separate mechanical and DAQ development steps to an operating test system.
+
+<video width="1920" height="1080" controls playsinline preload="none" poster="{{ '/assets/shockdyno_video2_poster.jpg' | relative_url }}" aria-label="Close view of the shock and crank cycling alongside the dynamometer controls and display">
+  <source src="{{ '/assets/shockdyno_video2_web.mp4' | relative_url }}" type="video/mp4">
+  <a href="{{ '/assets/shockdyno_video2_web.mp4' | relative_url }}">Watch the close-up of the shock dynamometer.</a>
+</video>
+
+*Closer operating view of the shock, crank linkage, and controls. The changing shock angle through the crank cycle illustrates why the position-based velocity calculation and force correction described above are part of the measurement pipeline.*
+
 ---
 
 ## Results & Impact
 
 - **Structural:** Frame validated to a minimum FoS of **3.1** under worst-case loading; Whiffle Tree crossbar achieves **5.8 FoS** with only **0.006" deflection**, confirming the load path routes through the sensor rather than the structure.
-- **Fabrication:** Frame tubes cut, jigged, and tacking underway. Crank wheel and pin being machined (keyway broached). Clevis, mounting tabs, and all ordered components in-hand.
-- **DAQ Validation:** Functional Teensy/ADS1220 bench system already collecting load cell data, confirming signal quality ahead of full system integration.
+- **Fabrication & Integration:** Assembled the frame, machined drivetrain, Whiffle Tree load cell interface, guard, and control enclosure into the physical dynamometer shown above.
+- **Mechanical Operation:** Demonstrated crank-driven cycling of an installed AFCO shock in the full-system and close-up operating videos.
+- **DAQ Validation:** Validated load cell signal acquisition with the Teensy/ADS1220 bench system before integrating the mechanical assembly and controls.
 - **Motivated by real data:** An on-car linear potentiometer and body accelerometer system was used to estimate actual shock forces experienced during testing. This data directly drove the 750 lbf worst-case design load and confirmed the velocity range the dyno needs to cover.
 
 ---

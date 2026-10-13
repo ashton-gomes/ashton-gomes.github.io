@@ -3,11 +3,16 @@ layout: project
 title: Baja SAE Vehicle Dynamics Lead
 description: Complete redesign of front suspension kinematics and steering geometry following a 2025 structural failure.
 tags: [SolidWorks, Python, MATLAB, FEA, Manual Machining]
+hero_image: /assets/bajasae_finalimage.jpg
+hero_alt: Completed Stony Brook Motorsports Baja SAE car 99 with its suspension assembled at the competition paddock.
+hero_caption: "The completed Baja SAE vehicle at the competition paddock. The assembled car brings the suspension geometry, steering packaging, and fabrication work described below into a single system."
 ---
 
 ## Overview
 
 As Vehicle Dynamics Lead, I headed the design and fabrication of the Steering, Brakes, and Suspension subsystems. The primary objective for the 2025-2026 season was a ground-up redesign to address the catastrophic fatigue failure of the previous year's aluminum A-arms, while simultaneously improving low-speed maneuverability and general handling.
+
+The completed vehicle shown above is the outcome of that redesign. The process below follows the suspension from the 2025 failure analysis through kinematic modeling, structural validation, precision fabrication, and final integration into the car.
 
 ---
 
@@ -107,10 +112,18 @@ To ensure the simulation matched reality, I designed a custom welding jig for th
 ![Bushing Finish](/assets/lathebushing.jpg)
 *Finished bronze bushings held to a 0.0005" tolerance for a press-fit assembly.*
 
+### 5. Vehicle-Level Integration
+
+![Baja SAE vehicle assembled in the workshop with exposed suspension, coilovers, and drivetrain](/assets/bajasae_VD.jpg)
+*Workshop assembly view with the body panels removed, showing the control arms, AFCO coilovers, and suspension packaging within the chassis.*
+
+This stage brought the individually jigged suspension corners into the full vehicle assembly. With the body panels removed, the relationship between the control arms, shock mounts, and surrounding chassis is visible, connecting the hardpoint layout and fabrication process to the finished hardware. The completed car at the top of this page shows the next step: the same vehicle packaged with its bodywork at the competition paddock.
+
 ---
 
 ## Results & Impact
 
+- **Integration:** Brought the redesigned suspension from kinematic layouts and individually jigged corners into the assembled Baja SAE vehicle.
 - **Strength:** **45% stronger at critical stress concentrations** (FoS 1.0 to 1.45), with overall control arm FoS exceeding 5.0 and a negligible weight penalty.
 - **Agility:** **25% reduction in turning radius** (10 ft to 7.5 ft) and a **10.9° increase** in total steering angle.
 - **Stability:** Achieved near-zero bump steer, significantly reducing driver fatigue during endurance heats.

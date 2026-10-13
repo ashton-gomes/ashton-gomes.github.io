@@ -11,6 +11,15 @@ layout: default
     <p class="project-intro">{{ page.description }}</p>
   </header>
 
+  {% if page.hero_image %}
+  <figure class="project-hero">
+    <img src="{{ page.hero_image | relative_url }}" alt="{{ page.hero_alt | escape }}" decoding="async" fetchpriority="high">
+    {% if page.hero_caption %}
+    <figcaption>{{ page.hero_caption | escape }}</figcaption>
+    {% endif %}
+  </figure>
+  {% endif %}
+
   <div class="project-layout">
     <div class="project-content">
       {{ content }}
