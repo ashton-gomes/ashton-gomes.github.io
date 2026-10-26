@@ -14,17 +14,20 @@ experience:
     location: "Stony Brook, NY"
     dates: "Jan 2026 – Present"
     points:
-      - "Develop a C++ task-space planner for a 7-DOF Kinova Gen3 using goal-directed RRT and dual-quaternion ScLERP; achieved 108 ms median planning time across MuJoCo trials passing collision and joint-limit checks."
-      - "Implement resolved-rate control with dual-quaternion forward kinematics, a damped Jacobian pseudoinverse, and quaternion sign alignment; final position error was below 0.004 mm across 23 validated simulation trials."
-      - "Benchmark 40 reachable-goal trials in empty and randomized obstacle scenes: 97.5% pose-target completion, with 240 collision and joint-limit checks per path segment."
+      - "Develop a C++ motion planner for a 7-DOF Kinova Gen3 whose goal-directed RRT edges are dual-quaternion screw motions (ScLERP) tracked by resolved-motion rate control; all algebra, product-of-exponentials kinematics, and search written from scratch on Eigen."
+      - "Built a seeded 5,000-trial MuJoCo benchmark: 99.1% of free-space goals reached at a 108 ms median planning time (vs. 83.6% for a single direct screw), and 94.6-98.5% across three obstacle scenes."
+      - "Validated every path independently with 240 collision checks per edge and MuJoCo forward kinematics: zero collisions across 4,736 reached paths and 0.0026 mm median final position error."
+      - "Integrate and tune the FLIQC optimization-based obstacle-avoidance controller on the Gen3 in C++/MuJoCo, extending protection to all seven links and removing near-obstacle oscillation."
   - role: "Vehicle Dynamics Lead"
     organization: "Stony Brook Motorsports"
     location: "Stony Brook, NY"
     dates: "June 2025 – Present"
     points:
       - "Lead a 12-member steering, suspension, and braking team, coordinating design reviews, FEA, and fabrication schedules to complete all three systems by the end of the academic year."
+      - "Built a MATLAB 3D double-wishbone kinematic solver and bounded bump-steer optimizer reporting camber, toe, caster, KPI, and roll center through travel."
       - "Reduced weight by approximately 0.8 lb per control arm and FEA-predicted deformation by 40%; reduced tube wall thickness from 0.085 to 0.049 in, eliminated tube bends, and halved weld-related heat-affected regions."
       - "Reduced inside turning radius from 9 ft to 2 ft using 20% anti-Ackermann geometry and passive rear steer; contributed to 9th overall in dynamic events, an acceleration improvement from 40th to 18th, and 18th in hill climb."
+
   - role: "Project Management Intern"
     organization: "Dormitory Authority of the State of New York"
     location: "New York, NY"
@@ -34,11 +37,13 @@ experience:
       - "Conducted MEP field inspections to assess building-code compliance and document safety risks."
 
 skills:
+  - category: "Robotics & Control"
+    items: ["Screw Theory", "Dual Quaternions", "Resolved-Rate Control", "Sampling-Based Planning (RRT, RRT*, RRT-Connect)", "Inverse Kinematics", "PID Control"]
+  - category: "Programming & Simulation"
+    items: ["C++", "Python", "MATLAB", "Eigen", "MuJoCo", "CMake", "Simulink", "ROS/ROS2", "Git", "Linux / WSL2"]
   - category: "CAD & Analysis"
-    items: ["SolidWorks", "Fusion 360", "Siemens NX", "Finite Element Analysis (FEA)", "Tolerancing"]
-  - category: "Programming & Robotics"
-    items: ["Python", "C++", "MATLAB", "Simulink", "MuJoCo", "ROS/ROS2", "Git", "Linux"]
-  - category: "Engineering Methods"
-    items: ["Suspension Kinematics", "Robot Kinematics", "Dynamics", "Motion Planning", "PID Control", "DFM", "DFA"]
-  - category: "Manufacturing & Instrumentation"
-    items: ["CNC Machining", "Milling", "Turning", "Soldering", "Data Acquisition", "LabVIEW", "NI-DAQ", "UART"]
+    items: ["SolidWorks", "Fusion 360", "Siemens NX", "Finite Element Analysis (FEA)", "Suspension Kinematics", "Tolerancing", "DFM", "DFA"]
+  - category: "Embedded & Instrumentation"
+    items: ["Teensy / Arduino", "SPI ADCs", "Quadrature Encoders", "RS-485 Modbus RTU", "Data Acquisition", "Signal Filtering", "LabVIEW", "NI-DAQ"]
+  - category: "Manufacturing"
+    items: ["Manual Lathe & Mill", "CNC Machining", "TIG-Welded Fabrication", "Jig & Fixture Design", "Composites Layup"]

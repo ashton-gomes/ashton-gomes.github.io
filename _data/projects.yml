@@ -1,57 +1,64 @@
-- title: "Baja SAE Vehicle Dynamics"
-  category: "design"
-  description: "Led a 12-member vehicle dynamics team. Reduced inside turning radius from 9 ft to 2 ft and control-arm weight by approximately 0.8 lb per arm, contributing to 9th overall in dynamic events."
-  icon: "truck"
-  image: "/assets/bajasae_finalimage.jpg"
-  image_position: "center center"
-  image_fit: "contain"
-  tags: ["SolidWorks", "Suspension Kinematics", "FEA", "MATLAB", "DFM"]
-  url: "/projects/baja-sae.html"
+# section: "research" renders in the featured Robotics research block on the home page.
+# section: "projects" renders in the Selected projects list, in the order below.
 
-- title: "Shock Dynamometer — Senior Design"
-  category: "design"
-  description: "Built a crank-driven dynamometer with a 4-inch stroke and a 15 in/s peak velocity target. Integrated force acquisition and encoder-based velocity calculation to generate compression and rebound force-velocity curves."
-  icon: "activity"
+- title: "Screw-Motion Planner for a 7-DOF Kinova Gen3"
+  section: research
+  label: "Graduate research · Jan 2026 – present"
+  description: "A C++ planner whose RRT edges are dual-quaternion screw motions (ScLERP), tracked in joint space by resolved-motion rate control. All the algebra, kinematics, and search are written from scratch, with every path independently re-validated in MuJoCo across a 5,000-trial benchmark."
+  video: "/assets/planner_wall_hole_example.mp4"
+  metrics:
+    - value: "99.1%"
+      label: "free-space goals reached"
+    - value: "108 ms"
+      label: "median planning time"
+    - value: "0"
+      label: "collisions in 4,736 reached paths"
+  tags: ["C++17", "Eigen", "MuJoCo", "Dual Quaternions", "ScLERP", "RMRC", "RRT / RRT*"]
+  url: "/projects/motion-planner.html"
+  github: "https://github.com/ashton-gomes/ashton-motion-planner"
+
+- title: "Custom Shock Dynamometer"
+  section: projects
+  label: "Senior design · Mechanical & mechatronics"
+  description: "A crank-driven dyno for Stony Brook Motorsports: Whiffle Tree load path (FEA FoS 3.1 / 5.8), Teensy 4.1 firmware driving a VFD over Modbus with a 24-bit force channel, and a Python pipeline that delivered the team's first measured damping coefficients and a clear revalving direction."
   image: "/assets/shockdyno_mainimage.jpg"
   image_position: "center center"
   image_fit: "contain"
-  tags: ["SolidWorks", "FEA", "Teensy 4.1", "Python", "DAQ"]
+  tags: ["SolidWorks", "FEA", "Teensy 4.1", "Modbus RTU", "Python", "Fabrication"]
   url: "/projects/shockdyno.html"
 
-- title: "Kinova Gen3 Kinematics & Trajectory Planning"
-  category: "code"
-  description: "Built a Python kinematics and trajectory-planning stack for a 7-DOF Kinova Gen3, providing the foundation for subsequent task-space planning and resolved-rate control research."
-  icon: "cpu"
-  image: "/assets/robot_motion.jpg"
+- title: "Baja SAE Vehicle Dynamics"
+  section: projects
+  label: "Stony Brook Motorsports · Team lead"
+  description: "Leading a 12-member steering, suspension, and brakes group. Built a MATLAB suspension solver and bump-steer optimizer, cut the inside turning radius from 9 ft to 2 ft, and redesigned the control arms 0.8 lb lighter with 40% less predicted deformation. The team placed 9th overall in dynamic events."
+  image: "/assets/bajasae_finalimage.jpg"
   image_position: "center center"
-  tags: ["Python", "Robotics", "Kinematics"]
-  url: "/projects/robotics.html"
-
-- title: "Robot Motion Planning — RRT, ScLERP & Resolved-Rate Control"
-  category: "code"
-  description: "C++ task-space planning for a 7-DOF Kinova Gen3: 108 ms median planning time in MuJoCo trials passing collision and joint-limit checks, with final position error below 0.004 mm across 23 validated simulation trials."
-  icon: "cpu"
-  image: "/assets/sclerp_trajectory.png"
-  image_position: "center 75%"
   image_fit: "contain"
-  tags: ["C++", "MuJoCo", "RRT", "Dual Quaternions", "ScLERP", "Resolved-Rate Control"]
-  url: "/projects/sclerp.html"
+  tags: ["MATLAB", "SolidWorks", "Suspension Kinematics", "FEA", "Jig Design", "Leadership"]
+  url: "/projects/baja-sae.html"
 
-- title: "Crazyflie Autonomous Navigation & Landing"
-  category: "code"
-  description: "Completed 8 of 10 navigation trials without collisions, recovered in 9 of 10 boundary encounters, and achieved 7 cm mean landing error across 10 trials."
-  icon: "navigation"
-  tags: ["Autonomous Navigation", "Optical Flow", "Obstacle Avoidance", "Controls"]
+- title: "Crazyflie Autonomous Arena Mission"
+  section: projects
+  label: "Autonomy · Ongoing project"
+  description: "A palm-sized quadrotor that crosses an unknown obstacle field, finds a raised pad with only a downward range sensor, maps its edges, and lands, all on onboard sensing. My best flight completed the full outbound mission and landed on the pad in 75 s."
+  image: "/assets/crazyflie_mission.svg"
+  image_fit: "contain"
+  tags: ["Python", "cflib", "Optical Flow", "Obstacle Avoidance", "Multithreading"]
   url: "/projects/crazyflie.html"
 
+- title: "What Actually Makes RRT Better? A 450-Run Study"
+  section: projects
+  label: "Motion planning · Benchmark study"
+  description: "Nine RRT variants across five environments and ten seeds. Corridor sampling failed outright on mazes, and a data-driven combination of bidirectional trees, obstacle-aware sampling, and Voronoi-bias expansion solved all five environments 100% of the time."
+  image: "/assets/rrt_study_tree.svg"
+  image_fit: "contain"
+  tags: ["Python", "RRT-Connect", "Sampling Strategies", "Benchmark Design"]
+  url: "/projects/rrt-study.html"
 
-#- title: "Samsung Galaxy Phone Case Prototyping"
- # category: "design"
- # description: "Developed and tested a TPU smartphone case."
- # icon: "thermometer"
- # image: "/assets/finnedphonecase.jpg"
- # image_position: "center 75%"
- # image_scale: "1.8"
- # tags: ["Thermodynamics", "CFD", "CAD", "Physical Testing"]
- # url: "/projects/thermal.html"
-
+- title: "Kinova Gen3 Kinematics & Trajectory Planning"
+  section: projects
+  label: "Robotics foundation"
+  description: "Screw axes derived from the URDF, product-of-exponentials FK validated to 10⁻¹⁴, singularity analysis, Newton–Raphson IK, and five trajectory planners. All of it is from first principles in Python and became the foundation for my C++ research planner."
+  video: "/assets/Circle_Animation.mp4"
+  tags: ["Python", "Screw Theory", "Inverse Kinematics", "Trajectory Planning"]
+  url: "/projects/robotics.html"

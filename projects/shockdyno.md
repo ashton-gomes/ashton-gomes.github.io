@@ -1,139 +1,233 @@
 ---
 layout: project
 title: Custom Shock Dynamometer
-description: Designed and fabricated a crank-driven shock dynamometer with a 4-inch stroke, integrated force and encoder acquisition, and Python analysis of compression/rebound force-velocity curves.
-tags: [SolidWorks, Python, FEA, Teensy 4.1, DAQ, Firmware, Manual Machining]
+category_label: Senior design · Mechanical & mechatronics
+description: "A crank-driven shock dynamometer built for Stony Brook Motorsports: a braced steel frame and load-isolating Whiffle Tree, Teensy 4.1 firmware driving a VFD over Modbus, a 24-bit force channel with a 163,840-count-per-revolution encoder, and a Python pipeline that turns raw cycles into damping coefficients."
+role: "Mechanical design, firmware & data analysis"
+timeline: "Aug 2025 – May 2026"
+team: "Senior design team, for Stony Brook Motorsports"
+tags: [SolidWorks, FEA, Teensy 4.1, C++ Firmware, ADS1220 24-bit ADC, Quadrature Encoder, RS-485 Modbus RTU, Nextion HMI, Python, SciPy, TIG Welding, Machining]
 hero_image: /assets/shockdyno_mainimage.jpg
 hero_alt: Assembled shock dynamometer with an AFCO coilover, Whiffle Tree load cell mount, guarded crank, and control enclosure.
-hero_caption: "The assembled shock dynamometer with an AFCO shock installed. The Whiffle Tree load cell mount, guarded crank-flywheel drive, and control enclosure bring the mechanical design and instrumentation into one test system."
+hero_caption: "The finished dynamometer with an AFCO 63 shock installed: braced steel frame, Whiffle Tree load-cell mount at the top, guarded crank drive at the base, and the touchscreen control enclosure alongside."
+related:
+  - title: "Baja SAE vehicle dynamics"
+    url: /projects/baja-sae.html
 ---
 
 ## Overview
 
-I designed and fabricated this crank-driven shock dynamometer as a **senior design project from August 2025 to May 2026**. A **3 HP motor**, **20:1 worm gearbox**, and variable-frequency drive provide a **4-inch stroke**, with a **15 in/s peak velocity target** for damping characterization. The project combines mechanical actuation, force acquisition, and encoder-based axial velocity calculation to generate compression and rebound force-velocity curves.
+Stony Brook Motorsports runs off-the-shelf coilovers on its Baja car. They ship with generic off-road valving, and choosing a better tune by feel is slow and subjective. Commercial shock dynamometers are expensive and built for different shocks and speed ranges. Our senior design team built a purpose-made dyno that **measures damping force against shaft velocity**, so valving choices can be made from data.
 
-The dyno was developed for Stony Brook Motorsports to objectively characterize and tune the team's dampers. I developed **Teensy 4.1 firmware** and a **Python analysis pipeline** integrating a **24-bit ADS1220 ADC** and **quadrature encoder**. The assembled system operates with an AFCO shock installed, while the analysis generates compression/rebound force-velocity curves and estimates branch slopes through median binning and cross-validated fitting.
+The finished system spans the whole chain from steel to numbers:
 
-### Assembled Dyno in Operation
+<ul class="pipeline">
+  <li>3 HP motor + VFD</li>
+  <li>20:1 worm gearbox</li>
+  <li>2 in crank, 4 in stroke</li>
+  <li>Whiffle Tree + 1000 lbf load cell</li>
+  <li>Teensy 4.1 DAQ</li>
+  <li>Python F–V analysis</li>
+</ul>
 
-<video width="1920" height="1080" controls playsinline preload="none" poster="{{ '/assets/shockdyno_mainvideo_poster.jpg' | relative_url }}" aria-label="Full view of the assembled shock dynamometer operating with an AFCO shock">
+<div class="metric-grid">
+  <div class="metric"><strong>4.0 in</strong><span>stroke from a 2.0 in crank radius</span></div>
+  <div class="metric"><strong>3.1 / 5.8</strong><span>minimum FEA factor of safety, frame / Whiffle Tree, at 750 lbf</span></div>
+  <div class="metric"><strong>163,840</strong><span>encoder counts per crank revolution</span></div>
+  <div class="metric"><strong>24-bit</strong><span>force channel at 320 samples/s</span></div>
+  <div class="metric"><strong>4</strong><span>damping slopes extracted per test (LSC, HSC, LSR, HSR)</span></div>
+</div>
+
+### Assembled dyno in operation
+
+<video controls playsinline preload="none" poster="{{ '/assets/shockdyno_mainvideo_poster.jpg' | relative_url }}" aria-label="Full view of the assembled shock dynamometer operating with an AFCO shock">
   <source src="{{ '/assets/shockdyno_mainvideo_web.mp4' | relative_url }}" type="video/mp4">
   <a href="{{ '/assets/shockdyno_mainvideo_web.mp4' | relative_url }}">Watch the shock dynamometer operating.</a>
 </video>
 
-*Full-system operating view. The rotating crank cycles the AFCO shock beneath the Whiffle Tree mount, with the control enclosure and display alongside the guarded mechanism.*
+*Full-system operating view. The crank cycles the AFCO shock beneath the Whiffle Tree mount, with the control enclosure and touchscreen alongside the guarded mechanism.*
 
 ---
 
-## Design Requirements & Constraints
+## Design requirements
 
-### 1. Actuation Fidelity
-Provide a repeatable **4-inch stroke** (2" crank eccentricity), **targeting 15 in/s peak velocity** for damping characterization. Variable-speed control via VFD allows testing at different damping velocities.
-
-### 2. Structural Integrity
-Survive a worst-case loading scenario of **750 lbf at 5° off-axis**, the estimated peak force at the crank pin intersection under maximum damping combined with gearbox reaction torque. The frame must achieve a minimum **FoS of 3.0** under this condition to ensure operator safety across thousands of fatigue cycles.
-
-### 3. Data Accuracy
-Produce clean, axially-corrected force data with no contamination from side-loading or parasitic frame deflection. The load cell measurement must reflect true hydraulic damping resistance, not structural noise. This requires both mechanical isolation of off-axis forces and a position-based cosine correction applied in post-processing to keep all output data in the axial reference frame.
-
-### 4. Modularity
-Support rapid interchangeability between different damper architectures, including the team's FOX Float and AFCO racing shocks, without requiring modifications to the frame or drivetrain.
+1. **Actuation.** Provide a repeatable **4-inch stroke** and variable speed, with a design target of **15 in/s peak shaft velocity**, the low end of the speeds a Baja shock sees over rough terrain. Speed changes come from the VFD, with no mechanical reconfiguration.
+2. **Structure.** Survive a worst-case **750 lbf at 5° off-axis** at the crank pin with a minimum **factor of safety of 3.0**. The design load was informed by on-car linear-potentiometer and accelerometer data used to estimate real shock forces.
+3. **Measurement quality.** Route only axial shock force into the load cell, with no side load or frame flex, and correct for the shock's changing angle in software.
+4. **Modularity.** Accept the team's FOX Float and AFCO shocks without modifying the frame or drivetrain.
 
 ---
 
-## Engineering Process
+## Mechanical design
 
-### 1. Design Iteration: Scotch Yoke to Direct-Link Crank
+### Design iteration: Scotch yoke to direct-link crank
 
-The original mechanism was a **Scotch Yoke**, a slider-crank variant that converts rotary motion into perfectly sinusoidal linear displacement by constraining a pin inside a translating slotted yoke. The appeal was kinematic purity: the output stroke is mathematically sinusoidal regardless of RPM, with no velocity distortion at the ends of travel. This made it an intuitive first choice for a dynamometer where accurate velocity profiles matter.
+The first concept was a **Scotch yoke**, which turns rotation into perfectly sinusoidal linear motion through a pin sliding in a slotted yoke. It was attractive on paper. In practice the yoke needed tight slot-to-pin tolerances held over the full stroke under cyclic load, added a lot of reciprocating mass, and would have been the hardest part in the machine to make in our shop.
 
-![Scotch Yoke Design](/assets/shock_dyno_render.jpg)
-*Early Scotch Yoke design. The open frame and sliding yoke mechanism at the base required close tolerances on slot width and pin diameter throughout the full stroke, a high-risk manufacturing challenge that drove the redesign.*
+![Early Scotch Yoke concept](/assets/shock_dyno_render.jpg)
+*Early Scotch yoke concept. The precision sliding yoke at the base was the highest-risk part to manufacture and drove the redesign.*
 
-In practice, however, the Scotch Yoke introduced significant fabrication and mechanical complexity. The yoke itself, a precision-slotted sliding member that must remain in tight contact with the crank pin throughout the stroke, requires close tolerances on both the slot width and the pin diameter to prevent slop, binding, and side-loading on the shock's internal seals. Holding those tolerances on shop equipment, and doing so repeatably across the full stroke under cyclic loading, was identified as a high-risk manufacturing challenge. The yoke also added considerable reciprocating mass, increasing the inertial loads the frame and gearbox would need to absorb at speed.
+The final design makes **the shock itself the connecting link**. Its lower eye rides on the crank pin and its upper eye pivots at the Whiffle Tree. This removed the yoke entirely, replaced it with one machined pin and bearing stack, and lets the shock's own eyelets, which are already designed for axial cyclic loading, carry the constraint. The trade-off is that the motion is no longer a pure sinusoid and the shock tilts slightly through the cycle. Rather than designing that away, I handled it in the kinematics and the data pipeline.
 
-The design was revised to a **direct-link crank**, where the shock absorber itself serves as the connecting rod between the crank pin and a fixed upper mount. This eliminated the yoke entirely, the most complex custom-fabricated component in the original design, and replaced it with a single precision-machined steel pin and bearing stack. The shock's eyelets, already designed to handle axial cyclic loading, handle the kinematic constraint naturally. Off-axis forces are managed by the dual-bearing crank pin interface rather than a sliding yoke, which is both easier to manufacture and more robust under sustained cyclic loads.
+### Kinematics of a pivoting-link crank
 
-The tradeoff is that a direct-link crank produces **approximately sinusoidal motion**, with instantaneous velocity depending on the mechanism geometry. The quadrature encoder tracks rotation, and the Python pipeline calculates axial velocity from that position information and the crank geometry. The force-velocity analysis therefore uses the calculated shock velocity at each sample rather than assuming an ideal sinusoidal profile.
+Because there is no linear guide, the shock length is the distance between the crank pin and the fixed upper pivot. With crank radius $$R$$, pivot distance $$L$$ from the crank centre, and crank angle $$\theta$$:
 
-### 2. Mechanism Design & Kinematic Analysis
+$$d(\theta) = \sqrt{L^2 + R^2 + 2LR\cos\theta}$$
 
-The drivetrain consists of a **3 HP AC motor** running at **1750 RPM**, coupled to a **20:1 worm gearbox** to produce the low-speed, high-torque output required for damper actuation. A **4 HP-rated VFD** controls motor speed, enabling variable velocity sweeps across the damper's full operating range.
+$$x(\theta) = (L + R) - d(\theta), \qquad v(\theta) = \frac{L R \sin\theta}{d(\theta)}\,\omega_{crank}, \qquad \omega_{crank} = \frac{\omega_{motor} }{20}$$
 
-At the output shaft, a precision-machined **6" diameter, 2"-thick steel flywheel** acts as both the crank arm and a high-inertia mass to smooth velocity fluctuations at peak damping load transitions. A **1144 steel crank pin** is press-fit into dual precision roller bearings seated in the wheel face, a dual-bearing interface that eliminates cantilevered bending moments and keeps the pin perpendicular to the wheel's rotation under load. The shock's lower eyelet mounts directly to this pin, converting rotary motion into pure linear stroke.
+and the load cell reading is resolved into the shock axis with $$\cos\phi = (L + R\cos\theta)/d(\theta)$$.
 
-### Crank Assembly
+To confirm this model against the real machine, the crank pin and shock body were tracked frame by frame through 159 frames of operating video. The fitted geometry gave $$L/R \approx 9.7$$–$$9.8$$, and this pivoting-link model matched the tracked motion much better than either a pure sinusoid or the standard slider-crank formula.
 
-![Crank Assembly Exploded](/assets/shockdyno_crank_assembly_exploded.png)
-*Exploded view of the crank assembly. The 1144 steel pin seats into dual precision roller bearings pressed into the 6" flywheel face, eliminating the cantilevered bending typical of single-bearing crank pins.*
-
-### 3. Force Measurement & Whiffle Tree Assembly
-
-The upper shock mount uses a custom **Whiffle Tree assembly** designed to isolate axial damping forces and route them cleanly to the load cell. Two horizontal cross-braces span the vertical towers. The lower floating brace is the primary shock mounting point, pinned on one side to allow free vertical movement. An **S-type load cell rated to 1 ton capacity** is positioned vertically between the two cross-braces and mounted via **dual Heim joints** on both ends, a spherical-link configuration that constrains the load cell to pure tension and compression only, filtering out any lateral vibration or misalignment from the crank.
-
-As the shock cycles, the floating lower brace transfers force directly up through the load cell and into the fixed upper brace, which is bolted rigidly to the tower structure. Crossbar FEA validated a maximum stress of **47.4 MPa** against a material yield of 275 MPa (FoS 5.8), and a maximum deflection of only **0.006"** at mid-span, stiff enough to ensure shock energy routes through the sensor rather than flexing the structure.
-
-### Whiffle Tree Assembly
-
-![Whiffle Tree CAD](/assets/shockdyno_whiffle_tree_assembly.png)
-*Whiffle Tree CAD. The S-type load cell is constrained between a fixed upper datum and a floating lower brace, with Heim joints on both ends enforcing pure axial loading.*
-
-![Whiffle Tree Drawing](/assets/shockdyno_whiffle_tree_drawing.png)
-*Detail drawing for the Whiffle Tree crossbar (Rev G), showing the slotted adjustment holes and tight tolerances on the pivot pin bores.*
-
-### 4. FEA & Structural Validation
-
-The frame is built from **1" x 1" x 0.083" low-carbon steel rectangular tubing**. The switch from a Scotch Yoke to a rotating crank introduced off-axis forces and reciprocating mass not present in the original design, so additional diagonal bracing was added to the mounting towers to manage cyclic loads and prevent harmonic vibration from reaching the DAQ sensors.
-
-A worst-case static simulation applied **750 lbf at 5° off-axis** at the crank pin/shock intersection, combined with a remote torque load on the gearbox and motor mounts. Results: **minimum FoS of 3.1** at the gearbox mounting plate, with the overwhelming majority of the structure at FoS 10+. Max frame displacement was **0.016"** under this loading condition.
-
-### FEA Results
-
-![Frame CAD](/assets/shockdyno_frame.png)
-*Frame CAD showing the diagonal tower bracing added to handle the off-axis and reciprocating crank loads absent in the original Scotch Yoke design.*
-
-![Frame FEA FoS](/assets/shockdyno_fos_fea.png)
-*Frame Factor of Safety distribution. Minimum FoS = 3.1 at the gearbox mounting plate under 750 lbf at 5° off-axis with combined gearbox reaction torque.*
-
-### 5. Data Acquisition & Position Correction
-
-I developed firmware for a **Teensy 4.1 microcontroller** paired with a **24-bit ADS1220 ADC** and **quadrature encoder**. The system captures force and encoder position together, providing the inputs for the Python pipeline to calculate axial velocity throughout the stroke.
-
-Because the shock operates as a connecting rod rather than a pure linear actuator, its angle changes through the crank cycle. The **Python analysis pipeline** uses encoder position and mechanism geometry to calculate axial velocity and apply the force correction described in the design. It generates separate **compression and rebound force-velocity curves**, then estimates the branch slopes using **median binning and cross-validated fitting**.
-
-### DAQ Bench Validation
-
-![DAQ Quick Test Bench](/assets/shockdyno_quick_test_bench.png)
-*Early bench validation of the Teensy 4.1 + ADS1220 DAQ stack, confirming load cell signal quality prior to full mechanical integration.*
-
-### 6. Fabrication & System Integration
-
-The assembled dyno brings the braced steel frame, machined crank, Whiffle Tree assembly, and controls together around the installed AFCO shock. The transparent guard keeps the crank and lower shock interface visible, while the adjacent enclosure houses the operator controls and display. This is the transition from the separate mechanical and DAQ development steps to an operating test system.
-
-<video width="1920" height="1080" controls playsinline preload="none" poster="{{ '/assets/shockdyno_video2_poster.jpg' | relative_url }}" aria-label="Close view of the shock and crank cycling alongside the dynamometer controls and display">
-  <source src="{{ '/assets/shockdyno_video2_web.mp4' | relative_url }}" type="video/mp4">
-  <a href="{{ '/assets/shockdyno_video2_web.mp4' | relative_url }}">Watch the close-up of the shock dynamometer.</a>
+<video controls muted loop playsinline preload="metadata" aria-label="Close view of the crank driving the lower end of the shock">
+  <source src="{{ '/assets/shockdyno_crankvideo.mp4' | relative_url }}#t=0.1" type="video/mp4">
 </video>
 
-*Closer operating view of the shock, crank linkage, and controls. The changing shock angle through the crank cycle illustrates why the position-based velocity calculation and force correction described above are part of the measurement pipeline.*
+*Crank close-up. The shock's small angular swing about its upper pivot is why the velocity and force calculations use the exact pivoting-link geometry instead of assuming straight-line motion.*
+
+### Drivetrain and crank assembly
+
+A **3 HP, 1750 rpm** three-phase motor drives a **20:1 worm gearbox** under VFD control. A machined **6 in diameter, 2 in thick steel crank wheel** serves as both the crank arm and a flywheel that smooths speed through the high-load parts of each stroke. A **1144 steel crank pin** is pressed into **dual roller bearings** in the wheel face. Supporting the pin at two points removes the cantilevered bending a single-bearing pin would see.
+
+![Crank Assembly Exploded](/assets/shockdyno_crank_assembly_exploded.png)
+*Exploded crank assembly: the 1144 steel pin seats in dual bearings pressed into the crank wheel face.*
+
+### Whiffle Tree load path
+
+The upper shock mount is a **Whiffle Tree** that isolates axial force and routes it cleanly through the sensor. A floating lower cross-brace carries the shock and is pinned on one side so it can move vertically. A **1000 lbf S-beam load cell** sits between it and a fixed upper brace on **Heim joints at both ends**, so the cell can only see tension or compression. FEA of the crossbar shows a peak stress of **47.4 MPa** against a 275 MPa yield (**FoS 5.8**) and only **0.006 in** of mid-span deflection. The structure is stiff enough that the shock's force goes through the sensor rather than into flexing the frame.
+
+![Whiffle Tree CAD](/assets/shockdyno_whiffle_tree_assembly.png)
+*Whiffle Tree CAD. The S-beam load cell is constrained between a fixed upper datum and a floating lower brace, with Heim joints enforcing pure axial loading.*
+
+![Whiffle Tree Drawing](/assets/shockdyno_whiffle_tree_drawing.png)
+*Crossbar detail drawing (Rev G), with slotted adjustment holes and toleranced pivot-pin bores.*
+
+### Frame and structural validation
+
+The frame is **1 × 1 × 0.083 in steel tube**. Moving from the Scotch yoke to a rotating crank introduced off-axis and reciprocating loads, so I added diagonal bracing to the towers to carry them and to keep vibration away from the sensors. A worst-case static study applied **750 lbf at 5° off-axis** at the crank pin plus the gearbox reaction torque. The result was a minimum **FoS of 3.1** at the gearbox mounting plate, with most of the structure above 10 and a maximum displacement of **0.016 in**.
+
+![Frame CAD](/assets/shockdyno_frame.png)
+*Frame CAD with the diagonal tower bracing added for crank loads.*
+
+![Frame FEA FoS](/assets/shockdyno_fos_fea.png)
+*Factor-of-safety plot. The minimum of 3.1 is at the gearbox mounting plate under 750 lbf at 5° off-axis with combined reaction torque.*
+
+### Fabrication
+
+1. Frame TIG welded from steel tube and painted for corrosion resistance.
+2. Crank wheel turned to final diameter and width on a manual lathe.
+3. Keyway cut with an arbor press for a slip-free fit on the gearbox output shaft.
+4. Bearing housing CNC machined for bearing seating and shaft alignment.
+5. Crank pin finished on the manual lathe.
+6. Upper and lower cross-braces CNC milled as mounting interfaces for the drive and Whiffle Tree.
 
 ---
 
-## Results & Impact
+## Electronics and firmware
 
-- **Structural:** Frame validated to a minimum FoS of **3.1** under worst-case loading; Whiffle Tree crossbar achieves **5.8 FoS** with only **0.006" deflection**, confirming the load path routes through the sensor rather than the structure.
-- **Fabrication & Integration:** Assembled the frame, machined drivetrain, Whiffle Tree load cell interface, guard, and control enclosure into the physical dynamometer shown above.
-- **Mechanical Operation:** Demonstrated crank-driven cycling of an installed AFCO shock in the full-system and close-up operating videos.
-- **Actuation:** Provided a **4-inch stroke** using a **3 HP motor**, **20:1 worm gearbox**, and VFD, with a **15 in/s peak velocity target**.
-- **Firmware & DAQ:** Integrated the **Teensy 4.1**, **24-bit ADS1220 ADC**, and **quadrature encoder** to capture force and calculate axial velocity.
-- **Damping Analysis:** Generated compression/rebound **force-velocity curves** and estimated branch slopes through **median binning and cross-validated fitting**.
-- **Motivated by real data:** An on-car linear potentiometer and body accelerometer system was used to estimate actual shock forces experienced during testing. This data directly drove the 750 lbf worst-case design load and confirmed the velocity range the dyno needs to cover.
+### Signal chain
+
+| Subsystem | Hardware | Key details |
+| --- | --- | --- |
+| Controller | PJRC Teensy 4.1 | 600 MHz Cortex-M7; priority-ordered, non-blocking main loop |
+| Force | Omega LCM103B-1K S-beam + TI ADS1220 | 1000 lbf, 2 mV/V; 24-bit ADC over SPI at gain 128 and 320 SPS continuous; automatic multi-sample tare before each test |
+| Position | AMT133Q-V encoder + MAX3096 receiver | 2048 PPR over RS-422, hardware ×4 quadrature decode → 8,192 counts per motor rev and **163,840 per crank rev** (0.0022°) |
+| Drive | VFD over RS-485 (MAX3485) | Modbus RTU at 19,200 baud: run/stop coils and frequency register |
+| Operator interface | Nextion 10.1 in touchscreen | Preset tests, jog buttons, live force waveform |
+| Safety | Hardware e-stop + software stop | Dedicated stop input on the Teensy, plus a stop button on the HMI |
+
+![DAQ Quick Test Bench](/assets/shockdyno_quick_test_bench.png)
+*Early bench test of the Teensy 4.1 and ADS1220 stack, confirming load-cell signal quality before mechanical integration.*
+
+### Firmware features
+
+- **Three one-button tests**, each 30 s: low speed (10 Hz VFD), high speed (30 Hz), and a sweep that ramps the drive in 500 ms steps. Jog forward/reverse at 2 Hz for homing.
+- **Per-sample logging** of raw encoder counts, crank angle, revolutions, RPM, raw ADC, force, and cosine-corrected force, streamed as framed CSV to a laptop logger.
+- A **live force waveform** and status display on the touchscreen.
+
+### Making the touchscreen reliable
+
+The HMI was the hardest part of the firmware to get right, and solving it taught me a lot about serial timing on a microcontroller doing several jobs at once:
+
+| Symptom | Root cause | Fix |
+| --- | --- | --- |
+| Touchscreen buttons intermittently ignored | Acknowledgement bytes from the display filled the serial buffer, hiding the start-of-frame marker | Disabled acknowledgements at boot (`bkcmd=0`), enlarged the receive buffer to 256 bytes, and serviced the display inside Modbus wait loops |
+| UI starved during VFD commands | Blocking `delay()` calls and long Modbus waits | Removed blocking waits, built each display update as one string, and sent at most one update group per loop pass |
+| Stop press occasionally lost | A single trigger byte could drop | Display-side timer resends stop five times. The Teensy handler is idempotent, so repeats are harmless |
+| Waveform blank | This display series needs numeric component IDs | Addressed the waveform by ID as a compile-time constant |
+| RPM spike at the start of every test | Velocity history went stale during the 3 s tare | Reset the rolling RPM state when a test starts, rather than trimming data later |
+
+---
+
+## Data pipeline (Python)
+
+`dyno_logger.py` captures the serial stream, detects the CSV block, saves a timestamped file, and produces a diagnostic dashboard: force versus time (raw and corrected), RPM and VFD frequency, force versus crank angle, the F–V diagram, raw ADC counts, and cumulative revolutions. Command-line flags expose crank radius, filter cutoffs, bin count, and steady-state trimming.
+
+The first real dataset showed why a careful pipeline mattered. The damping signal was only a few pounds peak-to-peak, riding on a baseline that drifted by tens of pounds. A small fraction of samples were also stale ADC reads, and the early velocity estimate updated in coarse steps. The processing chain that resolved these:
+
+1. **Interpolate stale ADC samples** instead of keeping repeated values.
+2. **Remove drift per crank cycle** by subtracting each cycle's mean force.
+3. **Zero-phase Butterworth low-pass** (`filtfilt`) on force and angle, so filtering adds no time lag between channels.
+4. **Velocity from encoder position** through the analytical pivoting-link kinematics, not from a coarse RPM estimate.
+5. **Bounded phase alignment** between force and velocity, limited to 50 ms (the most lag the drivetrain could physically introduce), so real hysteresis isn't "aligned away."
+6. **Median binning and a bilinear fit** on each branch to extract low-speed and high-speed damping slopes and the knee velocity between them.
+
+<div class="callout" markdown="1">
+**Checking numbers against the hardware.** The first F–V plot showed peak velocities near ±60 in/s, far beyond what the crank speed in the video could produce. Working the kinematics by hand showed the code was using *motor* RPM where it needed *crank* RPM, which is 20× slower through the gearbox. Fixing it brought the run to its true ~3.2 in/s. The same habit caught a phase-alignment search that was allowed to shift force by up to 200 ms. That was enough to collapse the real hysteresis loop and make different valving settings look identical, and capping it at 50 ms fixed it.
+</div>
+
+---
+
+## First damping characterization (AFCO 63)
+
+To know what "good" looks like, I computed damping targets from the car itself: a 623 lb vehicle with driver, 51/49 weight split, front ride frequency 1.65 Hz, wheel rate 36.6 lbf/in, motion ratio 0.585, and 28° installation angle. Critical damping at the wheel, $$C_c = 2\sqrt{K_w m_s}$$, was transferred to the shock with $$C_{shock} = C_{wheel}/(MR\cos\theta)^2$$. That gives **26.5 lbf·s/in** at the front shock.
+
+| Region | Target (lbf·s/in) | Measured slope (lbf·s/in) | Damping ratio ζ |
+| --- | ---: | ---: | ---: |
+| Low-speed compression | 16 – 19 | 4.7 | 0.18 |
+| High-speed compression | 7 – 9 | 1.1 | 0.04 |
+| Low-speed rebound | 17 – 20 | 9.6 | 0.36 |
+| High-speed rebound | 8 – 12 | 6.0 | 0.23 |
+
+*Targets use Baja-oriented damping ratios of about 0.6–0.75 at low speed and 0.25–0.45 at high speed. Knee velocities were 2.7 in/s in compression and 1.0 in/s in rebound.*
+
+This is exactly the kind of answer the dyno was built to give. The stock tune is **lightly damped in all four regions**, most of all in low-speed compression, and rebound runs about **2:1** over compression at low speed. A compression plateau near 10 lbf between roughly 0.3 and 1.5 in/s also points to blow-off or check-valve behaviour rather than a clean digressive knee. The team now has a measured, quantitative starting point for revalving instead of trial and error on the track.
+
+---
+
+## Next steps
+
+- **Cover the full speed range.** The characterization run peaked near 3.2 in/s, so its high-speed slopes are an extrapolation. Multi-speed sweeps from about 0.5 in/s up to the 15 in/s design target will measure them directly.
+- **Click-by-click valving study.** The protocol is set: the same crank speed for every run, one rebound click setting per run, files named by click count, and comparison by fitted slope at a fixed velocity. This will map how each click shifts the curve.
+- **Lag calibration** with the shock removed, so the phase correction is measured rather than searched.
+- **Zero checks before every run** to manage ADC baseline drift, plus a consistent encoder sign convention.
+- **On-screen results:** send the fitted damping coefficients and peak force back to the touchscreen so a tuning session doesn't need a laptop.
+
+---
+
+## Results
+
+- Designed and built a **crank-driven dynamometer** with a **4 in stroke**, VFD speed control, and a Whiffle Tree load path validated to **FoS 3.1** (frame) and **5.8** (Whiffle Tree) at 750 lbf.
+- Developed **Teensy 4.1 firmware** that synchronizes a 24-bit force channel, a 163,840-count-per-revolution crank encoder, Modbus VFD control, and a touchscreen HMI with one-button test presets and layered e-stops.
+- Wrote a **Python pipeline** that takes raw serial data to compression and rebound F–V curves and bilinear damping coefficients, with drift removal, zero-phase filtering, and physically bounded phase alignment.
+- Delivered the team's **first measured damping characterization**, compared it against targets derived from the car's mass, wheel rates, and motion ratios, and identified a clear revalving direction.
 
 ---
 
 ## Gallery
 
-### Full Assembly
+### Close-up operation
+
+<video controls playsinline preload="none" poster="{{ '/assets/shockdyno_video2_poster.jpg' | relative_url }}" aria-label="Close view of the shock and crank cycling alongside the dynamometer controls and display">
+  <source src="{{ '/assets/shockdyno_video2_web.mp4' | relative_url }}" type="video/mp4">
+  <a href="{{ '/assets/shockdyno_video2_web.mp4' | relative_url }}">Watch the close-up of the shock dynamometer.</a>
+</video>
+
+*Closer view of the shock, crank linkage, and controls.*
+
+### Full assembly
 
 ![Full Assembly CAD](/assets/shockdyno_final_assembly_cad.png)
-*Final SolidWorks assembly. The worm gearbox and crank-flywheel drive sit at the base, with the shock running vertically through the braced tower structure to the Whiffle Tree load cell interface at the top.*
+*Final SolidWorks assembly: worm gearbox and crank wheel at the base, the shock running vertically through the braced towers to the Whiffle Tree at the top.*

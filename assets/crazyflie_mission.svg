@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" width="960" height="640" role="img" aria-label="Top-down diagram of the Crazyflie mission: start pad, obstacle detour, lawnmower search pattern, and landing pad">
+  <rect width="960" height="640" fill="#f4f5f6"/>
+  <!-- arena -->
+  <rect x="60" y="80" width="840" height="480" fill="#ffffff" stroke="#dfe3e6" stroke-width="3"/>
+  <!-- landing zone -->
+  <rect x="600" y="80" width="300" height="480" fill="#eef3fb"/>
+  <text x="750" y="112" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="20" fill="#626a72">landing zone</text>
+  <!-- obstacle -->
+  <rect x="330" y="250" width="70" height="140" rx="4" fill="#40464c"/>
+  <text x="365" y="420" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="18" fill="#626a72">obstacle</text>
+  <!-- start pad -->
+  <rect x="100" y="285" width="70" height="70" rx="4" fill="#202326"/>
+  <text x="135" y="385" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="18" fill="#626a72">start</text>
+  <!-- outbound path with detour -->
+  <polyline points="170,320 280,320 280,205 450,205 450,320 620,320" fill="none" stroke="#2459ad" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+  <!-- lawnmower search -->
+  <polyline points="620,320 620,140 660,140 660,520 700,520 700,140 740,140 740,520 780,520 780,345" fill="none" stroke="#2459ad" stroke-width="3" stroke-dasharray="10 8" stroke-linejoin="round"/>
+  <!-- landing pad -->
+  <rect x="760" y="345" width="66" height="66" rx="4" fill="#c2571a"/>
+  <circle cx="793" cy="378" r="8" fill="#ffffff"/>
+  <text x="793" y="440" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="18" fill="#626a72">pad</text>
+  <!-- range rays at obstacle -->
+  <g stroke="#c2571a" stroke-width="2" stroke-dasharray="4 5">
+    <line x1="280" y1="320" x2="330" y2="320"/>
+    <line x1="280" y1="320" x2="280" y2="250"/>
+  </g>
+  <!-- drone -->
+  <g transform="translate(280,320)">
+    <line x1="-14" y1="-14" x2="14" y2="14" stroke="#202326" stroke-width="4"/>
+    <line x1="-14" y1="14" x2="14" y2="-14" stroke="#202326" stroke-width="4"/>
+    <circle cx="-14" cy="-14" r="7" fill="#fff" stroke="#202326" stroke-width="3"/>
+    <circle cx="14" cy="14" r="7" fill="#fff" stroke="#202326" stroke-width="3"/>
+    <circle cx="-14" cy="14" r="7" fill="#fff" stroke="#202326" stroke-width="3"/>
+    <circle cx="14" cy="-14" r="7" fill="#fff" stroke="#202326" stroke-width="3"/>
+  </g>
+</svg>

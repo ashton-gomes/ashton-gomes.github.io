@@ -1,7 +1,8 @@
 title: Ashton Gomes
 email: ashton.gomes@outlook.com
 description: Mechanical Engineering MS Student · Stony Brook University
-tagline: "Mechanical engineering master's student at Stony Brook University, with an MS expected in May 2027 and a BE completed in May 2026. Graduate researcher developing C++ motion planning and control for a 7-DOF robot, and Vehicle Dynamics Lead for a 12-member Stony Brook Motorsports team. Work spans simulation, FEA, fabrication, and instrumented testing."
+tagline: "Mechanical engineering master's student at Stony Brook University (MS expected May 2027, BE May 2026). In the Interacting Robotic Systems Laboratory I build C++ motion planners that move a 7-DOF arm along screw motions. As Vehicle Dynamics Lead for Stony Brook Motorsports I take suspension and steering from MATLAB models to jigged hardware. I like problems where the math, the code, and the machined part all have to agree."
+github_url: "https://github.com/ashton-gomes"
 linkedin_url: "https://www.linkedin.com/in/ashton-gomes/"
 resume_url: "/assets/Ashton_Gomes_Resume.pdf" # PDF in 'assets' folder
 baseurl: "" 
@@ -15,3 +16,5 @@ exclude:
   - projects/baja-sae_old.md
   - projects/shockdyno_old.md
   - projects/robotics_old.md
+  - projects/controls.md
+  - projects/thermal.md

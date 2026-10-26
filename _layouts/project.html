@@ -6,12 +6,28 @@ layout: default
   <a class="text-link back-link" href="{{ '/#projects' | relative_url }}"><span aria-hidden="true">&larr;</span> All projects</a>
 
   <header class="project-header">
-    <p class="project-category">Engineering project</p>
+    <p class="project-category">{{ page.category_label | default: 'Engineering project' }}</p>
     <h1>{{ page.title }}</h1>
     <p class="project-intro">{{ page.description }}</p>
+    {% if page.role or page.timeline or page.team %}
+    <dl class="project-facts">
+      {% if page.role %}<div><dt>Role</dt><dd>{{ page.role }}</dd></div>{% endif %}
+      {% if page.timeline %}<div><dt>Timeline</dt><dd>{{ page.timeline }}</dd></div>{% endif %}
+      {% if page.team %}<div><dt>Team</dt><dd>{{ page.team }}</dd></div>{% endif %}
+    </dl>
+    {% endif %}
   </header>
 
-  {% if page.hero_image %}
+  {% if page.hero_video %}
+  <figure class="project-hero">
+    <video autoplay muted loop playsinline preload="metadata" {% if page.hero_poster %}poster="{{ page.hero_poster | relative_url }}"{% endif %} aria-label="{{ page.hero_alt | escape }}">
+      <source src="{{ page.hero_video | relative_url }}" type="video/mp4">
+    </video>
+    {% if page.hero_caption %}
+    <figcaption>{{ page.hero_caption | escape }}</figcaption>
+    {% endif %}
+  </figure>
+  {% elsif page.hero_image %}
   <figure class="project-hero">
     <img src="{{ page.hero_image | relative_url }}" alt="{{ page.hero_alt | escape }}" decoding="async" fetchpriority="high">
     {% if page.hero_caption %}
@@ -38,8 +54,11 @@ layout: default
       {% endif %}
       <div class="sidebar-links">
         {% if page.github_link %}
-        <a class="text-link" href="{{ page.github_link }}">View source code <span aria-hidden="true">&nearr;</span></a>
+        <a class="text-link" href="{{ page.github_link }}">Source on GitHub <span aria-hidden="true">&nearr;</span></a>
         {% endif %}
+        {% for link in page.related %}
+        <a class="text-link" href="{{ link.url | relative_url }}">{{ link.title }} <span aria-hidden="true">&rarr;</span></a>
+        {% endfor %}
         <a class="text-link" href="{{ site.resume_url | relative_url }}">View resume <span aria-hidden="true">&nearr;</span></a>
         <a class="text-link" href="mailto:{{ site.email }}">Contact me <span aria-hidden="true">&nearr;</span></a>
       </div>

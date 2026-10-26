@@ -1,17 +1,22 @@
 ---
 layout: project
-title: Kinova Gen3 Kinematic Modeling & Trajectory Planning
-description: Python kinematics and trajectory planning for the 7-DOF Kinova Gen3, forming the foundation for subsequent C++ task-space planning and resolved-rate control research.
-tags: [Python, Robotics, Kinematics, Trajectory Planning, NumPy, Modern Robotics]
+title: Kinova Gen3 Kinematics & Trajectory Planning
+category_label: Robotics foundation
+description: "Screw-theory kinematics, singularity analysis, numerical inverse kinematics, and five trajectory planners for the 7-DOF Kinova Gen3, written from first principles in Python. This is the groundwork for my C++ motion-planning research."
+timeline: "Nov – Dec 2025"
+tags: [Python, NumPy, Screw Theory, Product of Exponentials, Inverse Kinematics, Trajectory Planning, pytransform3d]
+related:
+  - title: "Screw-motion planner (research)"
+    url: /projects/motion-planner.html
 ---
 
 ## Overview
 
-This project built a complete kinematic and trajectory planning stack for the Kinova Gen3, a 7-DOF serial manipulator, from first principles. Rather than relying on a pre-built robotics library, every component, forward kinematics, Jacobian computation, numerical inverse kinematics, and five distinct trajectory planners, was derived from the Modern Robotics (screw theory) framework and implemented in Python from scratch.
+This project built a complete kinematic and trajectory planning stack for the Kinova Gen3, a 7-DOF serial manipulator, from first principles. Rather than relying on a pre-built robotics library, every component (forward kinematics, Jacobian computation, numerical inverse kinematics, and five distinct trajectory planners) was derived from the Modern Robotics (screw theory) framework and implemented in Python from scratch.
 
-The pipeline starts at the URDF level: joint axes are parsed programmatically, converted to space-frame screw axes, and validated against the pytransform3d ground truth before anything downstream is trusted. Every subsequent module, IK, singularity detection, trajectory planning, chains off that verified kinematic model.
+The pipeline starts at the URDF level: joint axes are parsed programmatically, converted to space-frame screw axes, and validated against the pytransform3d ground truth before anything downstream is trusted. Every subsequent module (IK, singularity detection, trajectory planning) builds on that verified kinematic model.
 
-This page documents the Python kinematics foundation. My current work as a **Graduate Researcher in the Interacting Robotic Systems Laboratory**, beginning in **January 2026**, extends that work into a **C++ task-space planner** using goal-directed RRT, dual-quaternion ScLERP, and resolved-rate control, benchmarked in MuJoCo. The current simulation results and their evaluation scope are documented in [Robot Motion Planning — RRT, ScLERP & Resolved-Rate Control]({{ '/projects/sclerp.html' | relative_url }}).
+This page documents that Python foundation. My research as a **Graduate Researcher in the Interacting Robotic Systems Laboratory** carries the same screw-theory model into C++: dual-quaternion forward kinematics, resolved-motion rate control, and a goal-directed RRT whose edges are screw motions. See the [screw-motion planner case study]({{ '/projects/motion-planner.html' | relative_url }}).
 
 ---
 
@@ -90,8 +95,8 @@ Position was interpolated through four via points using cubic splines with match
 
 For each trajectory mode, the robot was animated in pytransform3d with the computed joint trajectory. Four diagnostic plots were generated per task, joint positions, velocities, accelerations, and end-effector path, each overlaid with the limits from the spec file. All trajectories remained within limits, and the IK error for task-space modes stayed below the convergence threshold throughout.
 
-<video width="500" controls>
-  <source src="/assets/Circle_Animation.mp4" type="video/mp4">
+<video controls muted playsinline preload="metadata">
+  <source src="{{ '/assets/Circle_Animation.mp4' | relative_url }}#t=0.1" type="video/mp4">
 </video>
 
 *Circular trajectory: 5th-order polynomial time scaling, fixed end-effector orientation, simulated on the Kinova Gen3 URDF.*
