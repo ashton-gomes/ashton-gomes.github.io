@@ -32,7 +32,7 @@ layout: default
   <article class="feature-entry">
     <a class="feature-media" href="{{ project.url | relative_url }}" aria-label="View {{ project.title | escape }}" tabindex="-1">
       {% if project.video %}
-      <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+      <video autoplay muted loop playsinline preload="metadata" {% if project.video_poster %}poster="{{ project.video_poster | relative_url }}"{% endif %} aria-hidden="true">
         <source src="{{ project.video | relative_url }}" type="video/mp4">
       </video>
       {% elsif project.image %}
@@ -77,7 +77,7 @@ layout: default
     <article class="project-entry">
       <a class="project-image-link" href="{{ project.url | relative_url }}" aria-label="View {{ project.title | escape }}" tabindex="-1">
         {% if project.video %}
-        <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+        <video autoplay muted loop playsinline preload="metadata" {% if project.video_poster %}poster="{{ project.video_poster | relative_url }}"{% endif %} aria-hidden="true">
           <source src="{{ project.video | relative_url }}" type="video/mp4">
         </video>
         {% elsif project.image %}

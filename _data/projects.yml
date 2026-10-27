@@ -5,7 +5,8 @@
   section: research
   label: "Graduate research · Jan 2026 – present"
   description: "A C++ planner whose RRT edges are dual-quaternion screw motions (ScLERP), tracked in joint space by resolved-motion rate control. All the algebra, kinematics, and search are written from scratch, with every path independently re-validated in MuJoCo across a 5,000-trial benchmark."
-  video: "/assets/planner_wall_hole_example.mp4"
+  video: "/assets/planner_wall_hole_example_web.mp4"
+  video_poster: "/assets/planner_wall_hole_example_poster.jpg"
   metrics:
     - value: "99.1%"
       label: "free-space goals reached"

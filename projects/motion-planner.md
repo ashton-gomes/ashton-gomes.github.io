@@ -7,7 +7,8 @@ role: Graduate Researcher
 timeline: "Jan 2026 – Present"
 team: "Interacting Robotic Systems Laboratory, Stony Brook University"
 github_link: "https://github.com/ashton-gomes/ashton-motion-planner"
-hero_video: /assets/planner_shelf_example.mp4
+hero_video: /assets/planner_shelf_example_web.mp4
+hero_poster: /assets/planner_shelf_example_poster.jpg
 hero_alt: "Kinova Gen3 arm in MuJoCo reaching from outside a bookshelf into one of its cubbies."
 hero_caption: "Fixed-task shelf scene: the arm starts outside the bookshelf and plans into a cubby. The direct screw motion is blocked by the shelf boards, so the planner builds a tree of short screw-motion edges around them."
 tags: [C++17, Eigen, MuJoCo, CMake, Dual Quaternions, ScLERP, RMRC, RRT / RRT*, Screw Theory, Benchmarking]
@@ -50,26 +51,26 @@ Each environment defines a fixed start and goal where the straight screw motion 
 
 <div class="video-grid">
   <figure>
-    <video controls muted loop playsinline preload="metadata" aria-label="Arm reaching through a window in a wall">
-      <source src="{{ '/assets/planner_wall_hole_example.mp4' | relative_url }}#t=0.1" type="video/mp4">
+    <video controls muted loop playsinline preload="metadata" poster="{{ '/assets/planner_wall_hole_example_poster.jpg' | relative_url }}" aria-label="Arm reaching through a window in a wall">
+      <source src="{{ '/assets/planner_wall_hole_example_web.mp4' | relative_url }}" type="video/mp4">
     </video>
     <figcaption><strong>Wall with a window.</strong> The goal sits behind a wall, so the end effector has to thread through a rectangular opening.</figcaption>
   </figure>
   <figure>
-    <video controls muted loop playsinline preload="metadata" aria-label="Arm reaching under a tabletop">
-      <source src="{{ '/assets/planner_table_example.mp4' | relative_url }}#t=0.1" type="video/mp4">
+    <video controls muted loop playsinline preload="metadata" poster="{{ '/assets/planner_table_example_poster.jpg' | relative_url }}" aria-label="Arm reaching under a tabletop">
+      <source src="{{ '/assets/planner_table_example_web.mp4' | relative_url }}" type="video/mp4">
     </video>
     <figcaption><strong>Under a table.</strong> The arm starts above the tabletop and must route the wrist down and under it without striking the legs.</figcaption>
   </figure>
   <figure>
-    <video controls muted loop playsinline preload="metadata" aria-label="Arm reaching between tall cylindrical posts">
-      <source src="{{ '/assets/planner_cylinder_example.mp4' | relative_url }}#t=0.1" type="video/mp4">
+    <video controls muted loop playsinline preload="metadata" poster="{{ '/assets/planner_cylinder_example_poster.jpg' | relative_url }}" aria-label="Arm reaching between tall cylindrical posts">
+      <source src="{{ '/assets/planner_cylinder_example_web.mp4' | relative_url }}" type="video/mp4">
     </video>
     <figcaption><strong>Tall posts.</strong> Three one-metre cylinders block the direct sweep, so the planner has to keep every link, not just the gripper, clear of them.</figcaption>
   </figure>
   <figure>
-    <video controls muted loop playsinline preload="metadata" aria-label="Arm reaching into a bookshelf cubby">
-      <source src="{{ '/assets/planner_shelf_example.mp4' | relative_url }}#t=0.1" type="video/mp4">
+    <video controls muted loop playsinline preload="metadata" poster="{{ '/assets/planner_shelf_example_poster.jpg' | relative_url }}" aria-label="Arm reaching into a bookshelf cubby">
+      <source src="{{ '/assets/planner_shelf_example_web.mp4' | relative_url }}" type="video/mp4">
     </video>
     <figcaption><strong>Bookshelf cubby.</strong> A confined goal between boards on five sides, the tightest of the fixed tasks.</figcaption>
   </figure>
