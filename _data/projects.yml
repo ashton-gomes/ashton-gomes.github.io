@@ -31,11 +31,11 @@
 - title: "Baja SAE Vehicle Dynamics"
   section: projects
   label: "Stony Brook Motorsports · Team lead"
-  description: "I lead a 12-member steering, suspension, and brakes group. I built a MATLAB suspension solver and bump-steer optimizer, reduced the inside turning radius from 9 ft to 2 ft, and redesigned the control arms to be 0.8 lb lighter with 40% less predicted deformation. The team placed 9th overall in dynamic events."
+  description: "I lead a 12-member steering, suspension, and brakes group. I built MATLAB and Python suspension models that carry the CAD hardpoints through to motion ratio, spring rates, and quarter-car damper targets, reduced the inside turning radius from 9 ft to 2 ft, and redesigned the control arms to be 0.8 lb lighter with 40% less predicted deformation. The team placed 9th overall in dynamic events."
   image: "/assets/bajasae_finalimage.jpg"
   image_position: "center center"
   image_fit: "contain"
-  tags: ["MATLAB", "SolidWorks", "Suspension Kinematics", "FEA", "Jig Design", "Leadership"]
+  tags: ["MATLAB", "Python", "SolidWorks", "Suspension Kinematics", "Quarter-Car Modeling", "FEA", "Jig Design", "Leadership"]
   url: "/projects/baja-sae.html"
 
 - title: "Crazyflie Autonomous Arena Mission"
