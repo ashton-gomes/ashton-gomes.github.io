@@ -1,7 +1,7 @@
 ---
 layout: project
 title: Crazyflie Autonomous Arena Mission
-category_label: Autonomy · Ongoing project (MEC 569)
+category_label: Autonomy · Ongoing project
 description: "A palm-sized Crazyflie quadrotor that takes off, crosses an unknown obstacle field, finds a raised landing pad using only a downward range sensor, maps its edges, and lands on it. Everything runs on onboard sensing, with no external cameras or motion capture."
 timeline: "Sep 2026 – Present"
 tags: [Python, cflib, Crazyflie 2.x, Flow Deck v2, Multi-ranger, Multithreading, State Machines, Sensor Fusion]

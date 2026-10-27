@@ -163,8 +163,11 @@ img, video { display: block; max-width: 100%; height: auto; }
 .project-content .metric { padding: 1.1rem 1.15rem; background: #fff; }
 .project-content .metric strong { display: block; font-size: 1.5rem; line-height: 1.2; letter-spacing: -.03em; }
 .project-content .metric span { display: block; margin-top: .35rem; color: var(--muted); font-size: .8125rem; line-height: 1.45; }
-.project-content .video-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; margin: 1.75rem 0 2rem; }
-.project-content .video-grid figure { margin: 0; }
+.project-content .video-grid, .project-content .figure-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; margin: 1.75rem 0 2rem; }
+.project-content .video-grid figure, .project-content .figure-grid figure { margin: 0; }
+.project-content .figure-grid img { margin: 0; }
+.project-content figure.figure-single { margin: 1.75rem 0 2rem; }
+.project-content figure.figure-single img { margin: 0; }
 .project-content .video-grid video { margin: 0; background: #0f1215; aspect-ratio: 16 / 10; object-fit: cover; }
 .project-content figcaption { margin-top: .6rem; color: var(--muted); font-size: .875rem; line-height: 1.55; }
 .project-content figcaption strong { color: var(--ink); }
@@ -210,7 +213,7 @@ img, video { display: block; max-width: 100%; height: auto; }
   .skill-list li { margin-bottom: 0; }
   .sidebar-links { flex-flow: row wrap; gap: .25rem 1.5rem; margin-top: .75rem; padding-top: 0; border: 0; }
   .project-content { font-size: 1rem; }
-  .project-content .video-grid { grid-template-columns: minmax(0, 1fr); }
+  .project-content .video-grid, .project-content .figure-grid { grid-template-columns: minmax(0, 1fr); }
   .feature-metrics { grid-template-columns: minmax(0, 1fr); gap: .75rem; }
   .project-facts { gap: .75rem 2rem; }
 }

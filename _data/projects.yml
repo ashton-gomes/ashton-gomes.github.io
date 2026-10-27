@@ -47,11 +47,11 @@
   tags: ["Python", "cflib", "Optical Flow", "Obstacle Avoidance", "Multithreading"]
   url: "/projects/crazyflie.html"
 
-- title: "What Actually Makes RRT Better? A 450-Run Study"
+- title: "RRT Planner Enhancement Benchmark"
   section: projects
   label: "Motion planning · Benchmark study"
-  description: "Nine RRT variants across five environments and ten seeds. Corridor sampling failed outright on mazes, and a data-driven combination of bidirectional trees, obstacle-aware sampling, and Voronoi-bias expansion solved all five environments 100% of the time."
-  image: "/assets/rrt_study_tree.svg"
+  description: "Nine RRT variants, five environments, ten seeds each (450 runs). Corridor sampling failed outright on the maze and bug-trap, while a data-driven combination of bidirectional trees, obstacle-aware sampling, and Voronoi-bias expansion solved all five environments 100% of the time."
+  image: "/assets/rrt_e5_combined_v2.png"
   image_fit: "contain"
   tags: ["Python", "RRT-Connect", "Sampling Strategies", "Benchmark Design"]
   url: "/projects/rrt-study.html"
