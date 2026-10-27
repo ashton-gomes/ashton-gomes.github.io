@@ -4,7 +4,7 @@
 - title: "Screw-Motion Planner for a 7-DOF Kinova Gen3"
   section: research
   label: "Graduate research · Jan 2026 – present"
-  description: "A C++ planner whose RRT edges are dual-quaternion screw motions (ScLERP), tracked in joint space by resolved-motion rate control. All the algebra, kinematics, and search are written from scratch, with every path independently re-validated in MuJoCo across a 5,000-trial benchmark."
+  description: "A C++ planner where each RRT edge is a dual-quaternion screw motion (ScLERP) that is tracked in joint space with resolved-motion rate control. I wrote the algebra, kinematics, and search from scratch, and every path in the 5,000-trial benchmark is checked again separately in MuJoCo."
   video: "/assets/planner_wall_hole_example_web.mp4"
   video_poster: "/assets/planner_wall_hole_example_poster.jpg"
   metrics:
@@ -21,7 +21,7 @@
 - title: "Custom Shock Dynamometer"
   section: projects
   label: "Senior design · Mechanical & mechatronics"
-  description: "A crank-driven dyno for Stony Brook Motorsports: Whiffle Tree load path (FEA FoS 3.1 / 5.8), Teensy 4.1 firmware driving a VFD over Modbus with a 24-bit force channel, and a Python pipeline that delivered the team's first measured damping coefficients and a clear revalving direction."
+  description: "A crank-driven dyno built for Stony Brook Motorsports, with a Whiffle Tree load path (FEA FoS of 3.1 for the frame and 5.8 for the Whiffle Tree), Teensy 4.1 firmware that controls a VFD over Modbus and reads a 24-bit force channel, and a Python pipeline. It produced the team's first measured damping coefficients, which showed which direction to take the shock revalving."
   image: "/assets/shockdyno_mainimage.jpg"
   image_position: "center center"
   image_fit: "contain"
@@ -31,7 +31,7 @@
 - title: "Baja SAE Vehicle Dynamics"
   section: projects
   label: "Stony Brook Motorsports · Team lead"
-  description: "Leading a 12-member steering, suspension, and brakes group. Built a MATLAB suspension solver and bump-steer optimizer, cut the inside turning radius from 9 ft to 2 ft, and redesigned the control arms 0.8 lb lighter with 40% less predicted deformation. The team placed 9th overall in dynamic events."
+  description: "I lead a 12-member steering, suspension, and brakes group. I built a MATLAB suspension solver and bump-steer optimizer, reduced the inside turning radius from 9 ft to 2 ft, and redesigned the control arms to be 0.8 lb lighter with 40% less predicted deformation. The team placed 9th overall in dynamic events."
   image: "/assets/bajasae_finalimage.jpg"
   image_position: "center center"
   image_fit: "contain"
@@ -41,7 +41,7 @@
 - title: "Crazyflie Autonomous Arena Mission"
   section: projects
   label: "Autonomy · Ongoing project"
-  description: "A palm-sized quadrotor that crosses an unknown obstacle field, finds a raised pad with only a downward range sensor, maps its edges, and lands, all on onboard sensing. My best flight completed the full outbound mission and landed on the pad in 75 s."
+  description: "A small quadrotor that crosses an unknown obstacle field, finds a raised pad using only a downward range sensor, maps its edges, and lands on it using only onboard sensing. In my best flight, it completed the full outbound mission and landed on the pad in 75 s."
   image: "/assets/crazyflie_mission.svg"
   image_fit: "contain"
   tags: ["Python", "cflib", "Optical Flow", "Obstacle Avoidance", "Multithreading"]
@@ -50,7 +50,7 @@
 - title: "RRT Planner Enhancement Benchmark"
   section: projects
   label: "Motion planning · Benchmark study"
-  description: "Nine RRT variants, five environments, ten seeds each (450 runs). Corridor sampling failed outright on the maze and bug-trap, while a data-driven combination of bidirectional trees, obstacle-aware sampling, and Voronoi-bias expansion solved all five environments 100% of the time."
+  description: "I tested nine RRT variants across five environments with ten seeds each, for 450 runs in total. Corridor sampling failed every run on the maze and bug-trap, while a combination of bidirectional trees, obstacle-aware sampling, and Voronoi-bias expansion chosen from the results solved all five environments every time."
   image: "/assets/rrt_e5_combined_v2.png"
   image_fit: "contain"
   tags: ["Python", "RRT-Connect", "Sampling Strategies", "Benchmark Design"]
@@ -59,7 +59,7 @@
 - title: "Kinova Gen3 Kinematics & Trajectory Planning"
   section: projects
   label: "Robotics foundation"
-  description: "Screw axes derived from the URDF, product-of-exponentials FK validated to 10⁻¹⁴, singularity analysis, Newton–Raphson IK, and five trajectory planners. All of it is from first principles in Python and became the foundation for my C++ research planner."
+  description: "Screw axes derived from the URDF, product-of-exponentials FK checked to 10⁻¹⁴, singularity analysis, Newton–Raphson IK, and five trajectory planners, all written from first principles in Python. This work became the starting point for my C++ research planner."
   video: "/assets/Circle_Animation.mp4"
   tags: ["Python", "Screw Theory", "Inverse Kinematics", "Trajectory Planning"]
   url: "/projects/robotics.html"
