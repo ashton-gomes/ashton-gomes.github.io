@@ -17,7 +17,7 @@ related:
 
 ## Overview
 
-I joined Stony Brook Motorsports in 2023 and have worked on the car's chassis systems every season since. I started as the Steering Subsystem Lead and team Secretary, and since June 2025 I have been the Vehicle Dynamics Lead. I now lead a 12-member group that is responsible for the steering, suspension, and brakes. This involves coordinating design reviews, FEA, purchasing, and fabrication schedules so that all three systems are finished and on the car by the end of the academic year.
+I joined Stony Brook Motorsports in August 2023 and have worked on the car's chassis systems every season since. I started as a VIP member, then became the Steering system lead and the Secretary of the club, and since June 2025 I have been the Vehicle Dynamics Lead. I now lead a 12-member group that is responsible for the steering, suspension, and brakes. This involves coordinating design reviews, FEA, purchasing, and fabrication schedules so that all three systems are finished and on the car by the end of the academic year.
 
 <div class="metric-grid">
   <div class="metric"><strong>9 ft → 2 ft</strong><span>inside turning radius, with 20% anti-Ackermann and passive rear steer</span></div>

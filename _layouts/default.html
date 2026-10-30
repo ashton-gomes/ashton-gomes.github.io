@@ -45,5 +45,13 @@
       <p>&copy; {{ site.time | date: '%Y' }}</p>
     </div>
   </footer>
+
+  <script>
+    // Cache the site, including videos, for offline viewing (see /sw.js).
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('{{ "/sw.js" | relative_url }}');
+      if (navigator.storage && navigator.storage.persist) navigator.storage.persist();
+    }
+  </script>
 </body>
 </html>

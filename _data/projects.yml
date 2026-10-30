@@ -18,16 +18,6 @@
   url: "/projects/motion-planner.html"
   github: "https://github.com/ashton-gomes/ashton-motion-planner"
 
-- title: "Custom Shock Dynamometer"
-  section: projects
-  label: "Senior design · Mechanical & mechatronics"
-  description: "A crank-driven dyno built for Stony Brook Motorsports, with a Whiffle Tree load path (FEA FoS of 3.1 for the frame and 5.8 for the Whiffle Tree), Teensy 4.1 firmware that controls a VFD over Modbus and reads a 24-bit force channel, and a Python pipeline. It produced the team's first measured damping coefficients, which showed which direction to take the shock revalving."
-  image: "/assets/shockdyno_mainimage.jpg"
-  image_position: "center center"
-  image_fit: "contain"
-  tags: ["SolidWorks", "FEA", "Teensy 4.1", "Modbus RTU", "Python", "Fabrication"]
-  url: "/projects/shockdyno.html"
-
 - title: "Baja SAE Vehicle Dynamics"
   section: projects
   label: "Stony Brook Motorsports · Team lead"
@@ -37,6 +27,16 @@
   image_fit: "contain"
   tags: ["MATLAB", "Python", "SolidWorks", "Suspension Kinematics", "Quarter-Car Modeling", "FEA", "Jig Design", "Leadership"]
   url: "/projects/baja-sae.html"
+
+- title: "Custom Shock Dynamometer"
+  section: projects
+  label: "Senior design · Mechanical & mechatronics"
+  description: "A crank-driven dyno built for Stony Brook Motorsports, with a Whiffle Tree load path (FEA FoS of 3.1 for the frame and 5.8 for the Whiffle Tree), Teensy 4.1 firmware that controls a VFD over Modbus and reads a 24-bit force channel, and a Python pipeline. It produced the team's first measured damping coefficients, which showed which direction to take the shock revalving."
+  image: "/assets/shockdyno_mainimage.jpg"
+  image_position: "center center"
+  image_fit: "contain"
+  tags: ["SolidWorks", "FEA", "Teensy 4.1", "Modbus RTU", "Python", "Fabrication"]
+  url: "/projects/shockdyno.html"
 
 - title: "Crazyflie Autonomous Arena Mission"
   section: projects
